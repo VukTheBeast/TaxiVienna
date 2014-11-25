@@ -1,0 +1,75 @@
+﻿
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: url(../Content/pic/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+form input,
+form select,
+form textarea {
+    max-width:100%;
+}
+
+.jumbotron {
+    width: 65%;
+    height:980px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8);
+    padding-top: 10px;
+    border-radius: 40px;
+}
+.navbar-inverse {
+    /*background: rgba(246,241,162,1);
+    background: -moz-linear-gradient(left, rgba(246,241,162,1) 0%, rgba(254,206,128,1) 66%, rgba(254,206,128,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(246,241,162,1)), color-stop(66%, rgba(254,206,128,1)), color-stop(100%, rgba(254,206,128,1)));
+    background: -webkit-linear-gradient(left, rgba(246,241,162,1) 0%, rgba(254,206,128,1) 66%, rgba(254,206,128,1) 100%);
+    background: -o-linear-gradient(left, rgba(246,241,162,1) 0%, rgba(254,206,128,1) 66%, rgba(254,206,128,1) 100%);
+    background: -ms-linear-gradient(left, rgba(246,241,162,1) 0%, rgba(254,206,128,1) 66%, rgba(254,206,128,1) 100%);
+    background: linear-gradient(to right, rgba(246,241,162,1) 0%, rgba(254,206,128,1) 66%, rgba(254,206,128,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f1a2', endColorstr='#fece80', GradientType=1 );
+
+    border-color: #DDBF1E;*/
+}
+
+
+.carousel {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.carousel-control.left, .carousel-control.right  {
+    background-image: none;
+}
+
+.carousel-inner > .item > img { 
+    margin: 0 auto; 
+    height:450px;
+}
+
+
