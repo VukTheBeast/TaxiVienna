@@ -3,14 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - 007 Flughafen Taxi</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-   
+    <div class="row">
+        <div class="text-center">
+            <div style="display:inline-block">
+                <img src="~/Content/pic/vienna-airport-cab-banner.gif" /> 
+            </div>
+            <div style="display:inline-block;margin-left:150px;">
+                <img src="~/Content/pic/card.jpg" />
+            </div>
+            <div style="display:inline-block;margin-left:150px;">
+                <img src="~/Content/pic/british-flag.jpg" />
+                <img src="~/Content/pic/flag-german.jpg" />
+            </div>
+        </div>
+    </div>
     
-        <div class="jumbotron">
+        <div class="jumbotron" style="padding-top:50px;margin-top:50px;">
             <div class="container body-content">
                 <div class="navbar navbar-inverse >
                     <div class="container">
@@ -20,13 +33,14 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                            @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                            <label id="logo" class="navbar-brand" style="cursor:pointer">007 TAXI</label>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                                 <li>@Html.ActionLink("About", "About", "Home")</li>
-                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                <li>@Html.ActionLink("Booking", "Contact", "Home")</li>
                             </ul>
                         </div>
                     </div>
@@ -38,9 +52,9 @@
         
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p style="color:white">&copy; @DateTime.Now.Year - DViG Development Team</p>
         </footer>
-    </div>
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
