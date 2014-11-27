@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewBag.Title = "Booking";
+}
+
+<style>
+    .jumbotron #scrolingBooking {
+        overflow-y: scroll; height:600px;
+    }
+</style>
+
+
+<h2>Booking</h2>
+
+<div id="scrolingBooking" class="container">
+    <div class="row">
+        <form role="form">
+            <div class="col-lg-6">
+                
+                <div class="form-group">
+                    <label for="InputName">Pick Up-date</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Pick-up Time</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">pick-up from</label>
+                    <div class="input-group">
+                        <select class="form-control" >
+                            <option value="5" selected="selected">from home</option>
+                            <option value="6">from office</option>
+                            <option value="7">from train station</option>
+                            <option value="9">from hotel</option>
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputMessage">Your full name</label>
+                    <div class="input-group">
+                        <input name="InputMessage" id="InputMessage" class="form-control" rows="5" required />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="InputEmail">Location</label>
+                    <div class="input-group">
+                        <select class="form-control">
+                            <option value="5" selected="selected">Vienn</option>
+                            <option value="6">from office</option>
+                            <option value="7">from train station</option>
+                            <option value="9">from hotel</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Zip code</label>
+                    <div class="input-group">
+                        <select class="form-control">
+                            <option value="5" selected="selected"></option>
+                            <option value="6">from office</option>
+                            <option value="7">from train station</option>
+                            <option value="9">from hotel</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputTelFirst">Phone</label>
+                    <div class="input-group">
+                        <input type="tel" class="form-control" id="InputTelFirst" name="InputTelFirst" placeholder="Enter Phone" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Your Email</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="form-group-input">Type of car</label>
+                    <select id="car_type" name="car_type" class="dropdown" label="Typ Auto:" onchange="recalculate_price();">
+                        <option value="1">Limousine maximum. 3 Passengers</option>
+                        <option value="2">Station wagon 3-4 Passengers</option>
+                        <option value="3">Van 4-7 Passengers</option>
+                        <option value="999">More from 8 on request</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="form-group-input">Suitcases</label>
+                    <select id="suitcases" name="suitcases" class="dropdown" label="Anzahl der Koffer:" onchange="recalculate_price();">
+                        <option value="0">No suitcases</option>
+                        <option value="1" selected="selected">1 Suitcase</option>
+                        <option value="2">2 Suitcase</option>
+                        <option value="3">3 Suitcase</option>
+                        <option value="4">4 Suitcase</option>
+                        <option value="5">5 Suitcase</option>
+                        <option value="6">6 Suitcase</option>
+                        <option value="7">7 Suitcase</option>
+                        <option value="8">8 Suitcase</option>
+                        <option value="999">More from 8 on request</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="form-group-input">Hand laggage</label>
+                    <select id="hand_package" name="hand_package" class="dropdown" label="Handgepäck:" onchange="recalculate_price();">
+                        <option value="0">No hand luggage</option>
+                        <option value="1" selected="selected">1 Piece</option>
+                        <option value="2">2 Piece</option>
+                        <option value="3">3 Piece</option>
+                        <option value="4">4 Piece</option>
+                        <option value="5">5 Piece</option>
+                        <option value="6">6 Piece</option>
+                        <option value="7">7 Piece</option>
+                        <option value="8">8 Piece</option>
+                        <option value="999">More from 8 on request</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="form-group-input">Payment</label>
+                    <select id="payment" name="payment" class="dropdown" label="Bezahlung:" onchange="recalculate_price();">
+                        <option value="Bar">Cash</option>
+                        <option value="Kreditkarte">Credit Card</option>
+                        <!--	<option value="Wertkarte">Value Card</option> -->
+                        <option value="Lieferschein">Bank Transfer</option>
+                    </select>
+
+                </div>
+                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+            </div>
+        </form>
+        
+    </div>
+</div>
