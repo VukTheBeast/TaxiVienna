@@ -7,7 +7,32 @@
     .jumbotron #scrolingBooking {
         overflow-y: scroll; height:600px;
     }
+     .glyphicon-refresh-animate {
+        -animation: spin .7s infinite linear;
+        -webkit-animation: spin2 .7s infinite linear;
+    }
+
+    @@-webkit-keyframes spin2 {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @@keyframes spin {
+        from {
+            transform: scale(1) rotate(0deg);
+        }
+
+        to {
+            transform: scale(1) rotate(360deg);
+        }
+    }
 </style>
+
 
 
 <h2>Booking</h2>
@@ -20,21 +45,21 @@
                 <div class="form-group">
                     <label for="InputName">Pick Up-date</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
+                        <input type="text" class="form-control" name="InputDate" id="InputDate" placeholder="Pick Up-date" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="InputEmail">Pick-up Time</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                        <input type="email" class="form-control" id="InputTime" name="InputTime" placeholder="Pick-up Time" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputEmail">pick-up from</label>
+                    <label for="InputPickupFrom">pick-up from</label>
                     <div class="input-group">
-                        <select class="form-control" >
+                        <select class="form-control" id="InputPickupFrom" name="InputPickupFrom">
                             <option value="5" selected="selected">from home</option>
                             <option value="6">from office</option>
                             <option value="7">from train station</option>
@@ -44,18 +69,19 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputMessage">Your full name</label>
+                    <label for="InputFullName">Your full name</label>
                     <div class="input-group">
-                        <input name="InputMessage" id="InputMessage" class="form-control" rows="5" required />
+                        <input name="InputFullName" id="InputFullName" class="form-control" rows="5" required placeholder="Please enter your name" />
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="InputEmail">Location</label>
+                    <label for="InputLocation">Location</label>
                     <div class="input-group">
-                        <select class="form-control">
-                            <option value="5" selected="selected">Vienn</option>
+                        <select class="form-control" id="InputLocation" name="InputLocation">
+                            <option value="4" selected="selected">Smederevo</option>
+                            <option value="5">Vienn</option>
                             <option value="6">from office</option>
                             <option value="7">from train station</option>
                             <option value="9">from hotel</option>
@@ -64,10 +90,22 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputEmail">Zip code</label>
+                    <label for="InputZipCode">Zip code</label>
                     <div class="input-group">
-                        <select class="form-control">
+                        <select class="form-control" id="InputZipCode" name="InputZipCode">
                             <option value="5" selected="selected"></option>
+                            <option value="6">from office</option>
+                            <option value="7">from train station</option>
+                            <option value="9">from hotel</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Street">Street</label>
+                    <div class="input-group">
+                        <select class="form-control" id="street" name="street">
+                            <option value="5" selected="selected">Vucacka</option>
                             <option value="6">from office</option>
                             <option value="7">from train station</option>
                             <option value="9">from hotel</option>
@@ -85,7 +123,7 @@
                 <div class="form-group">
                     <label for="InputEmail">Your Email</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                        <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -141,9 +179,84 @@
                     </select>
 
                 </div>
-                <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                <button type="button" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+                    Order&nbsp;<span class="glyphicon glyphicon glyphicon-refresh pull-right invisible" id="anim"></span>
+                </button>
+                
             </div>
         </form>
         
     </div>
 </div>
+
+
+@*table>tbody>tr*13>td*2*@
+@*<table border="1">
+    <tbody>
+        <tr>
+            <td>Pick Up-Date</td>
+            <td>_pickupDate</td>
+        </tr>
+        <tr>
+            <td>Pick Up-From</td>
+            <td>_from</td>
+        </tr>
+        <tr>
+            <td>Full Name</td>
+            <td>_name</td>
+        </tr>
+        <tr>
+            <td>Location</td>
+            <td>_location</td>
+        </tr>
+        <tr>
+            <td>Zip Code</td>
+            <td>_zip</td>
+        </tr>
+        <tr>
+            <td>Street</td>
+            <td>_strt</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>_phone</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>_email</td>
+        </tr>
+        <tr>
+            <td>Type of Car</td>
+            <td>_car</td>
+        </tr>
+        <tr>
+            <td>Suitcases</td>
+            <td>_scs</td>
+        </tr>
+        <tr>
+            <td>Handlaggage</td>
+            <td>_hand</td>
+        </tr>
+        <tr>
+            <td>Payment</td>
+            <td>_pmt</td>
+        </tr>
+        <tr>
+            <td>See location</td>
+            <td><a href="">See Location</a></td>
+        </tr>
+        <tr>
+            <td>Confirm</td>
+            <td><a href="">Confirm</a></td>
+        </tr>
+    </tbody>
+</table>*@
+
+
+
+
+
+
+
+
+<script src="~/Scripts/Application/Booking.js"></script>
