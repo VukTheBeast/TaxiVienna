@@ -26,5 +26,18 @@ namespace TaxiWebSite.Controllers
 
             return View();
         }
+
+        public ActionResult Price() {
+            ViewBag.Message = "See what is our price.";
+
+            return View();
+        }
+
+        public ActionResult Booking() {
+
+            ViewBag.Message = "Order from/to Airport";
+
+            return View();
+        }
     }
 }
