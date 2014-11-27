@@ -33,11 +33,6 @@ namespace TaxiWebSite.Controllers
             return View();
         }
 
-        public ActionResult Booking() {
-
-            ViewBag.Message = "Order from/to Airport";
-
-            return View();
-        }
+     
     }
 }
