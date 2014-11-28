@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -123,6 +125,39 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BookingModel.cs" />
+    <Compile Include="Models\Gradovi.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListaOblasti_Result.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListaUlica_Result.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Oblasti.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\taxiVienna.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>taxiVienna.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\taxiVienna.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\taxiVienna.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>taxiVienna.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ulice.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +188,23 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
+    <EntityDeploy Include="Models\taxiVienna.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>taxiVienna.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\taxiVienna.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>taxiVienna.edmx</DependentUpon>
+      <LastGenOutput>taxiVienna.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\taxiVienna.edmx.diagram">
+      <DependentUpon>taxiVienna.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\taxiVienna.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>taxiVienna.edmx</DependentUpon>
+      <LastGenOutput>taxiVienna.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -165,6 +217,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select2.css" />
+    <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -192,6 +246,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

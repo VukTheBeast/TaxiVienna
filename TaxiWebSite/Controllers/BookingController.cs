@@ -62,10 +62,10 @@ namespace TaxiWebSite.Controllers
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential("gavra90@gmail.com", "ovde unesite vasu sifru i mejl");
+                client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
                // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
-                MailMessage mm = new MailMessage(email, "dejan.gavrilovic@vs.rs");
+                MailMessage mm = new MailMessage(email, "007flughafentaxi@gmail.com");
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 mm.Subject = fullName + "[reservation]";
@@ -91,29 +91,61 @@ namespace TaxiWebSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult ListaUlica(string id, string tekst)
+        public string ListaUlica(int? id)
         {
-            IEnumerable<BookingDataModel> ListaUlica = BookingModel.ListaUlica(id, tekst);
-            JavaScriptSerializer jss = new JavaScriptSerializer();
-            String js = jss.Serialize(ListaUlica);
-            return Json(js);
+            using (var context = new taxiViennaEntities())
+            {
+                //var result = (from c in context.Gradovi select new { c.Id, c.Name });
+
+                var ListaUlica = context.ListaUlica(id).ToList();
+                //JavaScriptSerializer jss = new JavaScriptSerializer();
+                //String js = jss.Serialize(ListaUlica);
+                //return Json(js);
+
+                StringBuilder sb = new StringBuilder("<select id=\"street\" name=\"street\">");
+                if (ListaUlica.Count() > 0) sb.Append("<option value=\"\"></option>");
+                foreach (TaxiWebSite.Models.ListaUlica_Result item in ListaUlica)
+                {
+                    sb.Append("<option value=\"" + item.Id + "\" >" + item.Name + "</option>");
+
+                }
+                sb.Append("</select>&nbsp;<label for=\"street\" class=\"error\" generated=\"true\"></label>");
+
+                return sb.ToString();
+            }
+            //IEnumerable<BookingDataModel> ListaUlica = BookingModel.ListaUlica(id, tekst);
+            
+            
+            
         }
 
         [HttpPost]
-        public string ListaOblasti(string id)
+        public string ListaOblasti(int id)
         {
-            IEnumerable<BookingDataModel> ListaOblasti = BookingModel.ListaOblasti(id);
+            //IEnumerable<BookingDataModel> ListaOblasti = BookingModel.ListaOblasti(id);
 
-            StringBuilder sb = new StringBuilder("<select id=\"InputZipCode\" name=\"InputZipCode\">");
-            if (ListaOblasti.Count() > 0) sb.Append("<option value=\"\"></option>");
-            foreach (BookingDataModel item in ListaOblasti)
+            using (var context = new taxiViennaEntities())
             {
-                sb.Append("<option value=\"" + item.id + "\" >" + item.name + "</option>");
+                //var result = (from c in context.Gradovi select new { c.Id, c.Name });
 
+                var ListaOblasti = context.ListaOblasti(id).ToList();
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+                //String js = jss.Serialize(ListaUlica);
+                //return Json(js);
+                
+                StringBuilder sb = new StringBuilder("<select id=\"InputZipCode\" name=\"InputZipCode\">");
+                if (ListaOblasti.Count() > 0) sb.Append("<option value=\"\"></option>");
+                foreach (TaxiWebSite.Models.ListaOblasti_Result item in ListaOblasti)
+                {
+                    sb.Append("<option value=\"" + item.Id + "\" >" + item.Name + "</option>");
+
+                }
+                sb.Append("</select>&nbsp;<label for=\"InputZipCode\" class=\"error\" generated=\"true\"></label>");
+
+                return sb.ToString();
             }
-            sb.Append("</select>&nbsp;<label for=\"InputZipCode\" class=\"error\" generated=\"true\"></label>");
 
-            return sb.ToString();
+            
         }
 
     }

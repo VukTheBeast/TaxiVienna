@@ -3,6 +3,7 @@
     ViewBag.Title = "Booking";
 }
 @Html.Hidden("InputZipCode2")
+
 <style>
     .jumbotron #scrolingBooking {
         overflow-y: scroll; height:600px;
@@ -81,7 +82,8 @@
                     <div class="input-group">
                         <select class="form-control" id="InputLocation" name="InputLocation">
                             <option></option>
-                            <option value="1">Vienna</option>                                                      
+                            <option value="1">Vienna</option> 
+                            <option value="2">Smederevo</option>                                                     
                         </select>
 
                     </div>
@@ -101,7 +103,9 @@
                 <div class="form-group">
                     <label for="Street">Street</label>
                     <div class="input-group">
-                        <input class="form-control" id="street" name="street"> 
+                        <select class="form-control" id="street" name="street" style="width:250px"> 
+                            <option></option>
+                            </select>
                     </div>
                 </div>
                 <div class="form-group">
