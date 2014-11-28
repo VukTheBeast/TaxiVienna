@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using TaxiWebSite.Models;
 
 namespace TaxiWebSite.Controllers
 {
@@ -86,9 +88,33 @@ namespace TaxiWebSite.Controllers
         }
 
         public void ConfirmBooking(String email) {
-        
-        
-        
         }
+
+        [HttpPost]
+        public ActionResult ListaUlica(string id, string tekst)
+        {
+            IEnumerable<BookingDataModel> ListaUlica = BookingModel.ListaUlica(id, tekst);
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            String js = jss.Serialize(ListaUlica);
+            return Json(js);
+        }
+
+        [HttpPost]
+        public string ListaOblasti(string id)
+        {
+            IEnumerable<BookingDataModel> ListaOblasti = BookingModel.ListaOblasti(id);
+
+            StringBuilder sb = new StringBuilder("<select id=\"InputZipCode\" name=\"InputZipCode\">");
+            if (ListaOblasti.Count() > 0) sb.Append("<option value=\"\"></option>");
+            foreach (BookingDataModel item in ListaOblasti)
+            {
+                sb.Append("<option value=\"" + item.id + "\" >" + item.name + "</option>");
+
+            }
+            sb.Append("</select>&nbsp;<label for=\"InputZipCode\" class=\"error\" generated=\"true\"></label>");
+
+            return sb.ToString();
+        }
+
     }
 }

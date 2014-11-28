@@ -37,11 +37,58 @@
 
     });
 
+    $("#InputLocation").change(function () {
+        var id;
+        id = $("#InputLocation").val();
+        $.ajax({
+            url: '/Booking/ListaOblasti',
+            type: 'POST',
+            //dataType: "json",
+            data: {
+                id:id
+            },
+            success: function (data) {
+                $("#InputZipCode").html(data);
+                $("#InputZipCode").val()
+                $("#InputZipCode").change(function () {
+                    $("#street").autocomplete({
+                        source: function (request, response) {
+                            $.ajax({
+                                url: '/Booking/ListaUlica',
+                                type: 'POST',
+                                dataType: "json",
+                                data: {
+                                    id: $("#InputZipCode").val(),
+                                    tekst: request.term
+                                },
+                                success: function (data) {                                    
+                                    var obj = $.parseJSON(data);
+                                    response(obj, function (item) {                                        
+                                    });
+                                }
+                            });
+                        },
+                        minLength: 2,
+                        select: function (event, ui) {
+                            //alert();
+                            naziv = ui.item.label;
+                            id = ui.item.value;
+                        },
+                        open: function () {
+                            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+                        },
+                        close: function () {
+                            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+                            if ($("#InputZipCode").val() != "") {
+                                $("#InputZipCode").attr("value", naziv);
+                                $("#InputZipCode2").attr("value", id);
+                            }
 
+                        }
+                    });
+                });
+            }      
 
-
-
-
-
-
+        });
+    });
 });
