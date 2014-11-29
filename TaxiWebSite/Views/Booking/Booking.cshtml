@@ -4,63 +4,75 @@
 }
 @Html.Hidden("InputZipCode2")
 
+
+
 <style>
+    .jumbotron{
+        font-size:inherit;
+    }
     .jumbotron #scrolingBooking {
         overflow-y: scroll; height:600px;
     }
-     .glyphicon-refresh-animate {
-        -animation: spin .7s infinite linear;
-        -webkit-animation: spin2 .7s infinite linear;
+    #container1 {
+    background-color: #e2dada;
+}
+    .form-control {
+        width:inherit;
+    }
+/*.centered-form {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}*/
+
+.centered-form .panel {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+.panel-body {
+padding: 20px;
+}
+
+.input-sm{
+    height:20px;
+}
+
+    select.input-sm {
+        height:25px;
+    }
+    h3{
+        color:#7695E7;
     }
 
-    @@-webkit-keyframes spin2 {
-        from {
-            -webkit-transform: rotate(0deg);
-        }
-
-        to {
-            -webkit-transform: rotate(360deg);
-        }
+    .ui-datepicker{
+        z-index:9999;
     }
-
-    @@keyframes spin {
-        from {
-            transform: scale(1) rotate(0deg);
-        }
-
-        to {
-            transform: scale(1) rotate(360deg);
-        }
-    }
+    
 </style>
 
 
 
-<h2>Booking</h2>
+@*<h2>Booking</h2>*@
 
 <div id="scrolingBooking" class="container">
-    <div class="row">
-        <form role="form">
+    @*<div class="row">
+        <form role="form" class="form-horizontal" method="post">
             <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-sm input-sm input-sm" name="InputDate" id="InputDate" placeholder="Pick Up-date" required />
+                        
+                    </div>
                 
                 <div class="form-group">
-                    <label for="InputName">Pick Up-date</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="InputDate" id="InputDate" placeholder="Pick Up-date" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <input type="email" class="form-control input-sm input-sm" id="InputTime" name="InputTime" placeholder="Pick-up Time" required>
+                        
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputEmail">Pick-up Time</label>
+                    
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputTime" name="InputTime" placeholder="Pick-up Time" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="InputPickupFrom">pick-up from</label>
-                    <div class="input-group">
-                        <select class="form-control" id="InputPickupFrom" name="InputPickupFrom">
+                        <select class="form-control input-sm" id="InputPickupFrom" name="InputPickupFrom" placeholder="Pick up from">
                             <option value="5" selected="selected">from home</option>
                             <option value="6">from office</option>
                             <option value="7">from train station</option>
@@ -70,17 +82,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputFullName">Your full name</label>
+                    
                     <div class="input-group">
-                        <input name="InputFullName" id="InputFullName" class="form-control" rows="5" required placeholder="Please enter your name" />
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <input name="InputFullName" id="InputFullName" class="form-control input-sm" rows="5" required placeholder="Please enter your full name" />
+                        
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="InputLocation">Location</label>
+                    
                     <div class="input-group">
-                        <select class="form-control" id="InputLocation" name="InputLocation">
+                        <select class="form-control input-sm" id="InputLocation" name="InputLocation" placeholder="Location">
                             <option></option>
                             <option value="1">Vienna</option> 
                             <option value="2">Smederevo</option>                                                     
@@ -89,9 +101,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputZipCode">Zip code</label>
+                    
                     <div class="input-group">
-                        <select class="form-control" id="InputZipCode" name="InputZipCode">
+                        <select class="form-control input-sm" id="InputZipCode" name="InputZipCode" placeholder="Enter zip code">
                             <option value="5" selected="selected"></option>
                             <option value="6">from office</option>
                             <option value="7">from train station</option>
@@ -101,30 +113,29 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Street">Street</label>
+                    
                     <div class="input-group">
-                        <select class="form-control" id="street" name="street" style="width:250px"> 
+                        <select class="form-control input-sm" id="street" name="street" style="width:250px" placeholder="Enter street"> 
                             <option></option>
                             </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputTelFirst">Phone</label>
+                    
                     <div class="input-group">
-                        <input type="tel" class="form-control" id="InputTelFirst" name="InputTelFirst" placeholder="Enter Phone" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <input type="tel" class="form-control input-sm" id="InputTelFirst" name="InputTelFirst" placeholder="Enter Phone" required>
+                        
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="InputEmail">Your Email</label>
+                    
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <input type="email" class="form-control input-sm" id="InputEmail" name="InputEmail" placeholder="Enter Email" required>
+                        
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="form-group-input">Type of car</label>
-                    <select id="car_type" name="car_type" class="dropdown" label="Typ Auto:" onchange="recalculate_price();">
+                    <select id="car_type" name="car_type" class="dropdown" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
                         <option value="1">Limousine maximum. 3 Passengers</option>
                         <option value="2">Station wagon 3-4 Passengers</option>
                         <option value="3">Van 4-7 Passengers</option>
@@ -133,8 +144,8 @@
 
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="form-group-input">Suitcases</label>
-                    <select id="suitcases" name="suitcases" class="dropdown" label="Anzahl der Koffer:" onchange="recalculate_price();">
+                    
+                    <select id="suitcases" name="suitcases" class="dropdown" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">
                         <option value="0">No suitcases</option>
                         <option value="1" selected="selected">1 Suitcase</option>
                         <option value="2">2 Suitcase</option>
@@ -149,8 +160,8 @@
 
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="form-group-input">Hand laggage</label>
-                    <select id="hand_package" name="hand_package" class="dropdown" label="Handgepäck:" onchange="recalculate_price();">
+                    
+                    <select id="hand_package" name="hand_package" class="dropdown" label="Handgepäck:" placeholder="Hand laggage" onchange="recalculate_price();">
                         <option value="0">No hand luggage</option>
                         <option value="1" selected="selected">1 Piece</option>
                         <option value="2">2 Piece</option>
@@ -169,7 +180,7 @@
                     <select id="payment" name="payment" class="dropdown" label="Bezahlung:" onchange="recalculate_price();">
                         <option value="Bar">Cash</option>
                         <option value="Kreditkarte">Credit Card</option>
-                        <!--	<option value="Wertkarte">Value Card</option> -->
+                       
                         <option value="Lieferschein">Bank Transfer</option>
                     </select>
 
@@ -181,76 +192,160 @@
             </div>
         </form>
         
+    </div>*@
+    <div class="container" id="container1">
+        <div class="row">
+            @*<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">*@
+                <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Booking</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text"  class="form-control input-sm datum" name="InputDate" id="InputDate" placeholder="PickUpDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control input-sm" id="InputLocation" name="InputLocation" placeholder="Location">
+                            </div>
+                            <div class="form-group">
+
+                                <div class="input-group">
+                                    <select class="form-control input-sm" id="InputPickupFrom" name="InputPickupFrom" placeholder="Pick_up_from">
+                                        <option value="5" selected="selected">from home</option>
+                                        <option value="6">from office</option>
+                                        <option value="7">from train station</option>
+                                        <option value="9">from hotel</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="InputFullName" id="InputFullName" class="form-control input-sm" placeholder="Enter_Full_Name">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+                                        @*<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">*@
+                                       
+                                            <select class="form-control input-sm" id="InputLocation" name="InputLocation" placeholder="Location">
+                                                <option></option>
+                                                <option value="1">Vienna</option>
+                                                <option value="2">Smederevo</option>
+                                            </select>
+
+                                       
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+                                        <select class="form-control input-sm" id="InputZipCode" name="InputZipCode" placeholder="Enter zip code">
+                                            <option value="5" selected="selected"></option>
+                                            <option value="6">from office</option>
+                                            <option value="7">from train station</option>
+                                            <option value="9">from hotel</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+
+                                        <div class="input-group">
+                                            <select class="form-control input-sm" id="street" name="street" style="width:250px" placeholder="Enter street">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="input-group">
+                                    <input type="tel" class="form-control input-sm" id="InputTelFirst" name="InputTelFirst" placeholder="Enter Phone" required>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="input-group">
+                                    <input type="email" class="form-control input-sm" id="InputEmail" name="InputEmail" placeholder="Enter Email" required>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+                                        <select id="car_type" name="car_type" class="input-group input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
+                                            <option value="1">Limousine maximum. 3 Passengers</option>
+                                            <option value="2">Station wagon 3-4 Passengers</option>
+                                            <option value="3">Van 4-7 Passengers</option>
+                                            <option value="999">More from 8 on request</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+
+                                        <select id="suitcases" name="suitcases" class="input-group input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">
+                                            <option value="0">No suitcases</option>
+                                            <option value="1" selected="selected">1 Suitcase</option>
+                                            <option value="2">2 Suitcase</option>
+                                            <option value="3">3 Suitcase</option>
+                                            <option value="4">4 Suitcase</option>
+                                            <option value="5">5 Suitcase</option>
+                                            <option value="6">6 Suitcase</option>
+                                            <option value="7">7 Suitcase</option>
+                                            <option value="8">8 Suitcase</option>
+                                            <option value="999">More from 8 on request</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3">
+                                    <div class="form-group">
+
+                                        <select id="hand_package" name="hand_package" class="input-group input-sm" label="Handgepäck:" placeholder="Hand laggage" onchange="recalculate_price();">
+                                            <option value="0">No hand luggage</option>
+                                            <option value="1" selected="selected">1 Piece</option>
+                                            <option value="2">2 Piece</option>
+                                            <option value="3">3 Piece</option>
+                                            <option value="4">4 Piece</option>
+                                            <option value="5">5 Piece</option>
+                                            <option value="6">6 Piece</option>
+                                            <option value="7">7 Piece</option>
+                                            <option value="8">8 Piece</option>
+                                            <option value="999">More from 8 on request</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label class="control-label" for="form-group-input">Payment</label>
+                                    <select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:" onchange="recalculate_price();">
+                                        <option value="Bar">Cash</option>
+                                        <option value="Kreditkarte">Credit Card</option>
+
+                                        <option value="Lieferschein">Bank Transfer</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-8"><img src="~/Content/banner/svgFileSM.svg" /></div>
+                            </div>
+                            <input type="submit" value="Register" class="btn btn-info btn-block">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
-@*table>tbody>tr*13>td*2*@
-@*<table border="1">
-    <tbody>
-        <tr>
-            <td>Pick Up-Date</td>
-            <td>_pickupDate</td>
-        </tr>
-        <tr>
-            <td>Pick Up-From</td>
-            <td>_from</td>
-        </tr>
-        <tr>
-            <td>Full Name</td>
-            <td>_name</td>
-        </tr>
-        <tr>
-            <td>Location</td>
-            <td>_location</td>
-        </tr>
-        <tr>
-            <td>Zip Code</td>
-            <td>_zip</td>
-        </tr>
-        <tr>
-            <td>Street</td>
-            <td>_strt</td>
-        </tr>
-        <tr>
-            <td>Phone</td>
-            <td>_phone</td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>_email</td>
-        </tr>
-        <tr>
-            <td>Type of Car</td>
-            <td>_car</td>
-        </tr>
-        <tr>
-            <td>Suitcases</td>
-            <td>_scs</td>
-        </tr>
-        <tr>
-            <td>Handlaggage</td>
-            <td>_hand</td>
-        </tr>
-        <tr>
-            <td>Payment</td>
-            <td>_pmt</td>
-        </tr>
-        <tr>
-            <td>See location</td>
-            <td><a href="">See Location</a></td>
-        </tr>
-        <tr>
-            <td>Confirm</td>
-            <td><a href="">Confirm</a></td>
-        </tr>
-    </tbody>
-</table>*@
-
-
-
-
-
 
 
 

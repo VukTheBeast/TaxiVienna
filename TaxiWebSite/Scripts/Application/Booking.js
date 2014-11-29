@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    
+
     $("#submit").on('click', function () {
         $("#anim").removeClass("invisible");
         $("#anim").addClass("glyphicon-refresh-animate");
@@ -8,18 +8,18 @@
             url: "/Booking/BookingDOAerodroma",
             type: 'POST',
             data: {
-                pickUpDate:$("#InputDate").val(),
+                pickUpDate: $("#InputDate").val(),
                 pickUpTime: $("#InputTime").val(),
-                pickUpFrom:$("#InputPickupFrom option:selected" ).text(),
+                pickUpFrom: $("#InputPickupFrom option:selected").text(),
                 fullName: $("#InputFullName").val(),
-                location: $("#InputLocation option:selected" ).text(),
-                zipCode: $("#InputZipCode option:selected" ).text(),
+                location: $("#InputLocation option:selected").text(),
+                zipCode: $("#InputZipCode option:selected").text(),
                 phone: $("#InputTelFirst").val(),
                 email: $("#InputEmail").val(),
-                typeOfCar: $("#car_type option:selected" ).text(),
-                suitcases: $("#suitcases option:selected" ).text(),
-                handLaggage: $("#hand_package option:selected" ).text(),
-                payment:$("#payment option:selected" ).text(),
+                typeOfCar: $("#car_type option:selected").text(),
+                suitcases: $("#suitcases option:selected").text(),
+                handLaggage: $("#hand_package option:selected").text(),
+                payment: $("#payment option:selected").text(),
                 street: $("#street option:selected").text()
 
             },
@@ -45,26 +45,26 @@
             type: 'POST',
             //dataType: "json",
             data: {
-                id:id
+                id: id
             },
             success: function (data) {
                 $("#InputZipCode").html(data);
                 $("#InputZipCode").val()
                 $("#InputZipCode").change(function () {
                     //alert("asdasd");
-                            $.ajax({
-                                    url: '/Booking/ListaUlica',
-                                    type: 'POST',
-                                    //dataType: "json",
-                                    data: {
-                                        id: $("#InputZipCode").val()
-                                        //tekst: request.term
-                                    },
-                                    success: function (data) {                                        
-                                        $("#street").html(data);
-                                        $("#street").select2();
-                                    }
-                             });
+                    $.ajax({
+                        url: '/Booking/ListaUlica',
+                        type: 'POST',
+                        //dataType: "json",
+                        data: {
+                            id: $("#InputZipCode").val()
+                            //tekst: request.term
+                        },
+                        success: function (data) {
+                            $("#street").html(data);
+                            $("#street").select2();
+                        }
+                    });
                     //$("#street").autocomplete({
                     //    source: function (request, response) {
                     //        $.ajax({
@@ -101,8 +101,28 @@
                     //    }
                     //});
                 });
-            }      
+            }
 
         });
+    });
+
+    //OPTIONS ZA PLAGIN PLACEHOLDERLABEL
+    var option = {
+        placeholderColor: "#898989", // Color placeholder
+        labelColor: "#4AA2CC", // Color label (after the focus)
+        labelSize: "10px", // Size of label (after the focus)
+        useBorderColor: true, // If true a border input is altered after focus
+        inInput: true, // If true the label is actually in half vertically
+        timeMove: 200 // Time effect move after focus
+    }
+
+
+    $('input[placeholder]').jvFloat();
+    $(".datum").datepicker();
+    $(".datum").datepicker( "option", "showAnim","drop");
+
+    //kada se klikne na datum, da navbar ne prekrije kalendar
+    $(".datum").click(function () {
+        $(".ui-datepicker").css("z-index", "9999");
     });
 });

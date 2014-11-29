@@ -161,11 +161,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\banner\Goblin\demo.html" />
+    <Content Include="Content\banner\Goblin\GoblinOne-webfont.svg" />
+    <Content Include="Content\banner\Goblin\SIL OFL Goblin.txt" />
+    <Content Include="Content\banner\Goblin\stylesheet.css" />
+    <Content Include="Content\banner\Helsinki\demo.html" />
+    <Content Include="Content\banner\Helsinki\helsinki-webfont.svg" />
+    <Content Include="Content\banner\Helsinki\stylesheet.css" />
+    <Content Include="Content\banner\svgFile.svg" />
+    <Content Include="Content\banner\svgFileSM.svg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\jvfloat.css" />
     <Content Include="Content\pic\bg.jpg" />
     <Content Include="Content\pic\bg1.jpg" />
     <Content Include="Content\pic\british-flag.jpg" />
@@ -205,6 +215,12 @@
       <DependentUpon>taxiVienna.edmx</DependentUpon>
       <LastGenOutput>taxiVienna.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\banner\Goblin\GoblinOne-webfont.eot" />
+    <Content Include="Content\banner\Goblin\GoblinOne-webfont.ttf" />
+    <Content Include="Content\banner\Goblin\GoblinOne-webfont.woff" />
+    <Content Include="Content\banner\Helsinki\helsinki-webfont.eot" />
+    <Content Include="Content\banner\Helsinki\helsinki-webfont.ttf" />
+    <Content Include="Content\banner\Helsinki\helsinki-webfont.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -214,6 +230,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jvfloat.js" />
+    <Content Include="Scripts\jvfloat.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
