@@ -30,7 +30,9 @@ namespace TaxiWebSite.Controllers
            
            // String googleMapsLocation=location+","+zipCode+","+street;
             String googleMapsLocation = "https://www.google.at/maps?q=" + location + "," + street;
-            String confirmString = "http://localhost:2190/Booking/ConfirmBooking?email="+Server.UrlEncode(email);
+            String domain=System.Configuration.ConfigurationManager.AppSettings["domain"].ToString();
+            String confirmString = domain + "/Booking/ConfirmBooking?email="+Server.UrlEncode(email);
+
 
 
             StringBuilder sb = new StringBuilder("<table border=\"1\"><tbody><tr><td>Pick Up-Date</td><td>");
@@ -88,6 +90,42 @@ namespace TaxiWebSite.Controllers
         }
 
         public void ConfirmBooking(String email) {
+            try
+            {
+                SmtpClient client = new SmtpClient();
+                client.Port = 587;
+                client.Host = "smtp.gmail.com";
+                client.EnableSsl = true;
+                client.Timeout = 10000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
+                // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+                MailMessage mm = new MailMessage("007flughafentaxi@gmail.com",email);
+                mm.BodyEncoding = UTF8Encoding.UTF8;
+                mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                mm.Subject = "Confirm reservation";
+               // mm.IsBodyHtml = true;
+                mm.Body ="Your reservation is confirmed. The driver will come to you in next half hour.";
+                client.Send(mm);
+
+                Response.ClearHeaders();
+                Response.ContentType = "text/html";
+                // Response.AddHeader("content-disposition", attachment;filename='Test.csv'");
+                Response.Write("<h1 style=\"text-align:center\">Rezervacija je potvrdjena.</h1>");
+                Response.End();
+
+            }
+            catch (Exception ex)
+            {
+                Response.ClearHeaders();
+                Response.ContentType = "text/html";
+                // Response.AddHeader("content-disposition", attachment;filename='Test.csv'");
+                Response.Write(ex.Message);
+                Response.End();
+               
+            }
         }
 
         [HttpPost]
