@@ -102,7 +102,7 @@ namespace TaxiWebSite.Controllers
                 client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
                 // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
-                MailMessage mm = new MailMessage("007flughafentaxi@gmail.com",email);
+                MailMessage mm = new MailMessage("007flughafentaxi@gmail.com", email);
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 mm.Subject = "Confirm reservation";
@@ -132,13 +132,19 @@ namespace TaxiWebSite.Controllers
         public string ListaUlica(int? id)
         {
             using (var context = new taxiViennaEntities())
-            {
-                //var result = (from c in context.Gradovi select new { c.Id, c.Name });
+            {               
 
                 var ListaUlica = context.ListaUlica(id).ToList();
-                //JavaScriptSerializer jss = new JavaScriptSerializer();
-                //String js = jss.Serialize(ListaUlica);
-                //return Json(js);
+
+                //lambda izraz za spisak ulica kao alternativa stored procedure-i
+                //var lista = context.Ulice.Where(s => s.Id == id).Select(s => new SelectListItem { Value = s.Name, Text = s.Id.ToString() });
+               
+                //linq izraz za spisak ulica kao alternativa stored procedure-i
+                /*IEnumerable<SelectListItem> ulice =
+                    from ulica in context.Ulice
+                    where ulica.Id == id
+                    select new SelectListItem { Value = ulica.Name, Text = ulica.Id.ToString() };*/               
+
 
                 StringBuilder sb = new StringBuilder("<select id=\"street\" name=\"street\">");
                 if (ListaUlica.Count() > 0) sb.Append("<option value=\"\"></option>");
