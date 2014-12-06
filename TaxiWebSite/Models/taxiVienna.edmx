@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="taxiViennaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DB_9B8AB0_taxiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gradovi">
           <Key>
             <PropertyRef Name="Id" />
@@ -103,7 +103,7 @@
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="naziv" Type="nvarchar" Mode="In" />
         </Function>
-        <EntityContainer Name="taxiViennaModelStoreContainer">
+        <EntityContainer Name="DB_9B8AB0_taxiModelStoreContainer">
           <EntitySet Name="Gradovi" EntityType="Self.Gradovi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Oblasti" EntityType="Self.Oblasti" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -117,10 +117,11 @@
             <End Role="Ulice" EntitySet="Ulice" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="taxiViennaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DB_9B8AB0_taxiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Gradovi">
           <Key>
             <PropertyRef Name="Id" />
@@ -182,7 +183,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="taxiViennaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB_9B8AB0_taxiEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Gradovi" EntityType="Self.Gradovi" />
           <EntitySet Name="Oblasti" EntityType="Self.Oblasti" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -195,10 +196,10 @@
             <End Role="Oblasti" EntitySet="Oblasti" />
             <End Role="Ulice" EntitySet="Ulice" />
           </AssociationSet>
-          <FunctionImport Name="ListaOblasti" ReturnType="Collection(taxiViennaModel.ListaOblasti_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+          <FunctionImport Name="ListaOblasti" ReturnType="Collection(DB_9B8AB0_taxiModel.ListaOblasti_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="ListaUlica" ReturnType="Collection(taxiViennaModel.ListaUlica_Result)">
+          <FunctionImport Name="ListaUlica" ReturnType="Collection(DB_9B8AB0_taxiModel.ListaUlica_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
@@ -217,11 +218,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DB_9B8AB0_taxiModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DB_9B8AB0_taxiModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -244,14 +245,25 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="Id" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="taxiViennaModelStoreContainer" CdmEntityContainer="taxiViennaEntities">
+        <EntityContainerMapping StorageEntityContainer="DB_9B8AB0_taxiModelStoreContainer" CdmEntityContainer="DB_9B8AB0_taxiEntities">
           <EntitySetMapping Name="Gradovi">
-            <EntityTypeMapping TypeName="taxiViennaModel.Gradovi">
+            <EntityTypeMapping TypeName="DB_9B8AB0_taxiModel.Gradovi">
               <MappingFragment StoreEntitySet="Gradovi">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -259,7 +271,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Oblasti">
-            <EntityTypeMapping TypeName="taxiViennaModel.Oblasti">
+            <EntityTypeMapping TypeName="DB_9B8AB0_taxiModel.Oblasti">
               <MappingFragment StoreEntitySet="Oblasti">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Id_Grada" ColumnName="Id_Grada" />
@@ -268,7 +280,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="taxiViennaModel.sysdiagrams">
+            <EntityTypeMapping TypeName="DB_9B8AB0_taxiModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -279,7 +291,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ulice">
-            <EntityTypeMapping TypeName="taxiViennaModel.Ulice">
+            <EntityTypeMapping TypeName="DB_9B8AB0_taxiModel.Ulice">
               <MappingFragment StoreEntitySet="Ulice">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Id_Oblasti" ColumnName="Id_Oblasti" />
@@ -287,30 +299,47 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="ListaOblasti" FunctionName="taxiViennaModel.Store.ListaOblasti">
+          <FunctionImportMapping FunctionImportName="ListaOblasti" FunctionName="DB_9B8AB0_taxiModel.Store.ListaOblasti">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="taxiViennaModel.ListaOblasti_Result">
+              <ComplexTypeMapping TypeName="DB_9B8AB0_taxiModel.ListaOblasti_Result">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ListaUlica" FunctionName="taxiViennaModel.Store.ListaUlica">
+          <FunctionImportMapping FunctionImportName="ListaUlica" FunctionName="DB_9B8AB0_taxiModel.Store.ListaUlica">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="taxiViennaModel.ListaUlica_Result">
+              <ComplexTypeMapping TypeName="DB_9B8AB0_taxiModel.ListaUlica_Result">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="taxiViennaModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="taxiViennaModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="taxiViennaModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="taxiViennaModel.Store.sp_helpdiagramdefinition" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="taxiViennaModel.Store.sp_helpdiagrams" />
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="taxiViennaModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="taxiViennaModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="Unos" FunctionName="taxiViennaModel.Store.Unos" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_9B8AB0_taxiModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_9B8AB0_taxiModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_9B8AB0_taxiModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_9B8AB0_taxiModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_9B8AB0_taxiModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DB_9B8AB0_taxiModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_9B8AB0_taxiModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_9B8AB0_taxiModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_9B8AB0_taxiModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="Unos" FunctionName="DB_9B8AB0_taxiModel.Store.Unos" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

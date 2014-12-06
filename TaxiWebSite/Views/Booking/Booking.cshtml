@@ -8,7 +8,7 @@
 
 <style>
     .jumbotron{
-        font-size:inherit;
+        /*font-size:inherit;*/
     }
     .jumbotron #scrolingBooking {
         overflow-y: scroll; height:600px;
@@ -34,11 +34,11 @@ padding: 20px;
 }
 
 .input-sm{
-    height:20px;
+    height:25px;
 }
 
     select.input-sm {
-        height:25px;
+        height:28px;
     }
     h3{
         color:#7695E7;
@@ -202,79 +202,70 @@ padding: 20px;
                         <h3 class="panel-title text-center">Booking</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="/Booking/BookingDOAerodroma">
-                            <div class="form-group">
-                                <input type="text" class="form-control input-sm datum" name="InputDate" id="InputDate" placeholder="PickUpDate" required>
+                      <form role="form">
+                            <div class="form-group">                                
+                                <input type="text" class="form-control input-sm datum" name="InputDate" id="InputDate" placeholder="Enter Date" required >
                             </div>
 
                             <div class="form-group">
                                 <!--<input type="text" class="form-control input-sm" id="InputLocation" name="InputLocation" placeholder="Location">-->
                             </div>
-                            <div class="form-group">
-
+                            <div class="form-group">                                
                                 <div class="input-group">
-                                    <select class="form-control input-sm" id="InputPickupFrom" name="InputPickupFrom" placeholder="Pick_up_from">
+                                    <select class="form-control input-sm" id="InputPickupFrom" name="InputPickupFrom" >
                                         <option value="5" selected="selected">from home</option>
                                         <option value="6">from office</option>
                                         <option value="7">from train station</option>
                                         <option value="9">from hotel</option>
                                     </select>
-
                                 </div>
                             </div>
+                            <div class="form-group">                                
+                                <input type="text" name="InputFullName" id="InputFullName" class="form-control input-sm" placeholder="Enter Name">
+                            </div>
+                          <div class="row">
+                              <div class="col-xs-3 col-sm-3 col-md-3">
+                                  <div class="form-group">
+                                      <select class="input-group input-sm" id="InputLocation" name="InputLocation" style="width:150px">
+                                          <option>City</option>
+                                          <option value="1">Vienna</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="col-xs-3 col-sm-3 col-md-3">
+                                  <div class="form-group">
+                                      <select class="input-group input-sm" id="InputZipCode" name="InputZipCode" style="width:150px">
+                                          <option>Pick your area</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="col-xs-3 col-sm-3 col-md-3">
+                                  <div class="form-group">
+                                      <div class="input-group">
+                                          <select class="input-group input-sm" id="street" name="street" style="width:150px">
+                                              <option></option>
+                                          </select>
+                                          @*<select id="car_type" name="car_type" class="input-group input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
+                                              <option value="1">Limousine maximum. 3 Passengers</option>
+                                              <option value="2">Station wagon 3-4 Passengers</option>
+                                              <option value="3">Van 4-7 Passengers</option>
+                                              <option value="999">More from 8 on request</option>
+                                          </select>*@
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>                           
                             <div class="form-group">
-                                <input type="text" name="InputFullName" id="InputFullName" class="form-control input-sm" placeholder="Enter_Full_Name">
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <div class="form-group">
-                                        @*<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">*@
-
-                                        <select class="form-control input-sm" id="InputLocation" name="InputLocation" placeholder="Location">
-                                            <option></option>
-                                            <option value="1">Vienna</option>
-                                            <!--<option value="2">Smederevo</option>-->
-                                        </select>
-
-
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <div class="form-group">
-                                        <select class="form-control input-sm" id="InputZipCode" name="InputZipCode" placeholder="Enter zip code">
-                                            <option value="5" selected="selected"></option>
-                                            <option value="6">from office</option>
-                                            <option value="7">from train station</option>
-                                            <option value="9">from hotel</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <div class="form-group">
-
-                                        <div class="input-group">
-                                            <select class="form-control input-sm" id="street" name="street" style="width:250px" placeholder="Enter street">
-                                                <option></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-
                                 <div class="input-group">
                                     <input type="tel" class="form-control input-sm" id="InputTelFirst" name="InputTelFirst" placeholder="Enter Phone" required>
-
                                 </div>
                             </div>
                             <div class="form-group">
-
                                 <div class="input-group">
                                     <input type="email" class="form-control input-sm" id="InputEmail" name="InputEmail" placeholder="Enter Email" required>
-
                                 </div>
                             </div>
+                          
                             <div class="row">
                                 <div class="col-xs-3 col-sm-3 col-md-3">
                                     <div class="form-group">
@@ -337,7 +328,7 @@ padding: 20px;
                                 </div>
                                <!-- <div class="col-md-8"><img src="~/Content/banner/svgFileSM.svg" /></div>-->
                             </div>
-                            <input id="submit" type="submit" value="Register" class="btn btn-info btn-block">
+                            <input type="button" id="submit" value="Register" class="btn btn-info btn-block">
                         </form>
 
                     </div>

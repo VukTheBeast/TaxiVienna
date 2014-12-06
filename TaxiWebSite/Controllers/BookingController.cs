@@ -131,7 +131,7 @@ namespace TaxiWebSite.Controllers
         [HttpPost]
         public string ListaUlica(int? id)
         {
-            using (var context = new taxiViennaEntities())
+            using (var context = new DB_9B8AB0_taxiEntities())
             {               
 
                 var ListaUlica = context.ListaUlica(id).ToList();
@@ -168,7 +168,7 @@ namespace TaxiWebSite.Controllers
         {
             //IEnumerable<BookingDataModel> ListaOblasti = BookingModel.ListaOblasti(id);
 
-            using (var context = new taxiViennaEntities())
+            using (var context = new DB_9B8AB0_taxiEntities())
             {
                 //var result = (from c in context.Gradovi select new { c.Id, c.Name });
 

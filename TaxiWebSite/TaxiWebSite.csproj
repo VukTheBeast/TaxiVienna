@@ -137,6 +137,12 @@
     <Compile Include="Models\Oblasti.cs">
       <DependentUpon>taxiVienna.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>taxiVienna.tt</DependentUpon>
     </Compile>
@@ -175,7 +181,6 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.min.css" />
-    <Content Include="Content\jvfloat.css" />
     <Content Include="Content\pic\bg.jpg" />
     <Content Include="Content\pic\bg1.jpg" />
     <Content Include="Content\pic\british-flag.jpg" />
@@ -184,6 +189,7 @@
     <Content Include="Content\pic\caurosel2.jpg" />
     <Content Include="Content\pic\caurosel3.jpg" />
     <Content Include="Content\pic\flag-german.jpg" />
+    <Content Include="Content\pic\taxi logo.jpg" />
     <Content Include="Content\pic\vienna-airport-cab-banner.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -198,6 +204,12 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\banner\Goblin\GoblinOne-webfont.eot" />
+    <Content Include="Content\banner\Goblin\GoblinOne-webfont.ttf" />
+    <Content Include="Content\banner\Goblin\GoblinOne-webfont.woff" />
+    <Content Include="Content\banner\Helsinki\helsinki-webfont.eot" />
+    <Content Include="Content\banner\Helsinki\helsinki-webfont.ttf" />
+    <Content Include="Content\banner\Helsinki\helsinki-webfont.woff" />
     <EntityDeploy Include="Models\taxiVienna.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>taxiVienna.Designer.cs</LastGenOutput>
@@ -215,12 +227,7 @@
       <DependentUpon>taxiVienna.edmx</DependentUpon>
       <LastGenOutput>taxiVienna.cs</LastGenOutput>
     </Content>
-    <Content Include="Content\banner\Goblin\GoblinOne-webfont.eot" />
-    <Content Include="Content\banner\Goblin\GoblinOne-webfont.ttf" />
-    <Content Include="Content\banner\Goblin\GoblinOne-webfont.woff" />
-    <Content Include="Content\banner\Helsinki\helsinki-webfont.eot" />
-    <Content Include="Content\banner\Helsinki\helsinki-webfont.ttf" />
-    <Content Include="Content\banner\Helsinki\helsinki-webfont.woff" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

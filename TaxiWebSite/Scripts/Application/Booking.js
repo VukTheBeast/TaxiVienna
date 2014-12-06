@@ -1,9 +1,13 @@
 ﻿$(document).ready(function () {
 
+    $("#street").select2({
+        placeholder: "Select a Street",
+        allowClear: true
+    });
 
     $("#submit").on('click', function () {
         $("#anim").removeClass("invisible");
-        $("#anim").addClass("glyphicon-refresh-animate");
+        $("#anim").addClass("glyphicon-refresh-animate");       
         $.ajax({
             url: "/Booking/BookingDOAerodroma",
             type: 'POST',
@@ -62,7 +66,10 @@
                         },
                         success: function (data) {
                             $("#street").html(data);
-                            $("#street").select2();
+                            $("#street").select2({
+                                placeholder: "Select a Street",
+                                allowClear: true
+                            });
                         }
                     });
                     //$("#street").autocomplete({
@@ -117,7 +124,7 @@
     }
 
 
-    $('input[placeholder]').jvFloat();
+    //$('input[placeholder]').jvFloat();
     $(".datum").datepicker();
     $(".datum").datepicker( "option", "showAnim","drop");
 

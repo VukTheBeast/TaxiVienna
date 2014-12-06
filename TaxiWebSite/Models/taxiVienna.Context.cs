@@ -15,10 +15,10 @@ namespace TaxiWebSite.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class taxiViennaEntities : DbContext
+    public partial class DB_9B8AB0_taxiEntities : DbContext
     {
-        public taxiViennaEntities()
-            : base("name=taxiViennaEntities")
+        public DB_9B8AB0_taxiEntities()
+            : base("name=DB_9B8AB0_taxiEntities")
         {
         }
     
@@ -105,7 +105,7 @@ namespace TaxiWebSite.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -115,10 +115,10 @@ namespace TaxiWebSite.Models
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -128,7 +128,7 @@ namespace TaxiWebSite.Models
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
