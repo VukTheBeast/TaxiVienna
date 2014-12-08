@@ -5,38 +5,76 @@
         allowClear: true
     });
 
+
+    //validacija forme
+    $("#frm_Reservacija").validate({
+        rules: {
+            InputDate: { required: true },
+            pickupHRS: { required: true },
+            pickupMIN: { required: true },
+            InputFullName: { required: true },
+            InputLocation: { required: true },
+            InputZipCode: { required: true },
+            InputEmail: { email: true },
+            street: { required: true }
+
+        },
+        messages: {
+            InputDate: "***",
+            pickupHRS: "***",
+            pickupMIN: "***",
+            InputFullName: "***",
+            InputLocation: "***",
+            InputZipCode: "***",
+            InputEmail: "***",
+            street: "***"
+        }
+    });
+
     $("#submit").on('click', function () {
-        $("#anim").removeClass("invisible");
-        $("#anim").addClass("glyphicon-refresh-animate");       
-        $.ajax({
-            url: "/Booking/BookingDOAerodroma",
-            type: 'POST',
-            data: {
-                pickUpDate: $("#InputDate").val(),
-                pickUpTime: $("#InputTime").val(),
-                pickUpFrom: $("#InputPickupFrom option:selected").text(),
-                fullName: $("#InputFullName").val(),
-                location: $("#InputLocation option:selected").text(),
-                zipCode: $("#InputZipCode option:selected").text(),
-                phone: $("#InputTelFirst").val(),
-                email: $("#InputEmail").val(),
-                typeOfCar: $("#car_type option:selected").text(),
-                suitcases: $("#suitcases option:selected").text(),
-                handLaggage: $("#hand_package option:selected").text(),
-                payment: $("#payment option:selected").text(),
-                street: $("#street option:selected").text()
+        //$("#anim").removeClass("invisible");
+        //$("#anim").addClass("glyphicon-refresh-animate");    
 
-            },
-            success: function (data) {
-                $("#anim").removeClass("glyphicon-refresh-animate");
-                $("#anim").addClass("invisible");
-                alert(data.poruka);
-            },
-            error: function () {
-                alert("GRESKAA!");
-            }
-        });
+        if ($("#frm_Reservacija").validate().form()) {
+            $.ajax({
+                url: "/Booking/BookingDOAerodroma",
+                type: 'POST',
+                data: {
+                    pickUpDate: $("#InputDate").val(),
+                    pickUpTime: $("#pickupHRS").val() + ":" + $("#pickupMIN").val(),
+                    house: $("#house").val(),
+                    flor: $("#flor").val(),
+                    door: $("#door").val(),
+                    pickUpFrom: $("#InputPickupFrom option:selected").text(),
+                    fullName: $("#InputFullName").val(),
+                    location: $("#InputLocation option:selected").text(),
+                    zipCode: $("#InputZipCode option:selected").text(),
+                    phone: $("#InputTelFirst").val(),
+                    email: $("#InputEmail").val(),
+                    typeOfCar: $("#car_type option:selected").text(),
+                    suitcases: $("#suitcases option:selected").text(),
+                    handLaggage: $("#hand_package option:selected").text(),
+                    payment: $("#payment option:selected").text(),
+                    street: $("#street option:selected").text(),
+                    comment: $("#comment").val(),
+                    isReturn: $("#return").is(':checked'),
+                    ReturnDate: $("#ReturnDate").val(),
+                    ReturnTime: $("#pickupHRSReturn").val() + ":" + $("#pickupMINReturn").val()
 
+
+                },
+                success: function (data) {
+                    //$("#anim").removeClass("glyphicon-refresh-animate");
+                    //$("#anim").addClass("invisible");
+              
+                    alert(data.poruka);
+
+                },
+                error: function () {
+                    alert("GRESKAA!");
+                }
+            });//kraj ajax
+        }
 
 
     });
@@ -132,4 +170,26 @@
     $(".datum").click(function () {
         $(".ui-datepicker").css("z-index", "9999");
     });
-});
+
+    $(".datumReturn").datepicker();
+    $(".datumReturn").datepicker("option", "showAnim", "drop");
+
+    //kada se klikne na datum, da navbar ne prekrije kalendar
+    $(".datumReturn").click(function () {
+        $(".ui-datepicker").css("z-index", "9999");
+    });
+
+
+
+    $("#return").change(
+    function () {
+        if ($(this).is(':checked')) {
+            $("#divTrip").show();
+        }
+        else {
+            $("#divTrip").hide();
+        }
+    });
+
+
+});//doc ready
