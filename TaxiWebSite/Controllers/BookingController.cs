@@ -25,7 +25,7 @@ namespace TaxiWebSite.Controllers
                                                 String pickUpFrom, String fullName, String location,
                                                 String zipCode, String phone, String email, String typeOfCar, String suitcases,
                                                     String handLaggage, String payment, String street, String comment, String isReturn,
-                                                 String ReturnDate, String ReturnTime)
+                                                 String ReturnDate, String ReturnTime, String price)
         {
             String poruka = "Vasa rezervacija je poslata vozacu. Proverite mejl da li vam je potvrdjena rezervacija";
 
@@ -41,7 +41,7 @@ namespace TaxiWebSite.Controllers
             StringBuilder sb = new StringBuilder("<table border=\"1\"><tbody><tr><td>Pick Up-Date</td><td>");
             sb.Append(pickUpDate+"</td></tr><tr><td>Pick Up-From</td><td>");
             sb.Append(pickUpFrom + "</td></tr><tr><td>Price</td><td>");
-            sb.Append("Price dodaj" + "</td></tr><tr><td>Full Name</td><td>");
+            sb.Append(price + "</td></tr><tr><td>Full Name</td><td>");
             sb.Append(fullName+"</td></tr><tr><td>Location</td><td>");
             sb.Append(location+"</td></tr><tr><td>Zip Code</td><td>");
             sb.Append(zipCode+"</td></tr><tr><td>Street</td><td>");
@@ -207,6 +207,40 @@ namespace TaxiWebSite.Controllers
             }
 
             
+        }
+
+
+        public ActionResult Cena(String klasa, int zona)
+        {
+            String cena;
+            using (var dbContext =new DB_9B8AB0_taxiEntities()) {
+
+                var oblast = dbContext.Oblasti.Where(x => x.Id.Equals(zona)).FirstOrDefault();
+                switch (klasa)
+                {
+                    case "1": {
+                        cena = oblast.Zona1;
+                        break;
+                    }
+                    case "2":{
+                        cena = oblast.Zona2;
+                        break;
+                    }
+                    case "3": {
+                        cena = oblast.Zona3;
+                        break;
+                    
+                    }
+                    default: {
+                        cena = "";
+                        break;
+                    }
+                }
+            
+            
+            }
+
+            return Json(new { cena = cena });
         }
 
     }

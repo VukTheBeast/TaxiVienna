@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_9B8AB0_taxiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_9B8AB0_taxiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gradovi">
           <Key>
             <PropertyRef Name="Id" />
@@ -19,6 +19,9 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_Grada" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Zona1" Type="nvarchar" MaxLength="3" />
+          <Property Name="Zona2" Type="nvarchar" MaxLength="3" />
+          <Property Name="Zona3" Type="nvarchar" MaxLength="3" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -117,8 +120,7 @@
             <End Role="Ulice" EntitySet="Ulice" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_9B8AB0_taxiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -139,6 +141,9 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Gradovi" Relationship="Self.FK_Oblasti_Gradovi" FromRole="Oblasti" ToRole="Gradovi" />
           <NavigationProperty Name="Ulice" Relationship="Self.FK_Ulice_Oblasti" FromRole="Oblasti" ToRole="Ulice" />
+          <Property Name="Zona1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Zona2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Zona3" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -197,10 +202,10 @@
             <End Role="Ulice" EntitySet="Ulice" />
           </AssociationSet>
           <FunctionImport Name="ListaOblasti" ReturnType="Collection(DB_9B8AB0_taxiModel.ListaOblasti_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ListaUlica" ReturnType="Collection(DB_9B8AB0_taxiModel.ListaUlica_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -273,6 +278,9 @@
           <EntitySetMapping Name="Oblasti">
             <EntityTypeMapping TypeName="DB_9B8AB0_taxiModel.Oblasti">
               <MappingFragment StoreEntitySet="Oblasti">
+                <ScalarProperty Name="Zona3" ColumnName="Zona3" />
+                <ScalarProperty Name="Zona2" ColumnName="Zona2" />
+                <ScalarProperty Name="Zona1" ColumnName="Zona1" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Id_Grada" ColumnName="Id_Grada" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

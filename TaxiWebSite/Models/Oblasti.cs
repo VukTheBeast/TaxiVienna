@@ -22,6 +22,9 @@ namespace TaxiWebSite.Models
         public int Id { get; set; }
         public int Id_Grada { get; set; }
         public string Name { get; set; }
+        public string Zona1 { get; set; }
+        public string Zona2 { get; set; }
+        public string Zona3 { get; set; }
     
         public virtual Gradovi Gradovi { get; set; }
         public virtual ICollection<Ulice> Ulice { get; set; }
