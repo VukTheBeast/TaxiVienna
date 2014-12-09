@@ -120,6 +120,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\BookingFromController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,6 +182,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\pic\007.gif" />
     <Content Include="Content\pic\bg.jpg" />
     <Content Include="Content\pic\bg1.jpg" />
     <Content Include="Content\pic\british-flag.jpg" />
@@ -189,7 +191,14 @@
     <Content Include="Content\pic\caurosel2.jpg" />
     <Content Include="Content\pic\caurosel3.jpg" />
     <Content Include="Content\pic\flag-german.jpg" />
+    <Content Include="Content\pic\grb.png" />
+    <Content Include="Content\pic\grb1.png" />
+    <Content Include="Content\pic\JamesBond007Pix.jpg" />
     <Content Include="Content\pic\taxi logo.jpg" />
+    <Content Include="Content\pic\taxi-maly.jpg" />
+    <Content Include="Content\pic\taxiAboutUs.jpg" />
+    <Content Include="Content\pic\taxiBestBusnisess.png" />
+    <Content Include="Content\pic\taxiService.png" />
     <Content Include="Content\pic\vienna-airport-cab-banner.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -197,6 +206,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\Application\Booking.js" />
+    <Content Include="Scripts\Application\BookingFrom.js" />
     <Content Include="Scripts\Application\Home.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -261,6 +271,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Booking\Booking.cshtml" />
+    <Content Include="Views\BookingFrom\BookingFrom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

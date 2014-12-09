@@ -7,12 +7,18 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <style>
+        .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+            background-color: inherit;
+        }
+    </style>
 
 </head>
 <body>
     <div class="row">
         <div class="text-center">
             <div style="display:inline-block">
+                <img src="~/Content/pic/taxi logo.jpg" style="height:55px;width:250px;margin-right:180px;" />
                 <img style="width:80px;height:80px;" src="~/Content/pic/vienna-airport-cab-banner.gif" />   
             </div>
             <div style="display:inline-block;margin-left:150px;">
@@ -24,8 +30,9 @@
             </div>
         </div>
         
-            <span class="h3" style="color:red;margin-left: 41px;">FLUGHAFENTAXI.AT</span>
+            
         <div class="container" id="Flaughafentaxi">
+            
             @*<hr style="border: 2px solid red;" />
             <hr style="border: 2px solid red;" />*@
         </div>
@@ -44,13 +51,24 @@
                         </button>
                         @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                         <label id="logo" class="navbar-brand" style="cursor:pointer">
-                            <img src="~/Content/pic/taxi logo.jpg" style="height:35px;width:80px;"/>  </label>
+                            <img src="~/Content/pic/JamesBond007Pix.jpg" style="height:35px;width:80px;" />  </label>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav" style="padding-top:7px;">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Booking", "Booking", "Booking")</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Booking <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Booking to Airport", "Booking", "Booking")</li>
+                                    <li>@Html.ActionLink("Booking from Airport", "BookingFrom", "BookingFrom")</li>
+                                    @*<li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>*@
+                                </ul>
+                            </li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                         </ul>

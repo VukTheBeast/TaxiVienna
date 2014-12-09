@@ -1,0 +1,311 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<style>
+    /*#scrolingBooking {
+        overflow-y: scroll;
+        height: 700px;
+    }*/
+
+    #container1 {
+        background-color: #e2dada;
+    }
+
+    h3 {
+        pickup_time_min color:#7695E7;
+    }
+</style>
+<div id="scrolingBooking" class="container">
+    <div class="container" id="container1">
+        <div class="row">
+            @*<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">*@
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Booking From Airport</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <table>
+                                <tr>
+                                    <td><label class="input-sm" for="InputDate">Pick-up date</label></td>
+                                    <td><input type="text" class="datum input-sm" id="InputDate" name="InputDate" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="flightFromlightFrom">Flight from</label></td>
+                                    <td><input type="text" class="input-sm" id="flightFromlightFrom" name="flightFromlightFrom" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="flightNumber">Flight number</label></td>
+                                    <td><input type="number" class="input-sm" id="flightNumber" name="flightNumber" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="scheduled">Scheduled arrival</label></td>
+                                    <td>
+                                        <select id="scheduled_time_hr" name="scheduled_time_hr" class="input-sm" label="Zeitplan Landungen:">
+                                            <option value="" selected="selected">Hrs.</option>
+                                            <option value="00">00</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                        <select id="pickup_time_min" name="pickup_time_min" class="input-sm">
+                                            <option value="" selected="selected">Min.</option>
+                                            <option value="00">00</option>
+                                            <option value="05">05</option>
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="25">25</option>
+                                            <option value="30">30</option>
+                                            <option value="35">35</option>
+                                            <option value="40">40</option>
+                                            <option value="45">45</option>
+                                            <option value="50">50</option>
+                                            <option value="55">55</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="InputPickup">Pick up from</label></td>
+                                    <td>
+                                        <select class="input-sm" id="InputPickup" name="InputPickup">
+                                            <option value="5" selected="selected">from Airport Schwechat</option>
+                                            <option value="6">from Vienna Westbahnhof</option>
+                                            <option value="7">from Vienna Hauptbahnhof</option>
+                                            <option value="9">from hotel</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="InputFullName">Name</label></td>
+                                    <td><input type="text" class="input-sm" id="InputFullName" name="InputFullName" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="InputLocation">Location</label></td>
+                                    <td>
+                                        <select class="input-sm" id="InputLocation" name="InputLocation" ">
+                                            <option></option>
+                                            <option value="1" selected>Vienna</option>
+                                        </select>
+                                    </td>
+                                    <td><label class="input-sm" for="InputZipCode">Zip Code</label></td>
+                                    <td>
+                                        <select class="input-sm" id="InputZipCode" name="InputZipCode">
+                                            <option>Pick your area</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="street">Street</label></td>
+                                    <td>
+                                        <select class="input-sm" id="street" name="street">
+                                            <option></option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="InputTelFirst">Telephone</label></td>
+                                    <td>
+                                        <input type="tel" class="input-sm" id="InputTelFirst" name="InputTelFirst" />
+                                    </td>
+                                    <td><label class="input-sm" for="InputEmail">Email</label></td>
+                                    <td>
+                                        <input type="email" class="input-sm" id="InputEmail" name="InputEmail" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class="control-label input-sm" for="car_type">Car type</label></td>
+                                    <td>
+                                        <select id="car_type" name="car_type" class="input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
+                                            <option value="1">Limousine maximum. 3 Passengers</option>
+                                            <option value="2">Station wagon 3-4 Passengers</option>
+                                            <option value="3">Van 4-7 Passengers</option>
+                                            <option value="999">More from 8 on request</option>
+                                        </select>
+                                    </td>
+                                    <td><label class="control-label input-sm" for="suitcases">Suitcases</label></td>
+                                    <td>
+                                        <select id="suitcases" name="suitcases" class="input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">
+                                            <option value="0">No suitcases</option>
+                                            <option value="1" selected="selected">1 Suitcase</option>
+                                            <option value="2">2 Suitcase</option>
+                                            <option value="3">3 Suitcase</option>
+                                            <option value="4">4 Suitcase</option>
+                                            <option value="5">5 Suitcase</option>
+                                            <option value="6">6 Suitcase</option>
+                                            <option value="7">7 Suitcase</option>
+                                            <option value="8">8 Suitcase</option>
+                                            <option value="999">More from 8 on request</option>
+                                        </select>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td><label class="control-label input-sm" for="hand_package">Hand package</label></td>
+                                    <td>
+                                        <select id="hand_package" name="hand_package" class="input-sm" label="Handgepäck:" placeholder="Hand laggage" onchange="recalculate_price();">
+                                            <option value="0">No hand luggage</option>
+                                            <option value="1" selected="selected">1 Piece</option>
+                                            <option value="2">2 Piece</option>
+                                            <option value="3">3 Piece</option>
+                                            <option value="4">4 Piece</option>
+                                            <option value="5">5 Piece</option>
+                                            <option value="6">6 Piece</option>
+                                            <option value="7">7 Piece</option>
+                                            <option value="8">8 Piece</option>
+                                            <option value="999">More from 8 on request</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+
+
+                            <div class="row">
+                                <label class="control-label input-sm" for="returnTrip">
+                                    Return trip
+                                    <input type="checkbox" class="input-sm" id="returnTrip" name="returnTrip" style="vertical-align: middle;" />
+                                </label>
+                                <div>
+                                    <label class="input-sm" for="returnDate">Date</label>
+                                    <input type="text" class="datum input-sm" id="returnDate" name="returnDate" />
+                                    <label class="input-sm" for="returnTime">Pick up-time:</label>
+                                    <select id="pickup_time_hr" name="pickup_time_hr" class="input-sm" label="Zeitplan Landungen:">
+                                        <option value="" selected="selected">Hrs.</option>
+                                        <option value="00">00</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                    </select>
+                                    <select id="pickup_time_min" name="pickup_time_min" class="input-sm" label="Zeitplan Landungen:">
+                                        <option value="" selected="selected">Min.</option>
+                                        <option value="00">00</option>
+                                        <option value="05">05</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="45">45</option>
+                                        <option value="50">50</option>
+                                        <option value="55">55</option>
+                                    </select>
+                                </div>
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <label class="control-label input-sm" for="returnDate">Date:</label>
+                                        <input type="text" class="col-sm-2 form-control input-sm datum" name="returnDate" id="returnDate" placeholder="Date" required>
+                                    </div>
+
+                                    <div class="col-xs-2 col-sm-2 col-md-2">
+                                        <label class="control-label input-sm" for="returnTime">Pick up-time:</label>
+                                        <select id="pickup_time_hr" name="pickup_time_hr" class="input-sm" label="Zeitplan Landungen:">
+                                            <option value="" selected="selected">Hrs.</option>
+                                            <option value="00">00</option>
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                        </select>
+                                        <select id="pickup_time_min" name="pickup_time_min" class="input-sm" label="Zeitplan Landungen:">
+                                            <option value="" selected="selected">Min.</option>
+                                            <option value="00">00</option>
+                                            <option value="05">05</option>
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="25">25</option>
+                                            <option value="30">30</option>
+                                            <option value="35">35</option>
+                                            <option value="40">40</option>
+                                            <option value="45">45</option>
+                                            <option value="50">50</option>
+                                            <option value="55">55</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>*@
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label class="control-label input-sm" for="form-group-input">Payment</label>
+                                    <select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:" onchange="recalculate_price();">
+                                        <option value="Bar">Cash</option>
+                                        <option value="Kreditkarte">Credit Card</option>
+                                        <option value="Lieferschein">Bank Transfer</option>
+                                    </select>
+                                </div>
+                                <!-- <div class="col-md-8"><img src="~/Content/banner/svgFileSM.svg" /></div>-->
+                            </div>
+                            <input type="button" id="submit" value="Register" class="btn btn-info btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Application/BookingFrom.js"></script>
