@@ -32,11 +32,12 @@
 
 
     $("#submitFrom").on('click', function () {
-        $("#anim").removeClass("invisible");
-        $("#anim").addClass("glyphicon-refresh-animate");
+       // $("#anim").removeClass("invisible");
+      
 
 
         if ($("#frm_ReservacijaFromAirport").validate().form()) {
+            $("#anim").addClass("glyphicon-refresh-animate");
             $.ajax({
                 url: "/BookingFrom/BookingFromAerodroma",
                 type: 'POST',
@@ -64,7 +65,7 @@
                 },
                 success: function (data) {
                     $("#anim").removeClass("glyphicon-refresh-animate");
-                    $("#anim").addClass("invisible");
+                  //  $("#anim").addClass("invisible");
                     alert(data.poruka);
                 },
                 error: function () {

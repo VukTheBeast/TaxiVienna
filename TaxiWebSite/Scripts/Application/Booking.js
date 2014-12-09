@@ -32,10 +32,9 @@
     });
 
     $("#submit").on('click', function () {
-        //$("#anim").removeClass("invisible");
-        //$("#anim").addClass("glyphicon-refresh-animate");    
-
+      //  $("#anim").removeClass("invisible");
         if ($("#frm_Reservacija").validate().form()) {
+            $("#anim").addClass("glyphicon-refresh-animate");
             $.ajax({
                 url: "/Booking/BookingDOAerodroma",
                 type: 'POST',
@@ -65,7 +64,7 @@
 
                 },
                 success: function (data) {
-                    //$("#anim").removeClass("glyphicon-refresh-animate");
+                    $("#anim").removeClass("glyphicon-refresh-animate");
                     //$("#anim").addClass("invisible");
               
                     alert(data.poruka);
