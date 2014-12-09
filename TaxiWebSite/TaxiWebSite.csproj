@@ -122,6 +122,7 @@
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\BookingFromController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,8 @@
       <DependentUpon>taxiVienna.edmx</DependentUpon>
       <LastGenOutput>taxiVienna.cs</LastGenOutput>
     </Content>
+    <Content Include="Cena\Prices.docx" />
+    <Content Include="Cena\Prices.pdf" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -275,6 +278,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Price\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -209,4 +209,15 @@
     });
 
 
+    $("#payment").change(function () {
+
+       // alert($(this).val());
+        if ($(this).val() == "card") {
+            $("#mess_divCard").show(300);
+
+        }
+
+
+    });
+
 });//doc ready

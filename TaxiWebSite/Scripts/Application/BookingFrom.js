@@ -137,7 +137,19 @@
             else {
                 $("#divTrip").hide(200);
             }
-       });
+        });
+
+
+    $("#payment").change(function () {
+
+        //alert($(this).val());
+        if ($(this).val() == "card") {
+            $("#mess_divCard").show(300);
+
+        }
+
+
+    });
 
 
 });
