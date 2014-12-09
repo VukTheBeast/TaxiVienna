@@ -5,45 +5,74 @@
         allowClear: true
     });
 
+    $("#frm_ReservacijaFromAirport").validate({
+        rules: {
+            InputDate: { required: true },
+            scheduled_time_hr: { required: true },
+            pickup_time_min: { required: true },
+            InputFullName: { required: true },
+            InputLocation: { required: true },
+            InputZipCode: { required: true },
+            InputEmail: { email: true },
+            street: { required: true }
+
+        },
+        messages: {
+            InputDate: "***",
+            scheduled_time_hr: "***",
+            pickup_time_min: "***",
+            InputFullName: "***",
+            InputLocation: "***",
+            InputZipCode: "***",
+            InputEmail: "***",
+            street: "***"
+        }
+    });
+
+
+
     $("#submitFrom").on('click', function () {
         $("#anim").removeClass("invisible");
         $("#anim").addClass("glyphicon-refresh-animate");
-        $.ajax({
-            url: "/BookingFrom/BookingFromAerodroma",
-            type: 'POST',
-            data: {
-                pickUpDate: $("#InputDate").val(),
-                flightFromlightFrom: $("#flightFromlightFrom").val(),
-                flightNumber: $("#flightNumber").val(),
-                pickUpTime: $("#scheduled_time_hr").val() + ":" + $("#pickup_time_min").val(),
-                pickUpFrom: $("#InputPickup option:selected").text(),
-                fullName: $("#InputFullName").val(),
-                location: $("#InputLocation option:selected").text(),
-                zipCode: $("#InputZipCode option:selected").text(),
-                street: $("#street option:selected").text(),
-                phone: $("#InputTelFirst").val(),
-                email: $("#InputEmail").val(),
-                typeOfCar: $("#car_type option:selected").text(),            
-                suitcases: $("#suitcases option:selected").text(),
-                handLaggage: $("#hand_package option:selected").text(),
-                isReturn: $("#returnTrip").is(':checked'),
-                returnData:$("#returnDate").val(),
-                returnTime:$("#pickup_time_hrRET").val() + ":"+$("#pickup_time_minRET").val(),
-                payment: $("#payment option:selected").text()
-                
-
-            },
-            success: function (data) {
-                $("#anim").removeClass("glyphicon-refresh-animate");
-                $("#anim").addClass("invisible");
-                alert(data.poruka);
-            },
-            error: function () {
-                alert("GRESKAA!");
-            }
-        });
 
 
+        if ($("#frm_ReservacijaFromAirport").validate().form()) {
+            $.ajax({
+                url: "/BookingFrom/BookingFromAerodroma",
+                type: 'POST',
+                data: {
+                    pickUpDate: $("#InputDate").val(),
+                    flightFromlightFrom: $("#flightFromlightFrom").val(),
+                    flightNumber: $("#flightNumber").val(),
+                    pickUpTime: $("#scheduled_time_hr").val() + ":" + $("#pickup_time_min").val(),
+                    pickUpFrom: $("#InputPickup option:selected").text(),
+                    fullName: $("#InputFullName").val(),
+                    location: $("#InputLocation option:selected").text(),
+                    zipCode: $("#InputZipCode option:selected").text(),
+                    street: $("#street option:selected").text(),
+                    phone: $("#InputTelFirst").val(),
+                    email: $("#InputEmail").val(),
+                    typeOfCar: $("#car_type option:selected").text(),
+                    suitcases: $("#suitcases option:selected").text(),
+                    handLaggage: $("#hand_package option:selected").text(),
+                    isReturn: $("#returnTrip").is(':checked'),
+                    returnData: $("#returnDate").val(),
+                    returnTime: $("#pickup_time_hrRET").val() + ":" + $("#pickup_time_minRET").val(),
+                    payment: $("#payment option:selected").text()
+
+
+                },
+                success: function (data) {
+                    $("#anim").removeClass("glyphicon-refresh-animate");
+                    $("#anim").addClass("invisible");
+                    alert(data.poruka);
+                },
+                error: function () {
+                    alert("GRESKAA!");
+                }
+            });
+
+        }
 
     });
 

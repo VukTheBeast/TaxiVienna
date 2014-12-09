@@ -25,7 +25,7 @@
                         <h3 class="panel-title text-center">Booking From Airport</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form role="form" id="frm_ReservacijaFromAirport">
                             <table>
                                 <tr>
                                     <td><label class="input-sm" for="InputDate">Pick-up date</label></td>
@@ -105,16 +105,16 @@
                                     <td><label class="input-sm" for="InputLocation">Location</label></td>
                                     <td>
                                         @*<select class="input-sm" id="InputLocation" name="InputLocation" ">
-                                            <option></option>
-                                            <option value="1" selected>Vienna</option>
-                                        </select>*@
+                            <option></option>
+                            <option value="1" selected>Vienna</option>
+                        </select>*@
                                         @Html.DropDownList("InputLocation", (List<SelectListItem>)ViewBag.listaGradovi, new { @style = "width:150px", @class = "input-group input-sm" })
                                     </td>
                                     <td><label class="input-sm" for="InputZipCode">Zip Code</label></td>
                                     <td>
                                         @*<select class="input-sm" id="InputZipCode" name="InputZipCode">
-                                            <option>Pick your area</option>
-                                        </select>*@
+                            <option>Pick your area</option>
+                        </select>*@
                                         @Html.DropDownList("InputZipCode", (List<SelectListItem>)ViewBag.listaOblastiWien, new { @style = "width:150px", @class = "input-group input-sm" })
                                     </td>
                                 </tr>
@@ -161,7 +161,7 @@
                                             <option value="999">More from 8 on request</option>
                                         </select>
                                     </td>
-                                    
+
                                 </tr>
                                 <tr>
                                     <td><label class="control-label input-sm" for="hand_package">Hand package</label></td>
@@ -180,7 +180,7 @@
                                         </select>
                                     </td>
                                 </tr>
-                                
+
                             </table>
 
 
@@ -236,7 +236,7 @@
                                         <option value="55">55</option>
                                     </select>
                                 </div>
-                            </div>                           
+                            </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label class="control-label input-sm" for="form-group-input">Payment</label>
@@ -245,14 +245,18 @@
                                         <option value="card">Credit Card</option>
                                         <option value="bank">Bank Transfer</option>
                                     </select>
-                                    @Html.ActionLink("See Prices", "getPrice","Price",null, new { target = "_blank" })
-                                  @*  <a href="/Price/getPrice">See price</a>*@
-                                   
+                                    @Html.ActionLink("See Prices", "getPrice", "Price", null, new { target = "_blank" })
+                                    @*  <a href="/Price/getPrice">See price</a>*@
+
                                 </div>
                                 <!-- <div class="col-md-8"><img src="~/Content/banner/svgFileSM.svg" /></div>-->
                             </div>
                             <div id="mess_divCard" style="display:none;">
                                 <label style="color:red; font-size:small;">Bei jede Bezahlung mit Kreditkarte wird + 5 € Kreditkartengebür</label>
+                            </div>
+
+                            <div>
+                                <label style="color:red; font-size:small;">Bei jede weitere zusatzadresse + 8 €</label>
                             </div>
                             <input type="button" id="submitFrom" value="Reserve" class="btn btn-info btn-block">
                         </form>

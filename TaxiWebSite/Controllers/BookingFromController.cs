@@ -131,9 +131,9 @@ namespace TaxiWebSite.Controllers
 
                 poruka = "Greska prilikom slanja mejla";
             }
-          
 
-            return Json(new {poruka="" });
+
+            return Json(new { poruka = poruka });
         }
     }
 }
