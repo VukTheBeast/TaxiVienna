@@ -8,7 +8,9 @@
         overflow-y: scroll;
         height: 700px;
     }*/
-
+    .jumbotron {
+        height: 1080px;
+    }
     #container1 {
         background-color: #e2dada;
     }
@@ -190,7 +192,6 @@
                                             <option value="999">More from 8 on request</option>
                                         </select>
                                     </td>
-
                                 </tr>
                                 <tr>
                                     <td><label class="control-label input-sm" for="hand_package">Hand package</label></td>
@@ -209,15 +210,22 @@
                                         </select>
                                     </td>
                                 </tr>
-
+                                <tr>
+                                    <td><label class="input-sm" for="returnTrip">Return trip</label></td>
+                                    <td><input type="checkbox" class="input-sm" id="returnTrip" name="returnTrip" style="vertical-align: middle;" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="control-label input-sm" for="form-group-input">Payment</label></td>
+                                    <td><select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:" onchange="recalculate_price();">
+                                        <option value="cash">Cash</option>
+                                        <option value="card">Credit Card</option>
+                                        <option value="bank">Bank Transfer</option>
+                                    </select></td>
+                                </tr>
                             </table>
-
-
-                            <div class="row">
-                                <label class="control-label input-sm" for="returnTrip">
-                                    Return trip
-                                    <input type="checkbox" class="input-sm" id="returnTrip" name="returnTrip" style="vertical-align: middle;" />
-                                </label>
+                            
+                            <div class="row">   
+                                
                                 <div id="divTrip" style="display:none;">
                                     <label class="input-sm" for="returnDate">Date</label>
                                     <input type="text" class="datum input-sm" id="returnDate" name="returnDate" />
@@ -268,13 +276,8 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label class="control-label input-sm" for="form-group-input">Payment</label>
-                                    <select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:" onchange="recalculate_price();">
-                                        <option value="cash">Cash</option>
-                                        <option value="card">Credit Card</option>
-                                        <option value="bank">Bank Transfer</option>
-                                    </select>
-                                    @Html.ActionLink("See Prices", "getPrice", "Price", null, new { target = "_blank" })
+                                    
+                                    <div class="input-sm">@Html.ActionLink("See Prices", "getPrice", "Price", null, new { target = "_blank" })</div>
                                     @*  <a href="/Price/getPrice">See price</a>*@
 
                                 </div>

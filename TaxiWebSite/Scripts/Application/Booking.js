@@ -89,7 +89,7 @@
                     zona: $("#InputZipCode").val()
                 },
                 success: function (data) {
-                    $("#lblPrice").text(data.cena+"e");
+                    $("#lblPrice").text(data.cena + " " + "€");
                     //alert(data.cena);
                 }
             });

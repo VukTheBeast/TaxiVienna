@@ -8,11 +8,12 @@
 
 <style>
     .jumbotron{
+        height:1200px;
         /*font-size:inherit;*/
     }
-    .jumbotron #scrolingBooking {
+    /*.jumbotron #scrolingBooking {
         overflow-y: scroll; height:600px;
-    }
+    }*/
     #container1 {
     background-color: #e2dada;
 }
@@ -41,7 +42,7 @@ padding: 20px;
         height:28px;
     }
     h3{
-        color:#7695E7;
+        color:black;
     }
 
     .ui-datepicker{
@@ -93,47 +94,42 @@ padding: 20px;
                     </div>
                     <div class="panel-body">
                         <form role="form" id="frm_Reservacija">
-                            <div class="form-group">
-                                <label>Pick-up date</label>
-                                <input type="text" class="form-control input-sm datum" name="InputDate" id="InputDate" placeholder="Enter Date" required>
-                            </div>
-                            <label>Pick up time</label>
-                            <div class="row">
-
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <select class="form-control input-sm" id="pickupHRS" name="pickupHRS">
-                                            <option value="" selected="selected">Hrs</option>
-                                            <option value="00">00</option>
-                                            <option value="01">01</option>
-                                            <option value="02">02</option>
-                                            <option value="03">03</option>
-                                            <option value="04">04</option>
-                                            <option value="05">05</option>
-                                            <option value="06">06</option>
-                                            <option value="07">07</option>
-                                            <option value="08">08</option>
-                                            <option value="09">09</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="input-group">
-                                        <select class="form-control input-sm" id="pickupMIN" name="pickupMIN">
+                            <table>
+                                <tr>
+                                    <td><label class="input-sm">Pick-up date</label></td>
+                                    <td><input type="text" class="form-control input-sm datum" name="InputDate" id="InputDate" placeholder="Enter Date" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Pick up time</label></td>
+                                    <td>
+                                        <select class="input-sm" id="pickupHRS" name="pickupHRS">
+                                        <option value="" selected="selected">Hrs</option>
+                                        <option value="00">00</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                    </select>
+                                        <select class="input-sm" id="pickupMIN" name="pickupMIN">
                                             <option value="" selected="selected">Min</option>
                                             <option value="00">00</option>
                                             <option value="05">05</option>
@@ -148,97 +144,65 @@ padding: 20px;
                                             <option value="50">50</option>
                                             <option value="55">55</option>
                                         </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <label>House</label>
-                                    <input type="text" id="house" name="house" class="form-control input-sm" />
-                                </div>
-                                <div class="col-md-3">
-                                    <label>Flor</label>
-                                    <input type="text" id="flor" name="flor" class="form-control input-sm" />
-                                </div>
-                                <div class="col-md-3">
-                                    <label>Door</label>
-                                    <input type="text" id="door" name="door" class="form-control input-sm" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <label>Pick up from:</label>
-                                    <select class="form-control input-sm" id="InputPickupFrom" name="InputPickupFrom">
-                                        <option value="5" selected="selected">from home</option>
-                                        <option value="6">from office</option>
-                                        <option value="7">from train station</option>
-                                        <option value="9">from hotel</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Your full name:</label>
-                                <input type="text" name="InputFullName" id="InputFullName" class="form-control input-sm" placeholder="Enter Name">
-                            </div>
-                            <div class="form-group">
-                                <label>Location:</label>
-                                @*<select class="input-group input-sm" id="InputLocation" name="InputLocation" style="width:150px">
-                                    <option>City</option>
-                                    <option value="1">Vienna</option>
-                                </select>*@
-                                @Html.DropDownList("InputLocation", (List<SelectListItem>)ViewBag.listaGradovi, new { @style = "width:150px", @class = "input-group input-sm" })
-                            </div>
-
-
-                            <div class="form-group">
-                                <label>Zip code:</label>
-                                @*<select class="input-group input-sm" id="InputZipCode" name="InputZipCode" style="width:150px">
-                                    <option>Pick your area</option>
-                                </select>*@
-
-                                @Html.DropDownList("InputZipCode", (List<SelectListItem>)ViewBag.listaOblastiWien, new { @style = "width:150px", @class = "input-group input-sm" })
-                            </div>
-
-
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <label>Street:</label>
-                                    <select class="input-group input-sm" id="street" name="street" style="width:150px">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">House</label></td>
+                                    <td><input type="text" id="house" name="house" class="input-sm"/></td>
+                                    <td><label class="input-sm">Floor</label></td>
+                                    <td><input type="text" id="flor" name="flor" class="input-sm" /></td>
+                                    </tr>
+                                <tr>
+                                    <td><label class="input-sm">Door</label></td>
+                                    <td><input type="text" id="door" name="door" class="input-sm" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Pick up from:</label></td>
+                                    <td>
+                                        <select class="form-control input-sm" id="InputPickupFrom" name="InputPickupFrom">
+                                            <option value="5" selected="selected">from home</option>
+                                            <option value="6">from office</option>
+                                            <option value="7">from train station</option>
+                                            <option value="9">from hotel</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Your full name:</label></td>
+                                    <td><input type="text" name="InputFullName" id="InputFullName" class="input-sm" placeholder="Enter Name"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Location:</label></td>
+                                    <td>@Html.DropDownList("InputLocation", (List<SelectListItem>)ViewBag.listaGradovi, new { @style = "width:150px", @class = "input-group input-sm" })</td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Zip code:</label></td>
+                                    <td>@Html.DropDownList("InputZipCode", (List<SelectListItem>)ViewBag.listaOblastiWien, new { @style = "width:150px", @class = "input-group input-sm" })</td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Street:</label></td>
+                                    <td><select class="input-group input-sm" id="street" name="street" style="width:150px">
                                         <option></option>
                                     </select>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <label>Your phone number:</label>
-                                    <input type="tel" class="form-control input-sm" id="InputTelFirst" name="InputTelFirst" placeholder="Enter Phone" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <label>Your email:</label>
-                                    <input type="email" class="form-control input-sm" id="InputEmail" name="InputEmail" placeholder="Enter Email" required>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-5 col-sm-5 col-md-5">
-                                    <div class="form-group">
-                                        <label>Type of car:</label>
-                                        <select id="car_type" name="car_type" class="input-group input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Your phone number:</label></td>
+                                    <td><input type="tel" class="input-sm" id="InputTelFirst" name="InputTelFirst" placeholder="Enter Phone" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Your email:</label></td>
+                                    <td><input type="email" class="input-sm" id="InputEmail" name="InputEmail" placeholder="Enter Email" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Type of car:</label></td>
+                                    <td><select id="car_type" name="car_type" class="input-group input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
                                             <option value="3">Grobram taxi (5 bis 8 personen)</option>
                                             <option value="2">Business klase (bis 4 personen)</option>
                                             <option value="1">Economy klase (bis 4 personen)</option>
-                                        </select>
-
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <div class="form-group">
-                                        <label>Suitcases:</label>
-                                        <select id="suitcases" name="suitcases" class="input-group input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">
+                                        </select></td>
+                                    <td><label class="input-sm">Suitcases:</label></td>
+                                    <td><select id="suitcases" name="suitcases" class="input-group input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">
                                             <option value="0">No suitcases</option>
                                             <option value="1" selected="selected">1 Suitcase</option>
                                             <option value="2">2 Suitcase</option>
@@ -249,14 +213,11 @@ padding: 20px;
                                             <option value="7">7 Suitcase</option>
                                             <option value="8">8 Suitcase</option>
                                             <option value="999">More from 8 on request</option>
-                                        </select>
-
-                                    </div>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <div class="form-group">
-                                        <label>Hand luggage:</label>
-                                        <select id="hand_package" name="hand_package" class="input-group input-sm" label="Handgepäck:" placeholder="Hand laggage" onchange="recalculate_price();">
+                                        </select></td>
+                                    </tr>
+                                <tr>
+                                    <td><label class="input-sm">Hand luggage:</label></td>
+                                    <td><select id="hand_package" name="hand_package" class="input-group input-sm" label="Handgepäck:" placeholder="Hand laggage" onchange="recalculate_price();">
                                             <option value="0">No hand luggage</option>
                                             <option value="1" selected="selected">1 Piece</option>
                                             <option value="2">2 Piece</option>
@@ -267,42 +228,35 @@ padding: 20px;
                                             <option value="7">7 Piece</option>
                                             <option value="8">8 Piece</option>
                                             <option value="999">More from 8 on request</option>
-                                        </select>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <label class="control-label" for="form-group-input">Payment</label>
-                                    <select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:">
+                                        </select></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="form-group-input">Payment</label></td>
+                                    <td><select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:">
                                         <option value="cash">Cash</option>
                                         <option value="card">Credit Card</option>
                                         <option value="bank">Bank Transfer</option>
-                                    </select>
-
-                                </div>
-                                <!-- <div class="col-md-8"><img src="~/Content/banner/svgFileSM.svg" /></div>-->
-                            </div>
-                            <div class="form-group">
-                                <label>Comment</label>
-                                <textarea id="comment" name="comment" rows="2" cols="25" class="input-group-sm"></textarea>
-
-                            </div>
-                            <div class="form-group input-group-sm">
-                                <label>Price:</label>
-                                <label id="lblPrice">0e</label>
-                            </div>
-                            <div class="form-group input-group-sm">
-                                <label for="return">Return trip</label>
-                                <input type="checkbox" id="return" name="return" />
-                            </div>
+                                    </select></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Comment</label></td>
+                                    <td><textarea id="comment" name="comment" rows="2" cols="25" class="input-group-sm"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Price:</label></td>
+                                    <td><label id="lblPrice">0 €</label></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="return">Return trip</label></td>
+                                    <td><input type="checkbox" id="return" name="return" /></td>
+                                </tr>
+                            </table>    
                             <div class="form-group input-group-sm" id="divTrip" style="display:none">
-                                <label>Return date</label>
+                                <label class="input-sm">Return date</label>
                                 <input type="text" class="form-control input-sm datumReturn" name="ReturnDate" id="ReturnDate" placeholder="Enter Date" required>
-                                <label>Return time</label>
+                                <label class="input-sm">Return time</label>
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" style="width:100px">
                                         <div class="input-group">
                                             <select class="form-control input-sm" id="pickupHRSReturn" name="pickupHRSReturn">
                                                 <option value="" selected="selected">Hrs</option>
@@ -330,7 +284,7 @@ padding: 20px;
                                                 <option value="21">21</option>
                                                 <option value="22">22</option>
                                                 <option value="23">23</option>
-                                            </select>                                            
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -354,7 +308,7 @@ padding: 20px;
                                     </div>
                                 </div>
                             </div>
-                            @Html.ActionLink("See Prices", "getPrice", "Price", null, new { target = "_blank" })
+                            <div class="input-sm">@Html.ActionLink("See Prices", "getPrice", "Price", null, new { target = "_blank" })</div>
                             <div id="mess_divCard" style="display:none;">
                                 <label style="color:red; font-size:small;">Bei jede Bezahlung mit Kreditkarte wird + 5 € Kreditkartengebür</label>
                             </div>
