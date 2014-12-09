@@ -18,7 +18,37 @@ namespace TaxiWebSite.Controllers
         public ActionResult Booking()
         {
             ViewBag.Message = "Order from/to Airport";
+
+            using (var dbContext = new DB_9B8AB0_taxiEntities()) {
+
+                var list = dbContext.Gradovi.ToList();
+                var oblastiWien = dbContext.Oblasti.Where(x => x.Id_Grada.Equals(1)).ToList();
+                
+                List<SelectListItem> listaGradovi = new List<SelectListItem>();
+
+                foreach (var item in list)
+                {
+                    listaGradovi.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
+                }
+
+                ViewBag.listaGradovi = listaGradovi;
+
+
+
+                List<SelectListItem> listaOblastiWien = new List<SelectListItem>();
+
+                listaOblastiWien.Add(new SelectListItem { Text = "Pick Up Area", Value = "" });
+                foreach (var item in oblastiWien)
+                {
+                    listaOblastiWien.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
+                }
+
+                ViewBag.listaOblastiWien = listaOblastiWien;
+            
+
+
             return View();
+            }
         }
 
         public ActionResult BookingDOAerodroma(String pickUpDate, String pickUpTime,String house,String flor, String door, 
@@ -39,7 +69,7 @@ namespace TaxiWebSite.Controllers
 
 
             StringBuilder sb = new StringBuilder("<table border=\"1\"><tbody><tr><td>Pick Up-Date</td><td>");
-            sb.Append(pickUpDate+"</td></tr><tr><td>Pick Up-From</td><td>");
+            sb.Append(pickUpDate+"  "+pickUpTime+"</td></tr><tr><td>Pick Up-From</td><td>");
             sb.Append(pickUpFrom + "</td></tr><tr><td>Price</td><td>");
             sb.Append(price + "</td></tr><tr><td>Full Name</td><td>");
             sb.Append(fullName+"</td></tr><tr><td>Location</td><td>");
@@ -84,10 +114,10 @@ namespace TaxiWebSite.Controllers
                 client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
                // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
-                MailMessage mm = new MailMessage(email, "007flughafentaxi@gmail.com");
+                MailMessage mm = new MailMessage(email, "flughafentaxibond@gmail.com");
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
-                mm.Subject = fullName + "[reservation]";
+                mm.Subject = fullName + "[To Airport]";
                 mm.IsBodyHtml = true;
                 mm.Body = sb.ToString();
                 client.Send(mm);
@@ -119,12 +149,12 @@ namespace TaxiWebSite.Controllers
                 client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
                 // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
-                MailMessage mm = new MailMessage("007flughafentaxi@gmail.com", email);
+                MailMessage mm = new MailMessage("flughafentaxibond@gmail.com", email);
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 mm.Subject = "Confirm reservation";
                // mm.IsBodyHtml = true;
-                mm.Body ="Your reservation is confirmed. The driver will come to you in next half hour.";
+                mm.Body ="Your reservation is confirmed. The driver will come to you.";
                 client.Send(mm);
 
                 Response.ClearHeaders();

@@ -104,16 +104,18 @@
                                 <tr>
                                     <td><label class="input-sm" for="InputLocation">Location</label></td>
                                     <td>
-                                        <select class="input-sm" id="InputLocation" name="InputLocation" ">
+                                        @*<select class="input-sm" id="InputLocation" name="InputLocation" ">
                                             <option></option>
                                             <option value="1" selected>Vienna</option>
-                                        </select>
+                                        </select>*@
+                                        @Html.DropDownList("InputLocation", (List<SelectListItem>)ViewBag.listaGradovi, new { @style = "width:150px", @class = "input-group input-sm" })
                                     </td>
                                     <td><label class="input-sm" for="InputZipCode">Zip Code</label></td>
                                     <td>
-                                        <select class="input-sm" id="InputZipCode" name="InputZipCode">
+                                        @*<select class="input-sm" id="InputZipCode" name="InputZipCode">
                                             <option>Pick your area</option>
-                                        </select>
+                                        </select>*@
+                                        @Html.DropDownList("InputZipCode", (List<SelectListItem>)ViewBag.listaOblastiWien, new { @style = "width:150px", @class = "input-group input-sm" })
                                     </td>
                                 </tr>
                                 <tr>
@@ -187,11 +189,11 @@
                                     Return trip
                                     <input type="checkbox" class="input-sm" id="returnTrip" name="returnTrip" style="vertical-align: middle;" />
                                 </label>
-                                <div>
+                                <div id="divTrip" style="display:none;">
                                     <label class="input-sm" for="returnDate">Date</label>
                                     <input type="text" class="datum input-sm" id="returnDate" name="returnDate" />
                                     <label class="input-sm" for="returnTime">Pick up-time:</label>
-                                    <select id="pickup_time_hr" name="pickup_time_hr" class="input-sm" label="Zeitplan Landungen:">
+                                    <select id="pickup_time_hrRET" name="pickup_time_hrRET" class="input-sm" label="Zeitplan Landungen:">
                                         <option value="" selected="selected">Hrs.</option>
                                         <option value="00">00</option>
                                         <option value="01">01</option>
@@ -218,7 +220,7 @@
                                         <option value="22">22</option>
                                         <option value="23">23</option>
                                     </select>
-                                    <select id="pickup_time_min" name="pickup_time_min" class="input-sm" label="Zeitplan Landungen:">
+                                    <select id="pickup_time_minRET" name="pickup_time_minRET" class="input-sm" label="Zeitplan Landungen:">
                                         <option value="" selected="selected">Min.</option>
                                         <option value="00">00</option>
                                         <option value="05">05</option>
@@ -234,61 +236,7 @@
                                         <option value="55">55</option>
                                     </select>
                                 </div>
-                            </div>
-                            @*<div class="row">
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <label class="control-label input-sm" for="returnDate">Date:</label>
-                                        <input type="text" class="col-sm-2 form-control input-sm datum" name="returnDate" id="returnDate" placeholder="Date" required>
-                                    </div>
-
-                                    <div class="col-xs-2 col-sm-2 col-md-2">
-                                        <label class="control-label input-sm" for="returnTime">Pick up-time:</label>
-                                        <select id="pickup_time_hr" name="pickup_time_hr" class="input-sm" label="Zeitplan Landungen:">
-                                            <option value="" selected="selected">Hrs.</option>
-                                            <option value="00">00</option>
-                                            <option value="01">01</option>
-                                            <option value="02">02</option>
-                                            <option value="03">03</option>
-                                            <option value="04">04</option>
-                                            <option value="05">05</option>
-                                            <option value="06">06</option>
-                                            <option value="07">07</option>
-                                            <option value="08">08</option>
-                                            <option value="09">09</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                        </select>
-                                        <select id="pickup_time_min" name="pickup_time_min" class="input-sm" label="Zeitplan Landungen:">
-                                            <option value="" selected="selected">Min.</option>
-                                            <option value="00">00</option>
-                                            <option value="05">05</option>
-                                            <option value="10">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
-                                            <option value="25">25</option>
-                                            <option value="30">30</option>
-                                            <option value="35">35</option>
-                                            <option value="40">40</option>
-                                            <option value="45">45</option>
-                                            <option value="50">50</option>
-                                            <option value="55">55</option>
-                                        </select>
-                                    </div>
-
-
-                                </div>*@
+                            </div>                           
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label class="control-label input-sm" for="form-group-input">Payment</label>
@@ -300,7 +248,7 @@
                                 </div>
                                 <!-- <div class="col-md-8"><img src="~/Content/banner/svgFileSM.svg" /></div>-->
                             </div>
-                            <input type="button" id="submit" value="Register" class="btn btn-info btn-block">
+                            <input type="button" id="submitFrom" value="Reserve" class="btn btn-info btn-block">
                         </form>
                     </div>
                 </div>

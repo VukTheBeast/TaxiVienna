@@ -5,26 +5,32 @@
         allowClear: true
     });
 
-    $("#submit").on('click', function () {
+    $("#submitFrom").on('click', function () {
         $("#anim").removeClass("invisible");
         $("#anim").addClass("glyphicon-refresh-animate");
         $.ajax({
-            url: "/Booking/BookingDOAerodroma",
+            url: "/BookingFrom/BookingFromAerodroma",
             type: 'POST',
             data: {
                 pickUpDate: $("#InputDate").val(),
-                pickUpTime: $("#InputTime").val(),
-                pickUpFrom: $("#InputPickupFrom option:selected").text(),
+                flightFromlightFrom: $("#flightFromlightFrom").val(),
+                flightNumber: $("#flightNumber").val(),
+                pickUpTime: $("#scheduled_time_hr").val() + ":" + $("#pickup_time_min").val(),
+                pickUpFrom: $("#InputPickup option:selected").text(),
                 fullName: $("#InputFullName").val(),
                 location: $("#InputLocation option:selected").text(),
                 zipCode: $("#InputZipCode option:selected").text(),
+                street: $("#street option:selected").text(),
                 phone: $("#InputTelFirst").val(),
                 email: $("#InputEmail").val(),
-                typeOfCar: $("#car_type option:selected").text(),
+                typeOfCar: $("#car_type option:selected").text(),            
                 suitcases: $("#suitcases option:selected").text(),
                 handLaggage: $("#hand_package option:selected").text(),
-                payment: $("#payment option:selected").text(),
-                street: $("#street option:selected").text()
+                isReturn: $("#returnTrip").is(':checked'),
+                returnData:$("#returnDate").val(),
+                returnTime:$("#pickup_time_hrRET").val() + ":"+$("#pickup_time_minRET").val(),
+                payment: $("#payment option:selected").text()
+                
 
             },
             success: function (data) {
@@ -72,45 +78,32 @@
                             });
                         }
                     });
-                    //$("#street").autocomplete({
-                    //    source: function (request, response) {
-                    //        $.ajax({
-                    //            url: '/Booking/ListaUlica',
-                    //            type: 'POST',
-                    //            dataType: "json",
-                    //            data: {
-                    //                id: $("#InputZipCode").val(),
-                    //                tekst: request.term
-                    //            },
-                    //            success: function (data) {                                    
-                    //                var obj = $.parseJSON(data);
-                    //                response(obj, function (item) {                                        
-                    //                });
-                    //            }
-                    //        });
-                    //    },
-                    //    minLength: 2,
-                    //    select: function (event, ui) {
-                    //        //alert();
-                    //        naziv = ui.item.label;
-                    //        id = ui.item.value;
-                    //    },
-                    //    open: function () {
-                    //        $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
-                    //    },
-                    //    close: function () {
-                    //        $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
-                    //        if ($("#InputZipCode").val() != "") {
-                    //            $("#InputZipCode").attr("value", naziv);
-                    //            $("#InputZipCode2").attr("value", id);
-                    //        }
-
-                    //    }
-                    //});
+                 
                 });
             }
 
         });
+    });
+
+    $("#InputZipCode").change(function () {
+        //alert("asdasd");
+        $.ajax({
+            url: '/Booking/ListaUlica',
+            type: 'POST',
+            //dataType: "json",
+            data: {
+                id: $("#InputZipCode").val()
+                //tekst: request.term
+            },
+            success: function (data) {
+                $("#street").html(data);
+                $("#street").select2({
+                    placeholder: "Select a Street",
+                    allowClear: true
+                });
+            }
+        });
+
     });
 
     //OPTIONS ZA PLAGIN PLACEHOLDERLABEL
@@ -132,4 +125,19 @@
     $(".datum").click(function () {
         $(".ui-datepicker").css("z-index", "9999");
     });
+
+
+
+
+    $("#returnTrip").change(
+        function () {
+            if ($(this).is(':checked')) {
+                $("#divTrip").show(300);
+            }
+            else {
+                $("#divTrip").hide(200);
+            }
+       });
+
+
 });

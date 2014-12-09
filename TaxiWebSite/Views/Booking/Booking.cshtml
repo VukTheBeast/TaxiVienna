@@ -154,18 +154,21 @@ padding: 20px;
                             </div>
                             <div class="form-group">
                                 <label>Location:</label>
-                                <select class="input-group input-sm" id="InputLocation" name="InputLocation" style="width:150px">
+                                @*<select class="input-group input-sm" id="InputLocation" name="InputLocation" style="width:150px">
                                     <option>City</option>
                                     <option value="1">Vienna</option>
-                                </select>
+                                </select>*@
+                                @Html.DropDownList("InputLocation", (List<SelectListItem>)ViewBag.listaGradovi, new { @style = "width:150px", @class = "input-group input-sm" })
                             </div>
 
 
                             <div class="form-group">
                                 <label>Zip code:</label>
-                                <select class="input-group input-sm" id="InputZipCode" name="InputZipCode" style="width:150px">
+                                @*<select class="input-group input-sm" id="InputZipCode" name="InputZipCode" style="width:150px">
                                     <option>Pick your area</option>
-                                </select>
+                                </select>*@
+
+                                @Html.DropDownList("InputZipCode", (List<SelectListItem>)ViewBag.listaOblastiWien, new { @style = "width:150px", @class = "input-group input-sm" })
                             </div>
 
 
@@ -255,7 +258,7 @@ padding: 20px;
                             </div>
                             <div class="form-group">
                                 <label>Comment</label>
-                                <textarea id="comment" name="comment" rows="1" cols="5" class="input-group-sm"></textarea>
+                                <textarea id="comment" name="comment" rows="2" cols="25" class="input-group-sm"></textarea>
 
                             </div>
                             <div class="form-group input-group-sm">
@@ -323,7 +326,7 @@ padding: 20px;
                                     </div>
                                 </div>
                             </div>
-                            <input type="button" id="submit" value="Register" class="btn btn-info btn-block">
+                            <input type="button" id="submit" value="Reserve" class="btn btn-info btn-block">
                         </form>
 
                     </div>
