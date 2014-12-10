@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3b510b31249742b8acdaef5211140e2a" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Gradovi" Width="1.5" PointX="0.875" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Oblasti" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.sysdiagrams" Width="1.5" PointX="0.5" PointY="5.625" IsExpanded="false" />
-        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Ulice" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="ae6a305073394856ba946ddfe2c21743" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Gradovi" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Korisnici" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Oblasti" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Rezervacije" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Ulice" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="DB_9B8AB0_taxiModel.FK_Oblasti_Gradovi" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9B8AB0_taxiModel.FK_KorisniciRezervacije" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9B8AB0_taxiModel.FK_UliceKorisnici" ManuallyRouted="false" />
         <AssociationConnector Association="DB_9B8AB0_taxiModel.FK_Ulice_Oblasti" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Korisnici" Width="1.5" PointX="5.375" PointY="3.375" />
-        <AssociationConnector Association="DB_9B8AB0_taxiModel.UliceKorisnici" />
-        <EntityTypeShape EntityType="DB_9B8AB0_taxiModel.Rezervacije" Width="1.5" PointX="2.875" PointY="3.875" />
-        <AssociationConnector Association="DB_9B8AB0_taxiModel.KorisniciRezervacije" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

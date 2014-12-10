@@ -1,11 +1,8 @@
 ﻿$(document).ready(function () {
-
     $("#street").select2({
         placeholder: "Select a Street",
         allowClear: true
     });
-
-
     //validacija forme
     $("#frm_Reservacija").validate({
         rules: {
@@ -17,7 +14,6 @@
             InputZipCode: { required: true },
             InputEmail: { email: true },
             street: { required: true }
-
         },
         messages: {
             InputDate: "***",
@@ -30,9 +26,8 @@
             street: "***"
         }
     });
-
     $("#submit").on('click', function () {
-      //  $("#anim").removeClass("invisible");
+        // $("#anim").removeClass("invisible");
         if ($("#frm_Reservacija").validate().form()) {
             $("#anim").addClass("glyphicon-refresh-animate");
             $.ajax({
@@ -61,51 +56,47 @@
                     ReturnTime: $("#pickupHRSReturn").val() + ":" + $("#pickupMINReturn").val(),
                     price: $("#lblPrice").text(),
                     ID_Ulice: $("#street").val()
-
-
                 },
                 success: function (data) {
                     $("#anim").removeClass("glyphicon-refresh-animate");
-                    //$("#anim").addClass("invisible");
-              
-                    alert(data.poruka);
-
+                    var n = noty({
+                        text: data.poruka,
+                        type: 'success',
+                        layout: 'center'
+                    });
                 },
                 error: function () {
-                    alert("GRESKAA!");
+                    var n = noty({
+                        text: 'Booking was not ordered, some problem accure. Please try again.',
+                        type: 'error',
+                        layout: 'center'
+                    });
                 }
             });//kraj ajax
         }
-
-
+        else {
+            var n = noty({
+                text: 'Booking was not ordered, some problem accure. Please try again.',
+                type: 'error',
+                layout: 'center'
+            });
+        }
     });
-
     function izracunajCenu() {
         $.ajax({
             url: '/Booking/Cena',
-                type: 'POST',
-                dataType: "json",
-                data: {
-                    klasa: $("#car_type").val(),
-                    zona: $("#InputZipCode").val()
-                },
-                success: function (data) {
-                    $("#lblPrice").text(data.cena + " " + "€");
-                    //alert(data.cena);
-                }
-            });
-
-
+            type: 'POST',
+            dataType: "json",
+            data: {
+                klasa: $("#car_type").val(),
+                zona: $("#InputZipCode").val()
+            },
+            success: function (data) {
+                $("#lblPrice").text(data.cena + " " + "€");
+                //alert(data.cena);
+            }
+        });
     }
-
-    $("#car_type").change(function () {
-
-
-        izracunajCenu();
-
-
-    });
-
 
     $("#InputLocation").change(function () {
         var id;
@@ -139,13 +130,11 @@
                                 allowClear: true
                             });
                         }
-                    });          
+                    });
                 });
             }
-
         });
     });
-
     $("#InputZipCode").change(function () {
         //alert("asdasd");
         $.ajax({
@@ -167,7 +156,6 @@
             }
         });
     });
-
     //OPTIONS ZA PLAGIN PLACEHOLDERLABEL
     var option = {
         placeholderColor: "#898989", // Color placeholder
@@ -177,27 +165,24 @@
         inInput: true, // If true the label is actually in half vertically
         timeMove: 200 // Time effect move after focus
     }
-
-
     //$('input[placeholder]').jvFloat();
-    $(".datum").datepicker();
-    $(".datum").datepicker( "option", "showAnim","drop");
-
+    $(".datum").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd-mm-yy',
+        minDate: 0
+    });
+    $(".datum").datepicker("option", "showAnim", "drop");
     //kada se klikne na datum, da navbar ne prekrije kalendar
     $(".datum").click(function () {
         $(".ui-datepicker").css("z-index", "9999");
     });
-
     $(".datumReturn").datepicker();
     $(".datumReturn").datepicker("option", "showAnim", "drop");
-
     //kada se klikne na datum, da navbar ne prekrije kalendar
     $(".datumReturn").click(function () {
         $(".ui-datepicker").css("z-index", "9999");
     });
-
-
-
     $("#return").change(
     function () {
         if ($(this).is(':checked')) {
@@ -207,17 +192,10 @@
             $("#divTrip").hide(200);
         }
     });
-
-
     $("#payment").change(function () {
-
-       // alert($(this).val());
+        // alert($(this).val());
         if ($(this).val() == "card") {
             $("#mess_divCard").show(300);
-
         }
-
-
     });
-
-});//doc ready
+});

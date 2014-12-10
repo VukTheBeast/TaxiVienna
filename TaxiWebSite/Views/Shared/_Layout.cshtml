@@ -19,27 +19,30 @@
         <div class="text-center" style="padding-bottom:10px;">
             <div style="display:inline-block">
                 <img src="~/Content/pic/taxi logo.jpg" style="height:55px;width:250px;margin-right:180px;" />
-                <img style="width:80px;height:80px;" src="~/Content/pic/vienna-airport-cab-banner.gif" />   
+                   @* <img style="width:80px;height:80px;" src="~/Content/pic/vienna-airport-cab-banner.gif" />*@
+                
             </div>
+            <div id="brTel" style="display:inline-block;margin-left:3px;"><i class=" fa fa-phone fa-2x"></i>&nbsp;+43 69912588883</div>
             <div style="display:inline-block;margin-left:150px;">
                 <img src="~/Content/pic/card.jpg" />
+
             </div>
             <div style="display:inline-block;margin-left:150px;">
                 <img src="~/Content/pic/british-flag.jpg" />
                 <img src="~/Content/pic/flag-german.jpg" />
             </div>
         </div>
-        
-            
+
+
         <div class="container" id="Flaughafentaxi">
-            
+
             @*<hr style="border: 2px solid red;" />
-            <hr style="border: 2px solid red;" />*@
+                <hr style="border: 2px solid red;" />*@
         </div>
     </div>
 
     <div class="jumbotron" style="padding-top:50px;margin-top:50px;">
-        
+
         <div class="container body-content">
             <div class="navbar navbar-inverse">
                 <div class="container">
@@ -51,7 +54,8 @@
                         </button>
                         @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                         <label id="logo" class="navbar-brand" style="cursor:pointer">
-                            <img src="~/Content/pic/JamesBond007Pix.jpg" style="height:35px;width:80px;" />  </label>
+                            <img src="~/Content/pic/JamesBond007Pix.jpg" style="height:35px;width:80px;" />
+                        </label>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav" style="padding-top:7px;">
@@ -63,10 +67,10 @@
                                     <li>@Html.ActionLink("Booking to Airport", "Booking", "Booking")</li>
                                     <li>@Html.ActionLink("Booking from Airport", "BookingFrom", "BookingFrom")</li>
                                     @*<li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">One more separated link</a></li>*@
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">One more separated link</a></li>*@
                                 </ul>
                             </li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
@@ -80,6 +84,7 @@
             @RenderBody()
         </div>
     </div>
+    <img id="bannerBesplVoznj" style="height:200px;" src="~/Content/pic/vienna-airport-cab-banner.gif" />
     <hr />
     <footer>
         <p style="color:white">&copy; @DateTime.Now.Year - DViG Development Team</p>
@@ -92,9 +97,12 @@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/jquery-ui.min.js"></script>
     <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
-    <link href="~/Content/jvfloat.css" rel="stylesheet" />
+    
     <link href="~/Scripts/select2.css" rel="stylesheet" />
     <script src="~/Scripts/select2.js"></script>
-    <!--<script src="~/Scripts/jvfloat.min.js"></script>-->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.noty.packaged.min.js"></script>
+    
+    @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>*@
 </body>
 </html>

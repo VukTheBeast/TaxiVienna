@@ -1,10 +1,8 @@
 ﻿$(document).ready(function () {
-
     $("#street").select2({
         placeholder: "Select a Street",
         allowClear: true
     });
-
     $("#frm_ReservacijaFromAirport").validate({
         rules: {
             InputDate: { required: true },
@@ -15,7 +13,6 @@
             InputZipCode: { required: true },
             InputEmail: { email: true },
             street: { required: true }
-
         },
         messages: {
             InputDate: "***",
@@ -28,14 +25,8 @@
             street: "***"
         }
     });
-
-
-
     $("#submitFrom").on('click', function () {
-       // $("#anim").removeClass("invisible");
-      
-
-
+        // $("#anim").removeClass("invisible");
         if ($("#frm_ReservacijaFromAirport").validate().form()) {
             $("#anim").addClass("glyphicon-refresh-animate");
             $.ajax({
@@ -62,23 +53,32 @@
                     payment: $("#payment option:selected").text(),
                     price: $("#lblPrice").text(),
                     ID_Ulice: $("#street").val()
-
-
                 },
                 success: function (data) {
                     $("#anim").removeClass("glyphicon-refresh-animate");
-                  //  $("#anim").addClass("invisible");
-                    alert(data.poruka);
+                    var n = noty({
+                        text: data.poruka,
+                        type: 'success',
+                        layout: 'center'
+                    });
                 },
                 error: function () {
-                    alert("GRESKAA!");
+                    var n = noty({
+                        text: 'Booking was not ordered, some problem accure. Please try again.',
+                        type: 'error',
+                        layout: 'center'
+                    });
                 }
             });
-
         }
-
+        else {
+            var n = noty({
+                text: 'Booking was not ordered, some problem accure. Please try again.',
+                type: 'error',
+                layout: 'center'
+            });
+        }
     });
-
     $("#InputLocation").change(function () {
         var id;
         id = $("#InputLocation").val();
@@ -111,13 +111,10 @@
                             });
                         }
                     });
-                 
                 });
             }
-
         });
     });
-
     $("#InputZipCode").change(function () {
         //alert("asdasd");
         $.ajax({
@@ -137,9 +134,7 @@
                 });
             }
         });
-
     });
-
     //OPTIONS ZA PLAGIN PLACEHOLDERLABEL
     var option = {
         placeholderColor: "#898989", // Color placeholder
@@ -149,42 +144,33 @@
         inInput: true, // If true the label is actually in half vertically
         timeMove: 200 // Time effect move after focus
     }
-
-
     //$('input[placeholder]').jvFloat();
-    $(".datum").datepicker();
+    $(".datum").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd-mm-yy',
+        minDate: 0
+    });
     $(".datum").datepicker("option", "showAnim", "drop");
-
     //kada se klikne na datum, da navbar ne prekrije kalendar
     $(".datum").click(function () {
         $(".ui-datepicker").css("z-index", "9999");
     });
-
-
-
-
     $("#returnTrip").change(
-        function () {
-            if ($(this).is(':checked')) {
-                $("#divTrip").show(300);
-            }
-            else {
-                $("#divTrip").hide(200);
-            }
-        });
-
-
+    function () {
+        if ($(this).is(':checked')) {
+            $("#divTrip").show(300);
+        }
+        else {
+            $("#divTrip").hide(200);
+        }
+    });
     $("#payment").change(function () {
-
         //alert($(this).val());
         if ($(this).val() == "card") {
             $("#mess_divCard").show(300);
-
         }
-
-
     });
-
     function izracunajCenu() {
         $.ajax({
             url: '/Booking/Cena',
@@ -199,15 +185,8 @@
                 //alert(data.cena);
             }
         });
-
-
     }
-    $("#car_type").change(function () {
-
-
-        izracunajCenu();
-
-
-    });
-
+    //$("#car_type").change(function () {
+    //    izracunajCenu();
+    //});
 });

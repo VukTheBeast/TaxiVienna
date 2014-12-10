@@ -28,7 +28,7 @@ namespace TaxiWebSite.Models
         public int UkupnoVoznje { get; set; }
         public int BrojVoznje { get; set; }
     
-        public virtual Ulice Ulice { get; set; }
         public virtual ICollection<Rezervacije> Rezervacije { get; set; }
+        public virtual Ulice Ulice { get; set; }
     }
 }

@@ -96,3 +96,22 @@ form textarea {
     background-color: rgba(240, 248, 255, 0.64);
     border-radius: 10px;
 }
+
+/*stil za broj telefon i ikonicom*/
+#brTel {
+    color:#43D;
+    font-size: 23px;
+}
+    #brTel i {
+        color:#1D4D99;
+    }
+
+
+#bannerBesplVoznj{
+    width: 200px;
+    height: 332px;
+    position: absolute;
+    top: 300px;
+    right: 24px;
+    bottom: 0;
+}

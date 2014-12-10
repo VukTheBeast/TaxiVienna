@@ -23,7 +23,7 @@ namespace TaxiWebSite.Models
         public int Id_Oblasti { get; set; }
         public string Name { get; set; }
     
-        public virtual Oblasti Oblasti { get; set; }
         public virtual ICollection<Korisnici> Korisnici { get; set; }
+        public virtual Oblasti Oblasti { get; set; }
     }
 }

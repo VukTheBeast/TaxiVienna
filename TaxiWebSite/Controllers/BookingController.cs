@@ -162,7 +162,7 @@ namespace TaxiWebSite.Controllers
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
+                client.Credentials = new System.Net.NetworkCredential("flughafentaxibond@gmail.com", "nautilus142");
                // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
                 MailMessage mm = new MailMessage(email, "flughafentaxibond@gmail.com");
@@ -214,7 +214,7 @@ namespace TaxiWebSite.Controllers
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
+                client.Credentials = new System.Net.NetworkCredential("flughafentaxibond@gmail.com", "nautilus142");
                 // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
                 MailMessage mm = new MailMessage("flughafentaxibond@gmail.com", emailUser);
