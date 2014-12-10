@@ -59,7 +59,9 @@
                     isReturn: $("#returnTrip").is(':checked'),
                     returnData: $("#returnDate").val(),
                     returnTime: $("#pickup_time_hrRET").val() + ":" + $("#pickup_time_minRET").val(),
-                    payment: $("#payment option:selected").text()
+                    payment: $("#payment option:selected").text(),
+                    price: $("#lblPrice").text(),
+                    ID_Ulice: $("#street").val()
 
 
                 },
@@ -101,6 +103,7 @@
                             //tekst: request.term
                         },
                         success: function (data) {
+                            izracunajCenu();
                             $("#street").html(data);
                             $("#street").select2({
                                 placeholder: "Select a Street",
@@ -126,6 +129,7 @@
                 //tekst: request.term
             },
             success: function (data) {
+                izracunajCenu();
                 $("#street").html(data);
                 $("#street").select2({
                     placeholder: "Select a Street",
@@ -181,5 +185,29 @@
 
     });
 
+    function izracunajCenu() {
+        $.ajax({
+            url: '/Booking/Cena',
+            type: 'POST',
+            dataType: "json",
+            data: {
+                klasa: $("#car_type").val(),
+                zona: $("#InputZipCode").val()
+            },
+            success: function (data) {
+                $("#lblPrice").text(data.cena + " " + "€");
+                //alert(data.cena);
+            }
+        });
+
+
+    }
+    $("#car_type").change(function () {
+
+
+        izracunajCenu();
+
+
+    });
 
 });

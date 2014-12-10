@@ -59,7 +59,8 @@
                     isReturn: $("#return").is(':checked'),
                     ReturnDate: $("#ReturnDate").val(),
                     ReturnTime: $("#pickupHRSReturn").val() + ":" + $("#pickupMINReturn").val(),
-                    price: $("#lblPrice").text()
+                    price: $("#lblPrice").text(),
+                    ID_Ulice: $("#street").val()
 
 
                 },

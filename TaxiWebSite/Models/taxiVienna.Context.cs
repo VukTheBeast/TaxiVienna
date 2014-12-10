@@ -31,6 +31,8 @@ namespace TaxiWebSite.Models
         public virtual DbSet<Oblasti> Oblasti { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Ulice> Ulice { get; set; }
+        public virtual DbSet<Korisnici> Korisnici { get; set; }
+        public virtual DbSet<Rezervacije> Rezervacije { get; set; }
     
         public virtual ObjectResult<ListaOblasti_Result> ListaOblasti(Nullable<int> id)
         {

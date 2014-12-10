@@ -45,7 +45,7 @@ namespace TaxiWebSite.Controllers
 
                 ViewBag.listaOblastiWien = listaOblastiWien;
             
-
+                
 
             return View();
             }
@@ -54,24 +54,75 @@ namespace TaxiWebSite.Controllers
         public ActionResult BookingDOAerodroma(String pickUpDate, String pickUpTime,String house,String flor, String door, 
                                                 String pickUpFrom, String fullName, String location,
                                                 String zipCode, String phone, String email, String typeOfCar, String suitcases,
-                                                    String handLaggage, String payment, String street, String comment, String isReturn,
-                                                 String ReturnDate, String ReturnTime, String price)
+                                                String handLaggage, String payment, String street, String comment, String isReturn,
+                                                String ReturnDate, String ReturnTime, String price, String ID_Ulice)
         {
             String poruka = "Vasa rezervacija je poslata vozacu. Proverite mejl da li vam je potvrdjena rezervacija";
+            int idRezervacije = 0;
+            try
+            {
+                using (var dbContext = new DB_9B8AB0_taxiEntities())
+                {
+                    var korisnik = dbContext.Korisnici.Where(x => x.Email.Equals(email)).SingleOrDefault();//proveravam da li imamo korisnika u bazu
+                    int idKorisnika;
+                    if (korisnik == null)//onda se dodaje u tabelu korisnika i upisuje tabela rezervacija
+                    {
+                      //  ID_Ulice = "1";//ovo je za test skini posle
+                        Korisnici k = new Korisnici();
+                        k.Email = email;
+                        k.Name = fullName;
+                        k.Telefon = phone;
+                        k.UkupnoVoznje = 0;
+                        k.BrojVoznje = 0;
+                        k.UliceId = Convert.ToInt32(ID_Ulice);
 
-           
-           
+                        dbContext.Korisnici.Add(k);
+                        dbContext.SaveChanges();
+
+                        idKorisnika = k.ID;
+                    }
+                    else
+                        idKorisnika = korisnik.ID;
+
+                    var rez = new Rezervacije();
+                    rez.KorisniciID = idKorisnika;
+                    rez.Payment = payment;
+
+                    price = price.Substring(0, price.Length - 1);
+                    rez.Price = Convert.ToDouble(price);
+                    // rez.Suitcases = suitcases;
+                    rez.FromToAirport = "to airport";
+                    rez.IsConfirmed = false;
+                    rez.CarType = typeOfCar;
+                    rez.DatumVreme = DateTime.Now;
+
+                    dbContext.Rezervacije.Add(rez);
+                    dbContext.SaveChanges();
+
+                    idRezervacije = rez.ID;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //ovde zapamti log
+                throw ex;
+            }
+
+            //CancleBooking
+
            // String googleMapsLocation=location+","+zipCode+","+street;
             String googleMapsLocation = "https://www.google.at/maps?q=" + location + "," + street;
             String domain=System.Configuration.ConfigurationManager.AppSettings["domain"].ToString();
-            String confirmString = domain + "/Booking/ConfirmBooking?email="+Server.UrlEncode(email);
-
-
+            //String confirmString = domain + "/Booking/ConfirmBooking?email="+Server.UrlEncode(email);
+            String confirmString = domain + "/Booking/ConfirmBooking?email=" + idRezervacije;
+            String cancleBooking = domain + "/Booking/CancleBooking?email=" + idRezervacije;
 
             StringBuilder sb = new StringBuilder("<table border=\"1\"><tbody><tr><td>Pick Up-Date</td><td>");
             sb.Append(pickUpDate+"  "+pickUpTime+"</td></tr><tr><td>Pick Up-From</td><td>");
             sb.Append(pickUpFrom + "</td></tr><tr><td>Price</td><td>");
-            sb.Append(price + "</td></tr><tr><td>Full Name</td><td>");
+            sb.Append(price + "</td></tr><tr><td>Cancle Booking</td><td><a href=\"");
+            sb.Append(cancleBooking + "\">Cancle Booking</a></td></tr><tr><td>Full Name</td><td>");
             sb.Append(fullName+"</td></tr><tr><td>Location</td><td>");
             sb.Append(location+"</td></tr><tr><td>Zip Code</td><td>");
             sb.Append(zipCode+"</td></tr><tr><td>Street</td><td>");
@@ -106,7 +157,7 @@ namespace TaxiWebSite.Controllers
                 /****ovde samo kad se kreira client dodaj ovo (SmtpClient mailClient = new SmtpClient("your.emailgateway.com"); mailClient.Send(message);) da ne bi trazio autentifikaciju***/
                 SmtpClient client = new SmtpClient();
                 client.Port = 587;
-                client.Host = "smtp.gmail.com";
+                client.Host = "smtp.gmail.com"; //ovo treba da se doradi na mejl server hostinga
                 client.EnableSsl = true;
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -136,9 +187,26 @@ namespace TaxiWebSite.Controllers
             return Json(new { poruka = poruka });
         }
 
-        public void ConfirmBooking(String email) {
+        public void ConfirmBooking(int email) {
+            String emailUser = "";
             try
             {
+                using(var dbContext=new DB_9B8AB0_taxiEntities()){
+
+                    var rez = dbContext.Rezervacije.Where(x => x.ID.Equals(email)).SingleOrDefault();
+                    rez.IsConfirmed = true;
+
+                    var k = dbContext.Korisnici.Where(x => x.ID.Equals(rez.KorisniciID)).SingleOrDefault();
+                    k.BrojVoznje++;
+                    k.UkupnoVoznje++;
+
+                    dbContext.SaveChanges();
+                    
+                    emailUser = rez.Korisnici.Email;
+                
+                
+                }
+
                 SmtpClient client = new SmtpClient();
                 client.Port = 587;
                 client.Host = "smtp.gmail.com";
@@ -149,7 +217,7 @@ namespace TaxiWebSite.Controllers
                 client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
                 // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
-                MailMessage mm = new MailMessage("flughafentaxibond@gmail.com", email);
+                MailMessage mm = new MailMessage("flughafentaxibond@gmail.com", emailUser);
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 mm.Subject = "Confirm reservation";
@@ -272,6 +340,61 @@ namespace TaxiWebSite.Controllers
 
             return Json(new { cena = cena });
         }
+        public void CancleBooking(int email)
+        {
+            String emailUser = "";
+            try
+            {
+                using (var dbContext = new DB_9B8AB0_taxiEntities())
+                {
+
+                    var rez = dbContext.Rezervacije.Where(x => x.ID.Equals(email)).SingleOrDefault();              
+
+                    emailUser = rez.Korisnici.Email;
+
+
+                }
+
+                SmtpClient client = new SmtpClient();
+                client.Port = 587;
+                client.Host = "smtp.gmail.com";
+                client.EnableSsl = true;
+                client.Timeout = 10000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
+                // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+                MailMessage mm = new MailMessage("flughafentaxibond@gmail.com", emailUser);
+                mm.BodyEncoding = UTF8Encoding.UTF8;
+                mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                mm.Subject = "Rejected reservation";
+                // mm.IsBodyHtml = true;
+                mm.Body = "Sorry we do not have enought drivers in this moment.";
+                client.Send(mm);
+
+                Response.ClearHeaders();
+                Response.ContentType = "text/html";
+                // Response.AddHeader("content-disposition", attachment;filename='Test.csv'");
+                Response.Write("<h1 style=\"text-align:center\">Otkazano.</h1>");
+                Response.End();
+
+            }
+            catch (Exception ex)
+            {
+                Response.ClearHeaders();
+                Response.ContentType = "text/html";
+                // Response.AddHeader("content-disposition", attachment;filename='Test.csv'");
+                Response.Write(ex.Message);
+                Response.End();
+
+            }
+
+
+
+        }
 
     }
+
+
 }

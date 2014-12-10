@@ -12,18 +12,23 @@ namespace TaxiWebSite.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ulice
+    public partial class Korisnici
     {
-        public Ulice()
+        public Korisnici()
         {
-            this.Korisnici = new HashSet<Korisnici>();
+            this.Rezervacije = new HashSet<Rezervacije>();
         }
     
-        public int Id { get; set; }
-        public int Id_Oblasti { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
+        public int ID_Grada { get; set; }
+        public int UliceId { get; set; }
+        public string Telefon { get; set; }
+        public string Email { get; set; }
+        public int UkupnoVoznje { get; set; }
+        public int BrojVoznje { get; set; }
     
-        public virtual Oblasti Oblasti { get; set; }
-        public virtual ICollection<Korisnici> Korisnici { get; set; }
+        public virtual Ulice Ulice { get; set; }
+        public virtual ICollection<Rezervacije> Rezervacije { get; set; }
     }
 }

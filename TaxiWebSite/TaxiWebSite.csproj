@@ -130,6 +130,9 @@
     <Compile Include="Models\Gradovi.cs">
       <DependentUpon>taxiVienna.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Korisnici.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ListaOblasti_Result.cs">
       <DependentUpon>taxiVienna.tt</DependentUpon>
     </Compile>
@@ -137,6 +140,9 @@
       <DependentUpon>taxiVienna.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Oblasti.cs">
+      <DependentUpon>taxiVienna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rezervacije.cs">
       <DependentUpon>taxiVienna.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
@@ -206,6 +212,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\taxiVienna.edmx.sql" />
     <Content Include="Scripts\Application\Booking.js" />
     <Content Include="Scripts\Application\BookingFrom.js" />
     <Content Include="Scripts\Application\Home.js" />

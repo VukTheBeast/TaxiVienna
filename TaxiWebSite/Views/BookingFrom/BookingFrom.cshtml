@@ -170,7 +170,7 @@
                                 <tr>
                                     <td><label class="control-label input-sm" for="car_type">Car type</label></td>
                                     <td>
-                                        <select id="car_type" name="car_type" class="input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
+                                        <select id="car_type" name="car_type" class="input-sm" label="Typ Auto:" placeholder="Enter type of Car">
                                             <option value="1">Limousine maximum. 3 Passengers</option>
                                             <option value="2">Station wagon 3-4 Passengers</option>
                                             <option value="3">Van 4-7 Passengers</option>
@@ -179,7 +179,7 @@
                                     </td>
                                     <td><label class="control-label input-sm" for="suitcases">Suitcases</label></td>
                                     <td>
-                                        <select id="suitcases" name="suitcases" class="input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">
+                                        <select id="suitcases" name="suitcases" class="input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases">
                                             <option value="0">No suitcases</option>
                                             <option value="1" selected="selected">1 Suitcase</option>
                                             <option value="2">2 Suitcase</option>
@@ -196,7 +196,7 @@
                                 <tr>
                                     <td><label class="control-label input-sm" for="hand_package">Hand package</label></td>
                                     <td>
-                                        <select id="hand_package" name="hand_package" class="input-sm" label="Handgepäck:" placeholder="Hand laggage" onchange="recalculate_price();">
+                                        <select id="hand_package" name="hand_package" class="input-sm" label="Handgepäck:" placeholder="Hand laggage">
                                             <option value="0">No hand luggage</option>
                                             <option value="1" selected="selected">1 Piece</option>
                                             <option value="2">2 Piece</option>
@@ -216,11 +216,15 @@
                                 </tr>
                                 <tr>
                                     <td><label class="control-label input-sm" for="form-group-input">Payment</label></td>
-                                    <td><select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:" onchange="recalculate_price();">
+                                    <td><select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:">
                                         <option value="cash">Cash</option>
                                         <option value="card">Credit Card</option>
                                         <option value="bank">Bank Transfer</option>
                                     </select></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Price:</label></td>
+                                    <td><label id="lblPrice">0 €</label></td>
                                 </tr>
                             </table>
                             
