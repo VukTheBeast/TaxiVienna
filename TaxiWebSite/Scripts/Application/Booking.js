@@ -198,4 +198,7 @@
             $("#mess_divCard").show(300);
         }
     });
+    $("#car_type").change(function () {
+        izracunajCenu();
+    });
 });

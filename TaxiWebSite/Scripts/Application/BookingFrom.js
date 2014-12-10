@@ -186,7 +186,7 @@
             }
         });
     }
-    //$("#car_type").change(function () {
-    //    izracunajCenu();
-    //});
+    $("#car_type").change(function () {
+        izracunajCenu();
+    });
 });
