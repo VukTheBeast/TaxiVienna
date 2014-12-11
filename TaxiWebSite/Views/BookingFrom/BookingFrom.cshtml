@@ -9,7 +9,7 @@
         height: 700px;
     }*/
     .jumbotron {
-        height: 1080px;
+        height: 1220px;
     }
     #container1 {
         background-color: #e2dada;
@@ -59,19 +59,29 @@
                         <form role="form" id="frm_ReservacijaFromAirport">
                             <table>
                                 <tr>
-                                    <td><label class="input-sm" for="InputDate">Pick-up date</label></td>
+                                    <td><label class="input-sm" for="InputEmail">Email&nbsp;<i class="fa fa-star-o"></i></label></td>
+                                    <td>
+                                        <input type="email" class="input-sm" id="InputEmail" name="InputEmail" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="InputFullName">Name&nbsp;<i class="fa fa-star-o"></i></label></td>
+                                    <td><input type="text" class="input-sm" id="InputFullName" name="InputFullName" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm" for="InputDate">Pick-up date&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td><input type="text" class="datum input-sm" id="InputDate" name="InputDate" /></td>
                                 </tr>
                                 <tr>
-                                    <td><label class="input-sm" for="flightFromlightFrom">Flight from</label></td>
+                                    <td><label class="input-sm" for="flightFromlightFrom">Flight from&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td><input type="text" class="input-sm" id="flightFromlightFrom" name="flightFromlightFrom" /></td>
                                 </tr>
                                 <tr>
-                                    <td><label class="input-sm" for="flightNumber">Flight number</label></td>
+                                    <td><label class="input-sm" for="flightNumber">Flight number&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td><input type="number" class="input-sm" id="flightNumber" name="flightNumber" /></td>
                                 </tr>
                                 <tr>
-                                    <td><label class="input-sm" for="scheduled">Scheduled arrival</label></td>
+                                    <td><label class="input-sm" for="scheduled">Scheduled arrival&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td>
                                         <select id="scheduled_time_hr" name="scheduled_time_hr" class="input-sm" label="Zeitplan Landungen:">
                                             <option value="" selected="selected">Hrs.</option>
@@ -128,12 +138,9 @@
                                         </select>
                                     </td>
                                 </tr>
+                               
                                 <tr>
-                                    <td><label class="input-sm" for="InputFullName">Name</label></td>
-                                    <td><input type="text" class="input-sm" id="InputFullName" name="InputFullName" /></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" for="InputLocation">Location</label></td>
+                                    <td><label class="input-sm" for="InputLocation">Location&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td>
                                         @*<select class="input-sm" id="InputLocation" name="InputLocation" ">
                             <option></option>
@@ -141,7 +148,7 @@
                         </select>*@
                                         @Html.DropDownList("InputLocation", (List<SelectListItem>)ViewBag.listaGradovi, new { @style = "width:150px", @class = "input-group input-sm" })
                                     </td>
-                                    <td><label class="input-sm" for="InputZipCode">Zip Code</label></td>
+                                    <td><label class="input-sm" for="InputZipCode">Zip Code&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td>
                                         @*<select class="input-sm" id="InputZipCode" name="InputZipCode">
                             <option>Pick your area</option>
@@ -150,7 +157,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label class="input-sm" for="street">Street</label></td>
+                                    <td><label class="input-sm" for="street">Street&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td>
                                         <select class="input-sm" id="street" name="street">
                                             <option></option>
@@ -158,27 +165,25 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><label class="input-sm" for="InputTelFirst">Telephone</label></td>
+                                    <td><label class="input-sm" for="InputTelFirst">Telephone&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td>
                                         <input type="tel" class="input-sm" id="InputTelFirst" name="InputTelFirst" />
                                     </td>
-                                    <td><label class="input-sm" for="InputEmail">Email</label></td>
-                                    <td>
-                                        <input type="email" class="input-sm" id="InputEmail" name="InputEmail" />
-                                    </td>
+                                    
+                                    
                                 </tr>
                                 <tr>
                                     <td><label class="control-label input-sm" for="car_type">Car type</label></td>
                                     <td>
-                                        <select id="car_type" name="car_type" class="input-sm" label="Typ Auto:" placeholder="Enter type of Car">
+                                        <select id="car_type" name="car_type" class="input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
                                             <option value="1">Economy klase (bis 4 personen)</option>
                                             <option value="2">Business klase (bis 4 personen)</option>
-                                            <option value="3">Großram taxi (5 bis 8 personen)</option>
+                                            <option value="3">Großram taxi (5 bis 8 personen)</option> 
                                         </select>
                                     </td>
                                     <td><label class="control-label input-sm" for="suitcases">Suitcases</label></td>
                                     <td>
-                                        <select id="suitcases" name="suitcases" class="input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases">
+                                        <select id="suitcases" name="suitcases" class="input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">
                                             <option value="0">No suitcases</option>
                                             <option value="1" selected="selected">1 Suitcase</option>
                                             <option value="2">2 Suitcase</option>
@@ -195,7 +200,7 @@
                                 <tr>
                                     <td><label class="control-label input-sm" for="hand_package">Hand package</label></td>
                                     <td>
-                                        <select id="hand_package" name="hand_package" class="input-sm" label="Handgepäck:" placeholder="Hand laggage">
+                                        <select id="hand_package" name="hand_package" class="input-sm" label="Handgepäck:" placeholder="Hand laggage" onchange="recalculate_price();">
                                             <option value="0">No hand luggage</option>
                                             <option value="1" selected="selected">1 Piece</option>
                                             <option value="2">2 Piece</option>
@@ -210,20 +215,24 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td><label class="input-sm">Comment</label></td>
+                                    <td><textarea id="comment" name="comment" rows="2" cols="25" class="input-group-sm"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Price:</label></td>
+                                    <td><label id="lblPrice">0 €</label></td>
+                                </tr>                                
+                                <tr>
                                     <td><label class="input-sm" for="returnTrip">Return trip</label></td>
                                     <td><input type="checkbox" class="input-sm" id="returnTrip" name="returnTrip" style="vertical-align: middle;" /></td>
                                 </tr>
                                 <tr>
                                     <td><label class="control-label input-sm" for="form-group-input">Payment</label></td>
-                                    <td><select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:">
+                                    <td><select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:" onchange="recalculate_price();">
                                         <option value="cash">Cash</option>
                                         <option value="card">Credit Card</option>
                                         <option value="bank">Bank Transfer</option>
                                     </select></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm">Price:</label></td>
-                                    <td><label id="lblPrice">0 €</label></td>
                                 </tr>
                             </table>
                             

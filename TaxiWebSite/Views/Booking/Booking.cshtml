@@ -8,7 +8,7 @@
 
 <style>
     .jumbotron{
-        height:1200px;
+        height:1290px;
         /*font-size:inherit;*/
     }
     /*.jumbotron #scrolingBooking {
@@ -96,11 +96,19 @@ padding: 20px;
                         <form role="form" id="frm_Reservacija">
                             <table>
                                 <tr>
-                                    <td><label class="input-sm">Pick-up date</label></td>
+                                    <td><label class="input-sm">Your email:&nbsp;<i class="fa fa-star-o"></i></label></td>
+                                    <td><input type="email" class="input-sm" id="InputEmail" name="InputEmail" placeholder="Enter Email" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Your full name:&nbsp;<i class="fa fa-star-o"></i></label></td>
+                                    <td><input type="text" name="InputFullName" id="InputFullName" class="input-sm" placeholder="Enter Name"></td>
+                                </tr>
+                                <tr>
+                                    <td><label class="input-sm">Pick-up date &nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td><input type="text" class="form-control input-sm datum" name="InputDate" id="InputDate" placeholder="Enter Date" required></td>
                                 </tr>
                                 <tr>
-                                    <td><label class="input-sm">Pick up time</label></td>
+                                    <td><label class="input-sm">Pick up time&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td>
                                         <select class="input-sm" id="pickupHRS" name="pickupHRS">
                                         <option value="" selected="selected">Hrs</option>
@@ -167,20 +175,17 @@ padding: 20px;
                                         </select>
                                     </td>
                                 </tr>
+                                
                                 <tr>
-                                    <td><label class="input-sm">Your full name:</label></td>
-                                    <td><input type="text" name="InputFullName" id="InputFullName" class="input-sm" placeholder="Enter Name"></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm">Location:</label></td>
+                                    <td><label class="input-sm">Location:&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td>@Html.DropDownList("InputLocation", (List<SelectListItem>)ViewBag.listaGradovi, new { @style = "width:150px", @class = "input-group input-sm" })</td>
                                 </tr>
                                 <tr>
-                                    <td><label class="input-sm">Zip code:</label></td>
+                                    <td><label class="input-sm">Zip code:&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td>@Html.DropDownList("InputZipCode", (List<SelectListItem>)ViewBag.listaOblastiWien, new { @style = "width:150px", @class = "input-group input-sm" })</td>
                                 </tr>
                                 <tr>
-                                    <td><label class="input-sm">Street:</label></td>
+                                    <td><label class="input-sm">Street:&nbsp;<i class="fa fa-star-o"></i></label></td>
                                     <td><select class="input-group input-sm" id="street" name="street" style="width:150px">
                                         <option></option>
                                     </select>
@@ -188,18 +193,15 @@ padding: 20px;
                                 </tr>
                                 <tr>
                                     <td><label class="input-sm">Your phone number:</label></td>
-                                    <td><input type="tel" class="input-sm" id="InputTelFirst" name="InputTelFirst" placeholder="Enter Phone" required></td>
+                                    <td><input type="tel" class="input-sm" id="InputTelFirst" name="InputTelFirst" placeholder="Enter Phone"></td>
                                 </tr>
-                                <tr>
-                                    <td><label class="input-sm">Your email:</label></td>
-                                    <td><input type="email" class="input-sm" id="InputEmail" name="InputEmail" placeholder="Enter Email" required></td>
-                                </tr>
+                                
                                 <tr>
                                     <td><label class="input-sm">Type of car:</label></td>
                                     <td><select id="car_type" name="car_type" class="input-group input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
                                             <option value="1">Economy klase (bis 4 personen)</option>
-                                            <option value="2">Business klase (bis 4 personen)</option>  
-                                            <option value="3">Großram taxi (5 bis 8 personen)</option>                                                                                      
+                                            <option value="2">Business klase (bis 4 personen)</option>
+                                            <option value="3">Großram taxi (5 bis 8 personen)</option>  
                                         </select></td>
                                     <td><label class="input-sm">Suitcases:</label></td>
                                     <td><select id="suitcases" name="suitcases" class="input-group input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">

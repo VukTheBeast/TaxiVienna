@@ -1,8 +1,11 @@
 ﻿$(document).ready(function () {
+
     $("#street").select2({
         placeholder: "Select a Street",
         allowClear: true
     });
+
+
     //validacija forme
     $("#frm_Reservacija").validate({
         rules: {
@@ -14,20 +17,35 @@
             InputZipCode: { required: true },
             InputEmail: { email: true },
             street: { required: true }
+
         },
         messages: {
-            InputDate: "***",
-            pickupHRS: "***",
-            pickupMIN: "***",
-            InputFullName: "***",
-            InputLocation: "***",
-            InputZipCode: "***",
-            InputEmail: "***",
-            street: "***"
+            InputDate: "<span style='color:red'>&nbsp;*</span>",
+            pickupHRS: "<span style='color:red'>&nbsp;*</span>",
+            pickupMIN: "<span style='color:red'>&nbsp;*</span>",
+            InputFullName: "<span style='color:red'>&nbsp;*</span>",
+            InputLocation: "<span style='color:red'>&nbsp;*</span>",
+            InputZipCode: "<span style='color:red'>&nbsp;*</span>",
+            InputEmail: "<span style='color:red'>&nbsp;*</span>",
+            street: "<span style='color:red'>&nbsp;*</span>"
+        },
+        errorPlacement: function (error, element) {
+            //da select i datapicker element lepo postave error msg...
+            if (element.is('select') || $("#InputDate").hasClass('datum')) {
+                element.css("display", "inline-block");
+                error.css("display", "inline-block");
+                error.insertAfter(element);
+            } else {
+                error.insertAfter(element);
+            }
         }
+        //errorPlacement: function (error, element) {
+            
+        //}
     });
+
     $("#submit").on('click', function () {
-        // $("#anim").removeClass("invisible");
+      //  $("#anim").removeClass("invisible");
         if ($("#frm_Reservacija").validate().form()) {
             $("#anim").addClass("glyphicon-refresh-animate");
             $.ajax({
@@ -56,6 +74,8 @@
                     ReturnTime: $("#pickupHRSReturn").val() + ":" + $("#pickupMINReturn").val(),
                     price: $("#lblPrice").text(),
                     ID_Ulice: $("#street").val()
+
+
                 },
                 success: function (data) {
                     $("#anim").removeClass("glyphicon-refresh-animate");
@@ -64,6 +84,7 @@
                         type: 'success',
                         layout: 'center'
                     });
+
                 },
                 error: function () {
                     var n = noty({
@@ -76,27 +97,38 @@
         }
         else {
             var n = noty({
-                text: 'Booking was not ordered, some problem accure. Please try again.',
-                type: 'error',
-                layout: 'center'
+                text: 'Fields marked with <span style="color:red">*</span> are required!',
+                type: 'information',
+                layout: 'center',
+                timeout: 1000
             });
         }
+
+
     });
+
     function izracunajCenu() {
         $.ajax({
             url: '/Booking/Cena',
-            type: 'POST',
-            dataType: "json",
-            data: {
-                klasa: $("#car_type").val(),
-                zona: $("#InputZipCode").val()
-            },
-            success: function (data) {
-                $("#lblPrice").text(data.cena + " " + "€");
-                //alert(data.cena);
-            }
-        });
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    klasa: $("#car_type").val(),
+                    zona: $("#InputZipCode").val()
+                },
+                success: function (data) {
+                    $("#lblPrice").text(data.cena + " " + "€");
+                    //alert(data.cena);
+                }
+            });
+
+
     }
+
+    $("#car_type").change(function () {
+        izracunajCenu();
+    });
+
 
     $("#InputLocation").change(function () {
         var id;
@@ -130,11 +162,13 @@
                                 allowClear: true
                             });
                         }
-                    });
+                    });          
                 });
             }
+
         });
     });
+
     $("#InputZipCode").change(function () {
         //alert("asdasd");
         $.ajax({
@@ -156,6 +190,7 @@
             }
         });
     });
+
     //OPTIONS ZA PLAGIN PLACEHOLDERLABEL
     var option = {
         placeholderColor: "#898989", // Color placeholder
@@ -165,6 +200,11 @@
         inInput: true, // If true the label is actually in half vertically
         timeMove: 200 // Time effect move after focus
     }
+
+    //pri selektovanju datuma, da skine error mesage
+    $(".datum").change(function () {
+        $(this).siblings('label').hide();
+    });
     //$('input[placeholder]').jvFloat();
     $(".datum").datepicker({
         changeMonth: true,
@@ -172,17 +212,23 @@
         dateFormat: 'dd-mm-yy',
         minDate: 0
     });
-    $(".datum").datepicker("option", "showAnim", "drop");
+    $(".datum").datepicker( "option", "showAnim","drop");
+
     //kada se klikne na datum, da navbar ne prekrije kalendar
     $(".datum").click(function () {
         $(".ui-datepicker").css("z-index", "9999");
     });
+
     $(".datumReturn").datepicker();
     $(".datumReturn").datepicker("option", "showAnim", "drop");
+
     //kada se klikne na datum, da navbar ne prekrije kalendar
     $(".datumReturn").click(function () {
         $(".ui-datepicker").css("z-index", "9999");
     });
+
+
+
     $("#return").change(
     function () {
         if ($(this).is(':checked')) {
@@ -192,13 +238,14 @@
             $("#divTrip").hide(200);
         }
     });
+
+
     $("#payment").change(function () {
-        // alert($(this).val());
+
+       // alert($(this).val());
         if ($(this).val() == "card") {
             $("#mess_divCard").show(300);
         }
     });
-    $("#car_type").change(function () {
-        izracunajCenu();
-    });
-});
+
+});//doc ready

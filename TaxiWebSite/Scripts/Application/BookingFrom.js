@@ -1,30 +1,55 @@
 ﻿$(document).ready(function () {
+
     $("#street").select2({
         placeholder: "Select a Street",
         allowClear: true
     });
+
     $("#frm_ReservacijaFromAirport").validate({
         rules: {
             InputDate: { required: true },
+            flightFromlightFrom: { required: true },
+            flightNumber: { required: true },
             scheduled_time_hr: { required: true },
             pickup_time_min: { required: true },
+            InputPickup: { required: true },
             InputFullName: { required: true },
             InputLocation: { required: true },
+            s2id_autogen1: { required: true },
             InputZipCode: { required: true },
-            InputEmail: { email: true },
-            street: { required: true }
+            street: { required: true },
+            InputTelFirst: { required: true },
+            InputEmail: { email: true, required: true }
         },
         messages: {
-            InputDate: "***",
-            scheduled_time_hr: "***",
-            pickup_time_min: "***",
-            InputFullName: "***",
-            InputLocation: "***",
-            InputZipCode: "***",
-            InputEmail: "***",
-            street: "***"
+            InputDate: "<span style='color:red'>&nbsp;*</span>",
+            flightFromlightFrom: "<span style='color:red'>&nbsp;*</span>",
+            flightNumber: "<span style='color:red'>&nbsp;*</span>",
+            scheduled_time_hr: "<span style='color:red'>&nbsp;*</span>",
+            pickup_time_min: "<span style='color:red'>&nbsp;*</span>",
+            InputPickup: "<span style='color:red'>&nbsp;*</span>",
+            InputFullName: "<span style='color:red'>&nbsp;*</span>",
+            InputLocation: "<span style='color:red'>&nbsp;*</span>",
+            s2id_autogen1: "<span style='color:red'>&nbsp;*</span>",
+            InputZipCode: "<span style='color:red'>&nbsp;*</span>",
+            street: "<span style='color:red'>&nbsp;*</span>",
+            InputTelFirst: "<span style='color:red'>&nbsp;*</span>",
+            InputEmail: "<span style='color:red'>&nbsp;*</span>"
+        },
+        errorPlacement: function (error, element) {
+            //da select i datapicker element lepo postave error msg...
+        if (element.is('select') || $("#InputDate").hasClass('datum')) {
+            element.css("display", "inline-block");
+            error.css("display", "inline-block");
+            error.insertAfter(element);
+        } else {
+            error.insertAfter(element);
         }
+    }
     });
+
+
+
     $("#submitFrom").on('click', function () {
         // $("#anim").removeClass("invisible");
         if ($("#frm_ReservacijaFromAirport").validate().form()) {
@@ -51,8 +76,9 @@
                     returnData: $("#returnDate").val(),
                     returnTime: $("#pickup_time_hrRET").val() + ":" + $("#pickup_time_minRET").val(),
                     payment: $("#payment option:selected").text(),
-                    price: $("#lblPrice").text(),
                     ID_Ulice: $("#street").val()
+
+
                 },
                 success: function (data) {
                     $("#anim").removeClass("glyphicon-refresh-animate");
@@ -70,15 +96,19 @@
                     });
                 }
             });
+
         }
         else {
             var n = noty({
-                text: 'Booking was not ordered, some problem accure. Please try again.',
-                type: 'error',
-                layout: 'center'
+                text: 'Fields marked with <span style="color:red">*</span> are required!',
+                type: 'information',
+                layout: 'center',
+                timeout: 1000
             });
         }
+
     });
+
     $("#InputLocation").change(function () {
         var id;
         id = $("#InputLocation").val();
@@ -111,10 +141,13 @@
                             });
                         }
                     });
+                 
                 });
             }
+
         });
     });
+
     $("#InputZipCode").change(function () {
         //alert("asdasd");
         $.ajax({
@@ -126,7 +159,7 @@
                 //tekst: request.term
             },
             success: function (data) {
-                izracunajCenu();
+                izracunajCenu()
                 $("#street").html(data);
                 $("#street").select2({
                     placeholder: "Select a Street",
@@ -134,7 +167,9 @@
                 });
             }
         });
+
     });
+
     //OPTIONS ZA PLAGIN PLACEHOLDERLABEL
     var option = {
         placeholderColor: "#898989", // Color placeholder
@@ -144,6 +179,8 @@
         inInput: true, // If true the label is actually in half vertically
         timeMove: 200 // Time effect move after focus
     }
+
+
     //$('input[placeholder]').jvFloat();
     $(".datum").datepicker({
         changeMonth: true,
@@ -152,20 +189,28 @@
         minDate: 0
     });
     $(".datum").datepicker("option", "showAnim", "drop");
+
     //kada se klikne na datum, da navbar ne prekrije kalendar
     $(".datum").click(function () {
         $(".ui-datepicker").css("z-index", "9999");
     });
+
+
+
+
     $("#returnTrip").change(
-    function () {
-        if ($(this).is(':checked')) {
-            $("#divTrip").show(300);
-        }
-        else {
-            $("#divTrip").hide(200);
-        }
-    });
+        function () {
+            if ($(this).is(':checked')) {
+                $("#divTrip").show(300);
+            }
+            else {
+                $("#divTrip").hide(200);
+            }
+        });
+
+
     $("#payment").change(function () {
+
         //alert($(this).val());
         if ($(this).val() == "card") {
             $("#mess_divCard").show(300);
@@ -189,4 +234,5 @@
     $("#car_type").change(function () {
         izracunajCenu();
     });
+
 });

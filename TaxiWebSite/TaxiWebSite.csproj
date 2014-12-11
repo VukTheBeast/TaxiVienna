@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\BookingFromController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -202,12 +203,14 @@
     <Content Include="Content\pic\taxiBestBusnisess.png" />
     <Content Include="Content\pic\taxiService.png" />
     <Content Include="Content\pic\vienna-airport-cab-banner.gif" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\taxiVienna.edmx.sql" />
+    <Content Include="Scripts\Application\AdminPanel.js" />
     <Content Include="Scripts\Application\Booking.js" />
     <Content Include="Scripts\Application\BookingFrom.js" />
     <Content Include="Scripts\Application\Home.js" />
@@ -244,6 +247,8 @@
     </Content>
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -279,6 +284,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Booking\Booking.cshtml" />
     <Content Include="Views\BookingFrom\BookingFrom.cshtml" />
+    <Content Include="Views\AdminPanel\AdminPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
