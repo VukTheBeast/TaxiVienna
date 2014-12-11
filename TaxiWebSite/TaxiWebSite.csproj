@@ -213,7 +213,10 @@
     <Content Include="Scripts\Application\AdminPanel.js" />
     <Content Include="Scripts\Application\Booking.js" />
     <Content Include="Scripts\Application\BookingFrom.js" />
+    <Content Include="Scripts\Application\Contact.js" />
     <Content Include="Scripts\Application\Home.js" />
+    <Content Include="Scripts\Application\About.js" />
+    <Content Include="Scripts\Application\resources-ger.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.woff" />

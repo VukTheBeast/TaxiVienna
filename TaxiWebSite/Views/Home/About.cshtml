@@ -3,7 +3,7 @@
 }
 @*<h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>*@
-
+@Html.Hidden("lang")
 <style>
     /*body {
         margin-top: 50px;
@@ -57,45 +57,28 @@
     <div id="container1" class="container">
         <div class="summary">
             <img class="summary-image img-suqare img-responsive pull-right" alt="Bootstrap template" src="~/Content/pic/taxiAboutUs.jpg">
-            <h2 class="summary-heading">
-                We are the Best in the Business! <span class="text-muted">Best online reservation sistyem...</span>
+            <h2 id="aboutnaslov1" class="summary-heading">
+                 <span class="text-muted" id="aboutnaslov2"></span>
             </h2>
-            <p class="lead">
-
-
-                It’s time to think about a different way of doing things. While You may not be able to do anything about certain aspects of air travel, You can do something about the ground transportation part.
-
-                Our company is focused on providing high-quality airport taxi service.
-
-                You can be sure that You will have a courteous driver willing to help You in any way they can, as well as a clean, modern car that features all of the amenities and comforts You need to make Your ride a pleasurable one.
+            <p id="aboutsadrzaj1" class="lead">
             </p>
         </div>
-        <hr class="summary-divider" />
+        @*<hr class="summary-divider" />*@
         <div class="summary">
             <img class="summary-image img-suqare img-responsive pull-left" alt="Bootstrap template" src="~/Content/pic/taxiBestBusnisess.png">
-            <h2 class="summary-heading">
-                Order in Advance<span class="text-muted">You will recive conformation from our service.</span>
+            <h2 id="aboutnaslov3" class="summary-heading">
+                <span class="text-muted"></span>
             </h2>
-            <p class="lead">
-
-
-                When You order airport taxi in advance, You can arrive at Vienna Airport safe in the knowledge that a car and driver will be there waiting for You.
-
-                There is no need to stand in line, but rather just grab your luggage and head out to the car that awaits.
+            <p id="aboutsadrzaj2" class="lead">                
             </p>
         </div>
-        <hr class="summary-divider" />
+        @*<hr class="summary-divider" />*@
         <div class="summary">
             <img class="summary-image img-suqare img-responsive pull-right" alt="Bootstrap template" src="~/Content/pic/taxiService.png">
-            <h2 class="summary-heading">
-                Secure Online Reservations <span class="text-muted">You are able to book online your reservation.</span>
+            <h2 id="aboutnaslov4" class="summary-heading">
+                 <span class="text-muted"></span>
             </h2>
-            <p class="lead">
-
-
-                Our secure booking system is designed to make sure that passengers online information is fully protected.
-
-                You will receive an instant confirmation for Your for Your bookings.
+            <p id="aboutsadrzaj3" class="lead">                
             </p>
         </div>
     </div>
@@ -105,3 +88,4 @@
 <footer>
     <p>Copyright &copy; CompanyName 2014</p>
 </footer>
+<script src="~/Scripts/Application/About.js"></script>

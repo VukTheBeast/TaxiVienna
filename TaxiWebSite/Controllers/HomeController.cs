@@ -10,20 +10,25 @@ namespace TaxiWebSite.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["lang"] == null)
+            {
+                Session["lang"] = "ger";
+            }
+            ViewBag.lang = Session["lang"];
             return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            ViewBag.lang = Session["lang"];
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.lang = Session["lang"];
             return View();
         }
 
@@ -33,6 +38,10 @@ namespace TaxiWebSite.Controllers
             return View();
         }
 
+        [HttpPost]
+        public void SetSession(string lang) {
+            Session["lang"] = lang;
+        }
      
     }
 }

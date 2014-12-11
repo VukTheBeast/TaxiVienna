@@ -18,7 +18,7 @@ namespace TaxiWebSite.Controllers
         public ActionResult Booking()
         {
             ViewBag.Message = "Order from/to Airport";
-
+            ViewBag.lang = Session["lang"];
             using (var dbContext = new DB_9B8AB0_taxiEntities()) {
 
                 var list = dbContext.Gradovi.ToList();

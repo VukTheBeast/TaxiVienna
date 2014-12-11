@@ -1,6 +1,12 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
+    @*<script type="text/javascript">
+        $(document).ready(function () {
+            $("#lang").val("ger");
+        });
+    </script>*@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flughafen Taxi Bond</title>
@@ -12,7 +18,7 @@
             background-color: inherit;
         }
     </style>
-
+    
 </head>
 <body>
     <div class="row">
@@ -28,8 +34,8 @@
 
             </div>
             <div style="display:inline-block;margin-left:150px;">
-                <img src="~/Content/pic/british-flag.jpg" />
-                <img src="~/Content/pic/flag-german.jpg" />
+                <a><img src="~/Content/pic/british-flag.jpg" style="cursor:pointer" id="flagEng"/></a>
+                <a><img src="~/Content/pic/flag-german.jpg" style="cursor:pointer" id="flagGer"/></a>
             </div>
         </div>
 
@@ -54,18 +60,18 @@
                         </button>
                         @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                         <label id="logo" class="navbar-brand" style="cursor:pointer">
-                            <img src="~/Content/pic/JamesBond007Pix.jpg" style="height:35px;width:80px;" />
+                            @*<img src="~/Content/pic/JamesBond007Pix.jpg" style="height:35px;width:80px;" />*@
                         </label>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav" style="padding-top:7px;">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li><a id ="home" href="/Home/Index"></a></li>
+                            <li><a id="about" href="/Home/About"></a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Booking <span class="caret"></span></a>
+                                <a href="#" id="booking" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLink("Booking to Airport", "Booking", "Booking")</li>
-                                    <li>@Html.ActionLink("Booking from Airport", "BookingFrom", "BookingFrom")</li>
+                                    <li><a id="toairport" href="/Booking/Booking"></a></li>
+                                    <li><a id="fromairport" href="/BookingFrom/BookingFrom"></a></li>
                                     @*<li><a href="#">Something else here</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#">Separated link</a></li>
@@ -73,7 +79,7 @@
                                         <li><a href="#">One more separated link</a></li>*@
                                 </ul>
                             </li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li><a id="contact" href="/Home/Contact"></a></li>
 
                         </ul>
                     </div>
@@ -102,7 +108,8 @@
     <script src="~/Scripts/select2.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.noty.packaged.min.js"></script>
-    
+    <script src="~/Scripts/Application/resources-ger.js"></script>    
+
     @*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>*@
 </body>
 </html>

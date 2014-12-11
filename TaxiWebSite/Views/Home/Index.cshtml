@@ -3,6 +3,7 @@
         height:1070px;
     }
 </style>
+@Html.Hidden("lang")
 <div class="row">
     <div class="text-center">
         <div style="display:inline-block">
@@ -13,7 +14,7 @@
         </div>        
         </div>
     </div>
-
+@Html.Hidden("lang");
 <div class="row">
     
     <div id="my-carousel" class="carousel slide" data-ride="carousel" style="padding-bottom:20px;">
@@ -52,12 +53,8 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>        
     </div>
-    <div class="container" id="indexText" style="padding-top:20px;">
-        Flughafen-Taxi taxi service provides many services that will make your transportation needs in Vienn easier and cheaper.
-
-        A  reliable  24  hour  taxi  service   -   fast,  secure  and  efficient  door-to-door  taxi service, competitive rates, experienced, knowledgeable, entertaining and English speaking drivers,  air-conditioned   vehicles,  all   your   transportation  needs  in Vienn...
-
-        Airport  service  -  Airport  pick  ups  and  drop  offs,  Main  airport  we  serve  is Austria airport but transfers can be made from any town in Austria, transfers for your convenience and business commitments, air conditioned transfer vehicles... 
+    <div  class="container" style="padding-top:20px;">
+        <p id="text"></p>
     </div>
 </div>
 

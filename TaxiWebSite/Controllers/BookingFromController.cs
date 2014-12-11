@@ -14,6 +14,7 @@ namespace TaxiWebSite.Controllers
         // GET: BookingFrom
 
         public ActionResult BookingFrom() {
+            ViewBag.lang = Session["lang"];
             using (var dbContext = new DB_9B8AB0_taxiEntities())
             {
 
