@@ -76,7 +76,8 @@
                     returnData: $("#returnDate").val(),
                     returnTime: $("#pickup_time_hrRET").val() + ":" + $("#pickup_time_minRET").val(),
                     payment: $("#payment option:selected").text(),
-                    ID_Ulice: $("#street").val()
+                    ID_Ulice: $("#street").val(),
+                    price: $("#lblPrice").text()
 
 
                 },
