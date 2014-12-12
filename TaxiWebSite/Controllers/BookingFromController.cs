@@ -95,7 +95,9 @@ namespace TaxiWebSite.Controllers
                     rez.FromToAirport = "from airport";
                     rez.IsConfirmed = false;
                     rez.CarType = typeOfCar;
-                    rez.DatumVreme = DateTime.Now;
+
+                    DateTime dt = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time"));
+                    rez.DatumVreme = dt;
 
                     dbContext.Rezervacije.Add(rez);
                     dbContext.SaveChanges();
