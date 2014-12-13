@@ -16,6 +16,88 @@ body {
     padding-right: 15px;
 }
 
+/*@media screen and (max-width: 913px) {
+    #kartice {
+        padding-right:200px;
+
+    }
+    @media screen and (max-width: 926px) {
+    #kartice {
+        display:none;
+
+    }*/
+@media screen and (max-width: 881px) {
+    #bannerBesplVoznj {
+        display:none;
+    }
+}
+@media screen and (max-width: 922px) {
+    #kartice {
+        display:none;
+    }
+}
+@media screen and (max-width: 572px) {
+    #jezik {
+        padding-right:100px;        
+    }
+    #brTel {
+        padding:0px;
+    }
+    #logo {
+        padding:0px;
+    }
+}
+  
+/*
+@media screen and (max-width: 924px) {
+    #logo {
+        padding-left:200px;
+    }
+}
+@media screen and (max-width: 783px) {
+    #kartice {
+        margin-left:150px;
+    }
+}*/
+
+ /*@media screen and (max-width: 700px) {
+    body {
+        background-color: lightblue;
+    }
+    .jumbotron {
+        height:auto;
+    }
+    #toairport {
+        color: white;
+    }
+     #fromairport {
+        color: white;
+    }
+    #toairport:hover {
+        color: blue;
+    }
+     #fromairport:hover {
+        color: blue;
+    }
+    #booking.item {
+        
+        
+    }
+
+    #home {
+        display:none;
+        color: black;
+    }
+    #about {
+        display:none;
+        color: black;
+    }
+    #contact {
+        display:none;
+        color: black;
+    }
+}*/
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */

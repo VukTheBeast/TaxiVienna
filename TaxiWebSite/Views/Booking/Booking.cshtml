@@ -8,7 +8,7 @@
 
 <style>
     .jumbotron{
-        height:1290px;
+        height:auto;
         /*font-size:inherit;*/
     }
     /*.jumbotron #scrolingBooking {
@@ -94,165 +94,180 @@ padding: 20px;
                     </div>
                     <div class="panel-body">
                         <form role="form" id="frm_Reservacija">
-                            <table>
-                                <tr>
-                                    <td><label class="input-sm" id="lblEmail">&nbsp;</label></td>
-                                    <td><input type="email" class="input-sm" id="InputEmail" name="InputEmail" required></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblName">&nbsp;</label></td>
-                                    <td><input type="text" name="InputFullName" id="InputFullName" class="input-sm" placeholder="Enter Name"></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblPickUpDate">&nbsp;</label></td>
-                                    <td><input type="text" class="form-control input-sm datum" name="InputDate" id="InputDate" placeholder="Enter Date" required></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblPickUpHRS">&nbsp;<i class="fa fa-star-o"></i></label></td>
-                                    <td>
-                                        <select class="input-sm" id="pickupHRS" name="pickupHRS">
-                                        <option value="" selected="selected">Hrs</option>
-                                        <option value="00">00</option>
-                                        <option value="01">01</option>
-                                        <option value="02">02</option>
-                                        <option value="03">03</option>
-                                        <option value="04">04</option>
-                                        <option value="05">05</option>
-                                        <option value="06">06</option>
-                                        <option value="07">07</option>
-                                        <option value="08">08</option>
-                                        <option value="09">09</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                    </select>
-                                        <select class="input-sm" id="pickupMIN" name="pickupMIN">
-                                            <option value="" selected="selected">Min</option>
-                                            <option value="00">00</option>
-                                            <option value="05">05</option>
-                                            <option value="10">10</option>
-                                            <option value="15">15</option>
-                                            <option value="20">20</option>
-                                            <option value="25">25</option>
-                                            <option value="30">30</option>
-                                            <option value="35">35</option>
-                                            <option value="40">40</option>
-                                            <option value="45">45</option>
-                                            <option value="50">50</option>
-                                            <option value="55">55</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblHouse"></label></td>
-                                    <td><input type="text" id="house" name="house" class="input-sm"/></td>
-                                    <td><label class="input-sm" id="lblFloor"></label></td>
-                                    <td><input type="text" id="flor" name="flor" class="input-sm" /></td>
+                            <div class="table-responsive">
+                                <table class="table-responsive">
+                                    <tr>
+                                        <td><label class="input-sm" id="lblEmail">&nbsp;</label></td>
+                                        <td><input type="email" class="input-sm" id="InputEmail" name="InputEmail" required></td>
                                     </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblDoor"></label></td>
-                                    <td><input type="text" id="door" name="door" class="input-sm" /></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblPickUpFrom"></label></td>
-                                    <td>
-                                        <select class="form-control input-sm" id="InputPickupFrom" name="InputPickupFrom">
-                                            <option id="from1" value="5" selected="selected"></option>
-                                            <option id="from2" value="6" ></option>
-                                            <option id="from3" value="7" ></option>
-                                            <option id="from4" value="9" ></option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                
-                                <tr>
-                                    <td><label class="input-sm" id="lblLocation">&nbsp;</label></td>
-                                    <td>@Html.DropDownList("InputLocation", (List<SelectListItem>)ViewBag.listaGradovi, new { @style = "width:150px", @class = "input-group input-sm" })</td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm">Zip code:&nbsp;<i class="fa fa-star-o"></i></label></td>
-                                    <td>@Html.DropDownList("InputZipCode", (List<SelectListItem>)ViewBag.listaOblastiWien, new { @style = "width:150px", @class = "input-group input-sm" })</td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblStreet">&nbsp;</label></td>
-                                    <td><select class="input-group input-sm" id="street" name="street" style="width:150px">
-                                        <option></option>
-                                    </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblPhone"></label></td>
-                                    <td><input type="tel" class="input-sm" id="InputTelFirst" name="InputTelFirst"></td>
-                                </tr>
-                                
-                                <tr>
-                                    <td><label class="input-sm" id="lblCarType"></label></td>
-                                    <td><select id="car_type" name="car_type" class="input-group input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
-                                            <option value="1" id="car1"></option>
-                                            <option value="2" id="car2"></option>
-                                            <option value="3" id="car3"></option>  
-                                        </select></td>
-                                    <td><label class="input-sm" id="lblSuitcase"></label></td>
-                                    <td><select id="suitcases" name="suitcases" class="input-group input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">
-                                            <option value="0" id="suit1"></option>
-                                            <option value="1" id="suit2" selected="selected" ></option>
-                                            <option value="2" id="suit3"></option>
-                                            <option value="3" id="suit4"></option>
-                                            <option value="4" id="suit5"></option>
-                                            <option value="5" id="suit6"></option>
-                                            <option value="6" id="suit7"></option>
-                                            <option value="7" id="suit8"></option>
-                                            <option value="8" id="suit9"></option>
-                                            <option value="999" id="suit10"></option>
-                                        </select></td>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblName">&nbsp;</label></td>
+                                        <td><input type="text" name="InputFullName" id="InputFullName" class="input-sm" placeholder="Enter Name"></td>
                                     </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblHand"></label></td>
-                                    <td><select id="hand_package" name="hand_package" class="input-group input-sm" label="Handgepäck:" placeholder="Hand laggage" onchange="recalculate_price();">
-                                            <option value="0" id="hand1"></option>
-                                            <option value="1" id="hand2" selected="selected" ></option>
-                                            <option value="2" id="hand3">e</option>
-                                            <option value="3" id="hand4"></option>
-                                            <option value="4" id="hand5"></option>
-                                            <option value="5" id="hand6"></option>
-                                            <option value="6" id="hand7"></option>
-                                            <option value="7" id="hand8"></option>
-                                            <option value="8" id="hand9"></option>
-                                            <option value="999" id="hand10"></option>
-                                        </select></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" for="form-group-input" id="lblPayment"></label></td>
-                                    <td><select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:">
-                                        <option value="cash" id="pay1"></option>
-                                        <option value="card" id="pay2"></option>
-                                        <option value="bank" id="pay3"></option>
-                                    </select></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblComment"></label></td>
-                                    <td><textarea id="comment" name="comment" rows="2" cols="25" class="input-group-sm"></textarea></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" id="lblPrice1"></label></td>
-                                    <td><label id="lblPrice">0 €</label></td>
-                                </tr>
-                                <tr>
-                                    <td><label class="input-sm" for="return" id="lblReturn"></label></td>
-                                    <td><input type="checkbox" id="return" name="return" /></td>
-                                </tr>
-                            </table>    
+                                    <tr>
+                                        <td><label class="input-sm" id="lblPickUpDate">&nbsp;</label></td>
+                                        <td><input type="text" class="form-control input-sm datum" name="InputDate" id="InputDate" placeholder="Enter Date" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblPickUpHRS">&nbsp;<i class="fa fa-star-o"></i></label></td>
+                                        <td>
+                                            <select class="input-sm" id="pickupHRS" name="pickupHRS">
+                                                <option value="" selected="selected">Hrs</option>
+                                                <option value="00">00</option>
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <option value="03">03</option>
+                                                <option value="04">04</option>
+                                                <option value="05">05</option>
+                                                <option value="06">06</option>
+                                                <option value="07">07</option>
+                                                <option value="08">08</option>
+                                                <option value="09">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                            </select>
+                                            <select class="input-sm" id="pickupMIN" name="pickupMIN">
+                                                <option value="" selected="selected">Min</option>
+                                                <option value="00">00</option>
+                                                <option value="05">05</option>
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="35">35</option>
+                                                <option value="40">40</option>
+                                                <option value="45">45</option>
+                                                <option value="50">50</option>
+                                                <option value="55">55</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblHouse"></label></td>
+                                        <td><input type="text" id="house" name="house" class="input-sm" /></td>
+                                        </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblFloor"></label></td>
+                                        <td><input type="text" id="flor" name="flor" class="input-sm" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblDoor"></label></td>
+                                        <td><input type="text" id="door" name="door" class="input-sm" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblPickUpFrom"></label></td>
+                                        <td>
+                                            <select class="form-control input-sm" id="InputPickupFrom" name="InputPickupFrom">
+                                                <option id="from1" value="5" selected="selected"></option>
+                                                <option id="from2" value="6"></option>
+                                                <option id="from3" value="7"></option>
+                                                <option id="from4" value="9"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label class="input-sm" id="lblLocation">&nbsp;</label></td>
+                                        <td>@Html.DropDownList("InputLocation", (List<SelectListItem>)ViewBag.listaGradovi, new { @style = "width:150px", @class = "input-group input-sm" })</td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm">Zip code:&nbsp;<i class="fa fa-star-o"></i></label></td>
+                                        <td>@Html.DropDownList("InputZipCode", (List<SelectListItem>)ViewBag.listaOblastiWien, new { @style = "width:150px", @class = "input-group input-sm" })</td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblStreet">&nbsp;</label></td>
+                                        <td>
+                                            <select class="input-group input-sm" id="street" name="street" style="width:150px">
+                                                <option></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblPhone"></label></td>
+                                        <td><input type="tel" class="input-sm" id="InputTelFirst" name="InputTelFirst"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><label class="input-sm" id="lblCarType"></label></td>
+                                        <td>
+                                            <select id="car_type" name="car_type" class="input-group input-sm" label="Typ Auto:" placeholder="Enter type of Car" onchange="recalculate_price();">
+                                                <option value="1" id="car1"></option>
+                                                <option value="2" id="car2"></option>
+                                                <option value="3" id="car3"></option>
+                                            </select>
+                                        </td>
+                                        </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblSuitcase"></label></td>
+                                        <td>
+                                            <select id="suitcases" name="suitcases" class="input-group input-sm" label="Anzahl der Koffer:" placeholder="Enter Suitcases" onchange="recalculate_price();">
+                                                <option value="0" id="suit1"></option>
+                                                <option value="1" id="suit2" selected="selected"></option>
+                                                <option value="2" id="suit3"></option>
+                                                <option value="3" id="suit4"></option>
+                                                <option value="4" id="suit5"></option>
+                                                <option value="5" id="suit6"></option>
+                                                <option value="6" id="suit7"></option>
+                                                <option value="7" id="suit8"></option>
+                                                <option value="8" id="suit9"></option>
+                                                <option value="999" id="suit10"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblHand"></label></td>
+                                        <td>
+                                            <select id="hand_package" name="hand_package" class="input-group input-sm" label="Handgepäck:" placeholder="Hand laggage" onchange="recalculate_price();">
+                                                <option value="0" id="hand1"></option>
+                                                <option value="1" id="hand2" selected="selected"></option>
+                                                <option value="2" id="hand3">e</option>
+                                                <option value="3" id="hand4"></option>
+                                                <option value="4" id="hand5"></option>
+                                                <option value="5" id="hand6"></option>
+                                                <option value="6" id="hand7"></option>
+                                                <option value="7" id="hand8"></option>
+                                                <option value="8" id="hand9"></option>
+                                                <option value="999" id="hand10"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" for="form-group-input" id="lblPayment"></label></td>
+                                        <td>
+                                            <select id="payment" name="payment" class="input-group input-sm" label="Bezahlung:">
+                                                <option value="cash" id="pay1"></option>
+                                                <option value="card" id="pay2"></option>
+                                                <option value="bank" id="pay3"></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblComment"></label></td>
+                                        <td><textarea id="comment" name="comment" rows="2" cols="25" class="input-group-sm"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" id="lblPrice1"></label></td>
+                                        <td><label id="lblPrice">0 €</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label class="input-sm" for="return" id="lblReturn"></label></td>
+                                        <td><input type="checkbox" id="return" name="return" /></td>
+                                    </tr>
+                                </table>
+                            </div>   
                             <div class="form-group input-group-sm" id="divTrip" style="display:none">
                                 <label class="input-sm" id="lblReturnDate"></label>
                                 <input type="text" class="form-control input-sm datumReturn" name="ReturnDate" id="ReturnDate" placeholder="Enter Date" required>
