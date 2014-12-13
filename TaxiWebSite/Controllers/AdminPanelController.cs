@@ -11,10 +11,16 @@ namespace TaxiWebSite.Controllers
 {
     public class AdminPanelController : Controller
     {
-        // GET: AdminPanel
+
+          // GET: AdminPanel
         public ActionResult AdminPanel()
         {
-            return View();
+            if (Session["login"] != null)
+                return View();
+            else {
+                return RedirectToAction("Index", "Login");
+            
+            }
         }
 
         [HttpPost]
