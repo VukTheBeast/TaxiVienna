@@ -31,6 +31,7 @@
              window.myBar = new Chart(ctx).Bar(barChartData, {
                  responsive: true
              });
+             $("#loading").hide();
         }
     });
     

@@ -187,6 +187,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\pic\007.gif" />
+    <Content Include="Content\pic\482.GIF" />
     <Content Include="Content\pic\bg.jpg" />
     <Content Include="Content\pic\bg1.jpg" />
     <Content Include="Content\pic\british-flag.jpg" />
