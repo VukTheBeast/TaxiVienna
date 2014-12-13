@@ -22,7 +22,6 @@ namespace TaxiWebSite.Controllers
             
             }
         }
-
         [HttpPost]
         public JsonResult DAL() {
            
@@ -58,5 +57,36 @@ namespace TaxiWebSite.Controllers
                 return Json(statistika);
             }
         }
+
+        public ActionResult Voznje() {
+            if (Session["login"] != null){
+                using(var dbContext=new DB_9B8AB0_taxiEntities()){
+                    var rezFrom = dbContext.Rezervacije.Where(x => x.FromToAirport.Equals("from airport"))
+                                                        .OrderBy(y => y.DatumVreme)
+                                                        .ToList();
+
+
+
+
+
+
+
+
+
+
+
+
+
+                return View();
+              }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+
+            }
+        
+        }
+    
     }
 }

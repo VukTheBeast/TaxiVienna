@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -96,7 +97,11 @@ namespace TaxiWebSite.Controllers
                     rez.IsConfirmed = false;
                     rez.CarType = typeOfCar;
 
-                    DateTime dt = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time"));
+                    String [] s = pickUpDate.Split('-');
+                    pickUpDate=s[2]+"-"+s[1]+"-"+s[0]+ " "+ pickUpTime;
+
+                    DateTime dt = DateTime.ParseExact(pickUpDate, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+                    
                     rez.DatumVreme = dt;
 
                     dbContext.Rezervacije.Add(rez);

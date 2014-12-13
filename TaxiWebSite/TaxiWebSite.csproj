@@ -290,6 +290,7 @@
     <Content Include="Views\BookingFrom\BookingFrom.cshtml" />
     <Content Include="Views\AdminPanel\AdminPanel.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\AdminPanel\Voznje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

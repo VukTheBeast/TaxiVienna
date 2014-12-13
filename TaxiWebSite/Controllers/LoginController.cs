@@ -17,13 +17,13 @@ namespace TaxiWebSite.Controllers
         public ActionResult Login(String password, String loginname)
         {
 
-            string uname = System.Configuration.ConfigurationManager.AppSettings["adminUname"].ToString(); ;
-            string pass = System.Configuration.ConfigurationManager.AppSettings["adminPass"].ToString(); ;
+            string uname = System.Configuration.ConfigurationManager.AppSettings["adminUname"].ToString();
+            string pass = System.Configuration.ConfigurationManager.AppSettings["adminPass"].ToString(); 
 
             if (uname.Equals(loginname) && pass.Equals(password))
             {
                 Session["login"] = true;
-                return RedirectToAction("AdminPanel", "AdminPanel");
+                return RedirectToAction("Voznje", "AdminPanel");
             }
             else {
                 TempData["poruka"] = "Wrong username or password";
