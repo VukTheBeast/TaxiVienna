@@ -9,6 +9,16 @@ using TaxiWebSite.Models;
 
 namespace TaxiWebSite.Controllers
 {
+    public class FromAir {
+        public String datum { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string adresa { get; set; }
+        public string price { get; set; }
+        public string phone { get; set; }
+    
+    
+    }
     public class AdminPanelController : Controller
     {
 
@@ -61,17 +71,61 @@ namespace TaxiWebSite.Controllers
         public ActionResult Voznje() {
             if (Session["login"] != null){
                 using(var dbContext=new DB_9B8AB0_taxiEntities()){
+
+                    DateTime dt = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time"));
                     var rezFrom = dbContext.Rezervacije.Where(x => x.FromToAirport.Equals("from airport"))
+                                                        .Where(d => d.DatumVreme >= dt)
                                                         .OrderBy(y => y.DatumVreme)
                                                         .ToList();
+                    List<FromAir> from=new List<FromAir>();
+
+                  
 
 
+                    //JBGN VISUAL STUDIO IMA BAG I OVO NECE DA RADI!!!!!!
+                    //var rezFrom = dbContext.Rezervacije.Where(x => x.FromToAirport.Equals("from airport"))
+                    //                                    .Where(d => d.DatumVreme >= dt)
+                    //                                    .Select(m => new {datum=m.DatumVreme, email=m.Korisnici.Email, ulica=m.Korisnici.Ulice.Name })
+                    //                                    .OrderBy(y => y.datum)
+                    //                                    .ToList();
+
+                    
+                    foreach (var item in rezFrom)
+                    {
+                        FromAir a = new FromAir();
+                        a.adresa =item.Korisnici.Ulice.Oblasti.Gradovi.Name+ " / "+ item.Korisnici.Ulice.Oblasti.Name+" / "+ item.Korisnici.Ulice.Name;
+                        a.name = item.Korisnici.Name;
+                        a.email = item.Korisnici.Email;
+                        a.datum = item.DatumVreme.ToString();
+                        a.price = item.Price.ToString();
+                        a.phone = item.Korisnici.Telefon;
+                        from.Add(a);
+                    }
+
+                    ViewBag.from = from;
+                    //rezFrom[0].Korisnici.Ulice
 
 
+                    List<FromAir> toAirport= new List<FromAir>();
 
+                    var rezTo= dbContext.Rezervacije.Where(x => x.FromToAirport.Equals("to airport"))
+                                                      .Where(d => d.DatumVreme >= dt)
+                                                      .OrderBy(y => y.DatumVreme)
+                                                      .ToList();
 
+                    foreach (var item in rezTo)
+                    {
+                        FromAir a = new FromAir();
+                        a.adresa = item.Korisnici.Ulice.Oblasti.Gradovi.Name + " / " + item.Korisnici.Ulice.Oblasti.Name + " / " + item.Korisnici.Ulice.Name;
+                        a.name = item.Korisnici.Name;
+                        a.email = item.Korisnici.Email;
+                        a.datum = item.DatumVreme.ToString();
+                        a.price = item.Price.ToString();
+                        a.phone = item.Korisnici.Telefon;
+                        toAirport.Add(a);
+                    }
 
-
+                    ViewBag.to = toAirport;
 
 
 
