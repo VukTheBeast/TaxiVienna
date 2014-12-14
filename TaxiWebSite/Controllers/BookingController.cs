@@ -95,7 +95,7 @@ namespace TaxiWebSite.Controllers
                     rez.FromToAirport = "to airport";
                     rez.IsConfirmed = false;
                     rez.CarType = typeOfCar;
-
+                    rez.Id_Ulice = Convert.ToInt32(ID_Ulice);
                     String[] s = pickUpDate.Split('-');
                     pickUpDate = s[2] + "-" + s[1] + "-" + s[0] + " " + pickUpTime;
 
@@ -103,6 +103,7 @@ namespace TaxiWebSite.Controllers
 
                   //  DateTime dt = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time"));
                     rez.DatumVreme = dt;
+                    
 
                     dbContext.Rezervacije.Add(rez);
                     dbContext.SaveChanges();

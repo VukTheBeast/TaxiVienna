@@ -15,6 +15,7 @@
         <AssociationConnector Association="DB_9B8AB0_taxiModel.FK_KorisniciRezervacije" ManuallyRouted="false" />
         <AssociationConnector Association="DB_9B8AB0_taxiModel.FK_UliceKorisnici" ManuallyRouted="false" />
         <AssociationConnector Association="DB_9B8AB0_taxiModel.FK_Ulice_Oblasti" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9B8AB0_taxiModel.FK__Rezervaci__Id_Ul__182C9B23" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

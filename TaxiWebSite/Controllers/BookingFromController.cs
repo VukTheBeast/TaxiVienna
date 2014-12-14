@@ -101,7 +101,7 @@ namespace TaxiWebSite.Controllers
                     pickUpDate=s[2]+"-"+s[1]+"-"+s[0]+ " "+ pickUpTime;
 
                     DateTime dt = DateTime.ParseExact(pickUpDate, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
-                    
+                    rez.Id_Ulice = Convert.ToInt32(ID_Ulice);
                     rez.DatumVreme = dt;
 
                     dbContext.Rezervacije.Add(rez);

@@ -24,7 +24,9 @@ namespace TaxiWebSite.Models
         public Nullable<int> Suitcases { get; set; }
         public string Payment { get; set; }
         public double Price { get; set; }
+        public Nullable<int> Id_Ulice { get; set; }
     
         public virtual Korisnici Korisnici { get; set; }
+        public virtual Ulice Ulice { get; set; }
     }
 }

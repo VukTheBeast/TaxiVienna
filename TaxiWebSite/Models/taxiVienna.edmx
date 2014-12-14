@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_9B8AB0_taxiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_9B8AB0_taxiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gradovi">
           <Key>
             <PropertyRef Name="Id" />
@@ -50,6 +50,7 @@
           <Property Name="Suitcases" Type="int" />
           <Property Name="Payment" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Id_Ulice" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -69,6 +70,18 @@
           <Property Name="Id_Oblasti" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Rezervaci__Id_Ul__182C9B23">
+          <End Role="Ulice" Type="Self.Ulice" Multiplicity="0..1" />
+          <End Role="Rezervacije" Type="Self.Rezervacije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ulice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rezervacije">
+              <PropertyRef Name="Id_Ulice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_KorisniciRezervacije">
           <End Role="Korisnici" Type="Self.Korisnici" Multiplicity="1" />
           <End Role="Rezervacije" Type="Self.Rezervacije" Multiplicity="*" />
@@ -130,6 +143,10 @@
           <EntitySet Name="Rezervacije" EntityType="Self.Rezervacije" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ulice" EntityType="Self.Ulice" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Rezervaci__Id_Ul__182C9B23" Association="Self.FK__Rezervaci__Id_Ul__182C9B23">
+            <End Role="Ulice" EntitySet="Ulice" />
+            <End Role="Rezervacije" EntitySet="Rezervacije" />
+          </AssociationSet>
           <AssociationSet Name="FK_KorisniciRezervacije" Association="Self.FK_KorisniciRezervacije">
             <End Role="Korisnici" EntitySet="Korisnici" />
             <End Role="Rezervacije" EntitySet="Rezervacije" />
@@ -147,8 +164,7 @@
             <End Role="Korisnici" EntitySet="Korisnici" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_9B8AB0_taxiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -203,6 +219,8 @@
           <Property Name="Payment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
           <NavigationProperty Name="Korisnici" Relationship="Self.FK_KorisniciRezervacije" FromRole="Rezervacije" ToRole="Korisnici" />
+          <Property Name="Id_Ulice" Type="Int32" />
+          <NavigationProperty Name="Ulice" Relationship="DB_9B8AB0_taxiModel.FK__Rezervaci__Id_Ul__182C9B23" FromRole="Rezervacije" ToRole="Ulice" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -223,6 +241,7 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Korisnici" Relationship="Self.FK_UliceKorisnici" FromRole="Ulice" ToRole="Korisnici" />
           <NavigationProperty Name="Oblasti" Relationship="Self.FK_Ulice_Oblasti" FromRole="Ulice" ToRole="Oblasti" />
+          <NavigationProperty Name="Rezervacije" Relationship="DB_9B8AB0_taxiModel.FK__Rezervaci__Id_Ul__182C9B23" FromRole="Ulice" ToRole="Rezervacije" />
         </EntityType>
         <Association Name="FK_Oblasti_Gradovi">
           <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
@@ -296,11 +315,15 @@
             <End Role="Ulice" EntitySet="Ulice" />
           </AssociationSet>
           <FunctionImport Name="ListaOblasti" ReturnType="Collection(DB_9B8AB0_taxiModel.ListaOblasti_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ListaUlica" ReturnType="Collection(DB_9B8AB0_taxiModel.ListaUlica_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <AssociationSet Name="FK__Rezervaci__Id_Ul__182C9B23" Association="DB_9B8AB0_taxiModel.FK__Rezervaci__Id_Ul__182C9B23">
+            <End Role="Ulice" EntitySet="Ulice" />
+            <End Role="Rezervacije" EntitySet="Rezervacije" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="ListaOblasti_Result">
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
@@ -310,6 +333,18 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="Id" Nullable="false" />
         </ComplexType>
+        <Association Name="FK__Rezervaci__Id_Ul__182C9B23">
+          <End Type="DB_9B8AB0_taxiModel.Ulice" Role="Ulice" Multiplicity="0..1" />
+          <End Type="DB_9B8AB0_taxiModel.Rezervacije" Role="Rezervacije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ulice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rezervacije">
+              <PropertyRef Name="Id_Ulice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -353,6 +388,7 @@
           <EntitySetMapping Name="Rezervacije">
             <EntityTypeMapping TypeName="DB_9B8AB0_taxiModel.Rezervacije">
               <MappingFragment StoreEntitySet="Rezervacije">
+                <ScalarProperty Name="Id_Ulice" ColumnName="Id_Ulice" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="KorisniciID" ColumnName="KorisniciID" />
                 <ScalarProperty Name="DatumVreme" ColumnName="DatumVreme" />

@@ -16,7 +16,8 @@ namespace TaxiWebSite.Controllers
         public string adresa { get; set; }
         public string price { get; set; }
         public string phone { get; set; }
-    
+        public string confirmed { get; set; }
+        public string carType { get; set; }
     
     }
     public class AdminPanelController : Controller
@@ -93,12 +94,15 @@ namespace TaxiWebSite.Controllers
                     foreach (var item in rezFrom)
                     {
                         FromAir a = new FromAir();
-                        a.adresa =item.Korisnici.Ulice.Oblasti.Gradovi.Name+ " / "+ item.Korisnici.Ulice.Oblasti.Name+" / "+ item.Korisnici.Ulice.Name;
+                       // a.adresa =item.Korisnici.Ulice.Oblasti.Gradovi.Name+ " / "+ item.Korisnici.Ulice.Oblasti.Name+" / "+ item.Korisnici.Ulice.Name;
+                        a.adresa = item.Ulice.Oblasti.Gradovi.Name + " / " + item.Ulice.Oblasti.Name + " / " + item.Ulice.Name;
                         a.name = item.Korisnici.Name;
                         a.email = item.Korisnici.Email;
                         a.datum = item.DatumVreme.ToString();
                         a.price = item.Price.ToString();
                         a.phone = item.Korisnici.Telefon;
+                        a.confirmed = item.IsConfirmed.ToString();
+                        a.carType = item.CarType;
                         from.Add(a);
                     }
 
@@ -116,12 +120,15 @@ namespace TaxiWebSite.Controllers
                     foreach (var item in rezTo)
                     {
                         FromAir a = new FromAir();
-                        a.adresa = item.Korisnici.Ulice.Oblasti.Gradovi.Name + " / " + item.Korisnici.Ulice.Oblasti.Name + " / " + item.Korisnici.Ulice.Name;
+                        a.adresa = item.Ulice.Oblasti.Gradovi.Name + " / " + item.Ulice.Oblasti.Name + " / " + item.Ulice.Name;
+                        // a.adresa = item.Korisnici.Ulice.Oblasti.Gradovi.Name + " / " + item.Korisnici.Ulice.Oblasti.Name + " / " + item.Korisnici.Ulice.Name;
                         a.name = item.Korisnici.Name;
                         a.email = item.Korisnici.Email;
                         a.datum = item.DatumVreme.ToString();
                         a.price = item.Price.ToString();
                         a.phone = item.Korisnici.Telefon;
+                        a.confirmed = item.IsConfirmed.ToString();
+                        a.carType = item.CarType;
                         toAirport.Add(a);
                     }
 

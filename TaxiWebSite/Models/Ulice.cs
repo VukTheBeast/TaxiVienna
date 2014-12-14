@@ -17,6 +17,7 @@ namespace TaxiWebSite.Models
         public Ulice()
         {
             this.Korisnici = new HashSet<Korisnici>();
+            this.Rezervacije = new HashSet<Rezervacije>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,6 @@ namespace TaxiWebSite.Models
     
         public virtual ICollection<Korisnici> Korisnici { get; set; }
         public virtual Oblasti Oblasti { get; set; }
+        public virtual ICollection<Rezervacije> Rezervacije { get; set; }
     }
 }

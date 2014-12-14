@@ -46,23 +46,33 @@
     <!-- Main -->
     <div class="container-fluid">
         <div class="row" style="padding-left:10px; padding-right:10px;">
-        
+
             <div class="col-lg-6">
                 <h4 style="text-align:center;">FROM AIRPORT (nerealizovane)</h4>
                 @if (ViewBag.from != null)
                 {
                     <div class="list-group">
-                       @foreach (var item in (List<TaxiWebSite.Controllers.FromAir>)ViewBag.from)
+                        @foreach (var item in (List<TaxiWebSite.Controllers.FromAir>)ViewBag.from)
                         {
-                        <a id="list_horror" style="cursor:pointer" class="list-group-item">
-                            <h5 class="list-group-item-heading"><b>@item.datum</b></h5>
-                            <p class="list-group-item-text">@(item.email + " [" + item.phone + "]")</p>
-                            <p class="list-group-item-text"><b>@item.adresa</b></p>
-                            <p class="list-group-item-text">@item.name</p>
-                            <p class="list-group-item-text">@(item.price + "e")</p>
-                        </a>
-                            }
-                    </div>                 
+                            <a id="list_horror" style="cursor:pointer" class="list-group-item">
+                                <h5 class="list-group-item-heading"><b>@item.datum</b></h5>
+                                <p class="list-group-item-text">@(item.email + " [" + item.phone + "]")</p>
+                                <p class="list-group-item-text"><b>@item.adresa</b></p>
+                                <p class="list-group-item-text">@item.name</p>
+                                <p class="list-group-item-text">@(item.price + "e")</p>
+                                @if (!item.confirmed.Equals("False"))
+                                {
+                                    <p class="list-group-item-text" style="color:cornflowerblue"><span class="glyphicon glyphicon-ok"></span></p>
+                                }
+                                else
+                                {
+                                    <p class="list-group-item-text" style="color:#FF6969"><span class="glyphicon glyphicon-remove">(not confirmed)</span></p>
+                                }
+
+                                <p class="list-group-item-text">@item.carType</p>
+                            </a>
+                        }
+                    </div>
                 }
             </div>
             <div class="col-lg-6">
@@ -74,10 +84,19 @@
                         {
                             <a id="list_horror" style="cursor:pointer" class="list-group-item">
                                 <h5 class="list-group-item-heading"><b>@item.datum</b></h5>
-                                <p class="list-group-item-text">@(item.email + " ["+item.phone+"]")</p>
+                                <p class="list-group-item-text">@(item.email + " [" + item.phone + "]")</p>
                                 <p class="list-group-item-text"><b>@item.adresa</b></p>
                                 <p class="list-group-item-text">@item.name</p>
                                 <p class="list-group-item-text">@(item.price + "e")</p>
+                                @if (!item.confirmed.Equals("False"))
+                                {
+                                    <p class="list-group-item-text" style="color:cornflowerblue"><span class="glyphicon glyphicon-ok"></span></p>
+                                }
+                                else
+                                {
+                                    <p class="list-group-item-text" style="color:#FF6969"><span class="glyphicon glyphicon-remove">(not confirmed)</span></p>
+                                }
+                                <p class="list-group-item-text">@item.carType</p>
                             </a>
                         }
                     </div>
