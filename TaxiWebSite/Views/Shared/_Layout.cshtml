@@ -21,70 +21,81 @@
     
 </head>
 <body>
-    <div>
-        <div class="row">
-            <div class="text-center" style="padding-bottom:10px;">
-                <div id="logo" style="display:inline-block">
-                    <img src="~/Content/pic/taxi logo.jpg" style="height:55px;width:250px;margin-right:118px;" />
-                    @* <img style="width:80px;height:80px;" src="~/Content/pic/vienna-airport-cab-banner.gif" />*@
-
+    <div class="row">
+        <div class="col-md-4" style="text-align:center;">
+            <img src="~/Content/pic/taxi logo.jpg" style="height:55px;width:250px;" />
+        </div>
+        <div class="col-md-4" id="brTel" style="text-align:center;">
+            <i class=" fa fa-phone fa-2x"></i>&nbsp;+43 69912588883
+            <img id="kartice" src="~/Content/pic/card.jpg" />
+        </div>
+        <div class="col-md-4" style="text-align:center; padding-top:30px;">
+            <a><img src="~/Content/pic/british-flag.jpg" style="cursor:pointer" id="flagEng" /></a>
+            <a><img src="~/Content/pic/flag-german.jpg" style="cursor:pointer" id="flagGer" /></a>
+        </div>
+    </div> 
+    <br/>   
+    <div class="container" id="Flaughafentaxi">
+    </div>
+    <br /> 
+        @*<div class="row">
+            <div style="padding-bottom:10px">
+                <div class="col-md-5" id="logo" style="display:inline-block;padding-left:41px;">
+                    
                 </div>
-                <div id="brTel" style="display:inline-block;margin-left:3px;"><i class=" fa fa-phone fa-2x"></i>&nbsp;+43 69912588883</div>
-                <div  style="display:inline-block;margin-left:150px;">
-                    <img id="kartice" src="~/Content/pic/card.jpg" />
+                <div class="col-md-4" id="brTel" style="display:inline-block;margin-left:3px;">
+                    
                 </div>
-                <div id="jezik" style="display:inline-block;margin-left:150px;">
-                    <a><img src="~/Content/pic/british-flag.jpg" style="cursor:pointer" id="flagEng" /></a>
-                    <a><img src="~/Content/pic/flag-german.jpg" style="cursor:pointer" id="flagGer" /></a>
+                <div class="col-md-2" style="display:inline-block;">
+                    
+                </div>
+                <div class="col-md-1" id="jezik" style="display:inline-block;">
+                   
                 </div>
             </div>
-        </div>
-
-
-        <div class="container" id="Flaughafentaxi">
-
-            @*<hr style="border: 2px solid red;" />
-                <hr style="border: 2px solid red;" />*@
-        </div>
-    </div>
-    <div class="container">
-        <div id="unutrasnji" class="jumbotron" style="padding-top:50px;margin-top:50px;">
+            
+        </div>*@   
+    <div class="row">
+        <div class="col-md-2"></div>
+       
+        <div id="unutrasnji" class="col-md-8 container" style="background: rgba(255, 255, 255, 0.6);border-radius: 40px;">
 
             <div class="container body-content">
+                <br/>
                 <div class="navbar navbar-inverse">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-                            <label id="logo" class="navbar-brand" style="cursor:pointer">
-                                @*<img src="~/Content/pic/JamesBond007Pix.jpg" style="height:35px;width:80px;" />*@
-                            </label>
-                        </div>
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav" style="padding-top:7px;">
-                                <li><a id="home" href="/Home/Index"></a></li>
-                                <li><a id="about" href="/Home/About"></a></li>
-                                <li class="dropdown">
-                                    <a href="#" id="booking" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a id="toairport" href="/Booking/Booking"></a></li>
-                                        <li><a id="fromairport" href="/BookingFrom/BookingFrom"></a></li>
-                                        @*<li><a href="#">Something else here</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Separated link</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">One more separated link</a></li>*@
-                                    </ul>
-                                </li>
-                                <li><a id="contact" href="/Home/Contact"></a></li>
-
-                            </ul>
-                        </div>
+                    <div class=" container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                        <label id="logo" class="navbar-brand" style="cursor:pointer">
+                            @*<img src="~/Content/pic/JamesBond007Pix.jpg" style="height:35px;width:80px;" />*@
+                        </label>
                     </div>
+                    <div class="navbar-collapse collapse">
+                            <ul class=" nav navbar-nav" style="padding-top:7px;">
+                        <li><a id="home" href="/Home/Index"></a></li>
+                        <li><a id="about" href="/Home/About"></a></li>
+                        <li class="dropdown">
+                            <a href="#" id="booking" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a id="toairport" href="/Booking/Booking"></a></li>
+                                <li><a id="fromairport" href="/BookingFrom/BookingFrom"></a></li>
+                                @*<li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>*@
+                            </ul>
+                        </li>
+                        <li><a id="contact" href="/Home/Contact"></a></li>
+
+                        </ul>
+                    </div>
+                </div>
                 </div>
                 @*<h1>Taxi airport Vienna</h1>*@
 
@@ -93,14 +104,19 @@
         </div>
         
             
-                <img id="bannerBesplVoznj" src="~/Content/pic/vienna-airport-cab-banner.gif" />
+        <div class="col-md-2" style="text-align:center;width:215px; padding-left:10px">
+            <img id="bannerBesplVoznj" src="~/Content/pic/vienna-airport-cab-banner.gif"/>
+        </div>   
            
         
     </div>
+
     <hr />
-    <footer>
-        <p style="color:white">&copy; @DateTime.Now.Year - DViG Development Team</p>
-    </footer>
+    <div>
+        <footer>
+            <p style="color:white">&copy; @DateTime.Now.Year - DViG Development Team</p>
+        </footer>
+    </div>
 
 
     @Scripts.Render("~/bundles/jquery")
