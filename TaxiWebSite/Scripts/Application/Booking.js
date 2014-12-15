@@ -1,4 +1,17 @@
-﻿$(document).ready(function () {   
+﻿
+
+
+
+$(document).ready(function () {
+   
+    if ($(this).width() < 481) {
+        $("#unutrasnji").removeClass("col-md-8 container");
+        $("#container1").removeClass("container");
+        $("#container1").children().children().children().removeClass('panel panel-default').css('background-color', 'white');
+        $("#container1").children().children().children().children().removeClass('panel-heading').removeClass('panel-body');
+        $('#comment').attr('cols', '17');
+        // change functionality for smaller screens
+    } 
     if ($("#lang").val() == "ger") {
         $("#lblEmail").html(resourcesG.email + " " + "<i class='fa fa-star-o'></i>");
         $("#InputEmail").attr('placeholder', resourcesG.plhemail);
