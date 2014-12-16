@@ -58,7 +58,11 @@ namespace TaxiWebSite.Controllers
                                                 String returnData, String returnTime, String ID_Ulice, String price)
         {
 
-            String poruka = "Vasa rezervacija je poslata vozacu. Proverite mejl da li vam je potvrdjena rezervacija";
+            String poruka = "Your reservation has been sent to the driver. Check your email for confirmation.";
+            if (!Session["lang"].ToString().Equals("ger"))
+                poruka = "Your reservation has been sent to the driver. Check your email for confirmation.";
+            else
+                poruka = "Ihre Reservierung ist für den Fahrer übergeben. Überprüfen Sie Ihre E-Mail zur Bestätigung.";
 
             int idRezervacije = 0;
             try
@@ -174,7 +178,7 @@ namespace TaxiWebSite.Controllers
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential("flughafentaxibond@gmail.com", "nautilus142");
+                client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
                 // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
                 MailMessage mm = new MailMessage(email, "flughafentaxibond@gmail.com");
@@ -190,7 +194,7 @@ namespace TaxiWebSite.Controllers
             catch (Exception ex)
             {
 
-                poruka = "Greska prilikom slanja mejla";
+                poruka = "An error occurred while sending mail. Please try again later.";
             }
 
 

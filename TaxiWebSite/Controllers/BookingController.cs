@@ -58,7 +58,12 @@ namespace TaxiWebSite.Controllers
                                                 String handLaggage, String payment, String street, String comment, String isReturn,
                                                 String ReturnDate, String ReturnTime, String price, String ID_Ulice)
         {
-            String poruka = "Vasa rezervacija je poslata vozacu. Proverite mejl da li vam je potvrdjena rezervacija";
+             String poruka="Your reservation has been sent to the driver. Check your email for confirmation.";
+            if (!Session["lang"].ToString().Equals("ger")) 
+                 poruka = "Your reservation has been sent to the driver. Check your email for confirmation.";
+            else
+                poruka = "Ihre Reservierung ist für den Fahrer übergeben. Überprüfen Sie Ihre E-Mail zur Bestätigung.";
+
             int idRezervacije = 0;
             try
             {
@@ -171,7 +176,7 @@ namespace TaxiWebSite.Controllers
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential("flughafentaxibond@gmail.com", "nautilus142");
+                client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
                // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
                 MailMessage mm = new MailMessage(email, "flughafentaxibond@gmail.com");
@@ -187,7 +192,7 @@ namespace TaxiWebSite.Controllers
             catch (Exception ex)
             {
 
-                poruka = "Greska prilikom slanja mejla";
+                poruka = "An error occurred while sending mail. Please try again later.";
             }
           
 
@@ -223,15 +228,21 @@ namespace TaxiWebSite.Controllers
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential("flughafentaxibond@gmail.com", "nautilus142");
+                client.Credentials = new System.Net.NetworkCredential("007flughafentaxi@gmail.com", "nautilus142");
                 // client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
                 MailMessage mm = new MailMessage("flughafentaxibond@gmail.com", emailUser);
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 mm.Subject = "Confirm reservation";
-               // mm.IsBodyHtml = true;
-                mm.Body ="Your reservation is confirmed. The driver will come to you.";
+                mm.IsBodyHtml = true;
+               
+                if (!Session["lang"].ToString().Equals("ger"))
+                 mm.Body = "Dear customer,<br/><br/> your reservation is confirmed, the driver will come to you.<br/><br/><br/> Best regards.";
+                else
+                    mm.Body = "Sehr geehrter Kunde,<br/><br/>  Ihre Reservierung bestätigt ist , wird der Fahrer zu Ihnen kommen.<br/><br/><br/> Mit freundlichen Grüßen";
+               
+                
                 client.Send(mm);
 
                 Response.ClearHeaders();
@@ -378,8 +389,13 @@ namespace TaxiWebSite.Controllers
                 mm.BodyEncoding = UTF8Encoding.UTF8;
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 mm.Subject = "Rejected reservation";
-                // mm.IsBodyHtml = true;
-                mm.Body = "Sorry we do not have enought drivers in this moment.";
+                mm.IsBodyHtml = true;
+
+                if (!Session["lang"].ToString().Equals("ger"))
+                    mm.Body = "Dear customer,<br/><br/> we are sorry but we don't have enough avaible drivers at this moment.<br/><br/><br/><br/>Best regards";
+                else
+                    mm.Body = "Sehr geehrter Kunde,<br/><br/> es tut uns leid , aber wir haben nicht genug avaible Fahrer in diesem Moment.<br/><br/><br/><br/> Mit freundlichen Grüßen";
+              
                 client.Send(mm);
 
                 Response.ClearHeaders();
