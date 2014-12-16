@@ -237,10 +237,10 @@ namespace TaxiWebSite.Controllers
                 mm.Subject = "Confirm reservation";
                 mm.IsBodyHtml = true;
                
-                if (!Session["lang"].ToString().Equals("ger"))
-                 mm.Body = "Dear customer,<br/><br/> your reservation is confirmed, the driver will come to you.<br/><br/><br/> Best regards.";
-                else
-                    mm.Body = "Sehr geehrter Kunde,<br/><br/>  Ihre Reservierung bestätigt ist , wird der Fahrer zu Ihnen kommen.<br/><br/><br/> Mit freundlichen Grüßen";
+                //if (!Session["lang"].ToString().Equals("ger"))
+                // mm.Body = "Dear customer,<br/><br/> your reservation is confirmed, the driver will come to you.<br/><br/><br/> Best regards.";
+                //else
+                mm.Body = "Dear customer,<br/><br/> your reservation is confirmed, the driver will come to you.<br/><br/><br/> Best regards.<br/><br/><br/><br/><br/><br/>Sehr geehrter Kunde,<br/><br/>  Ihre Reservierung bestätigt ist , wird der Fahrer zu Ihnen kommen.<br/><br/><br/> Mit freundlichen Grüßen";
                
                 
                 client.Send(mm);
@@ -391,10 +391,10 @@ namespace TaxiWebSite.Controllers
                 mm.Subject = "Rejected reservation";
                 mm.IsBodyHtml = true;
 
-                if (!Session["lang"].ToString().Equals("ger"))
-                    mm.Body = "Dear customer,<br/><br/> we are sorry but we don't have enough avaible drivers at this moment.<br/><br/><br/><br/>Best regards";
-                else
-                    mm.Body = "Sehr geehrter Kunde,<br/><br/> es tut uns leid , aber wir haben nicht genug avaible Fahrer in diesem Moment.<br/><br/><br/><br/> Mit freundlichen Grüßen";
+                //if (!Session["lang"].ToString().Equals("ger"))
+                //    mm.Body = "Dear customer,<br/><br/> we are sorry but we don't have enough avaible drivers at this moment.<br/><br/><br/><br/>Best regards";
+                //else
+                mm.Body = "Dear customer,<br/><br/> we are sorry but we don't have enough avaible drivers at this moment.<br/><br/><br/><br/>Best regards<br/><br/><br/><br/><br/><br/>Sehr geehrter Kunde,<br/><br/> es tut uns leid , aber wir haben nicht genug avaible Fahrer in diesem Moment.<br/><br/><br/><br/> Mit freundlichen Grüßen";
               
                 client.Send(mm);
 
