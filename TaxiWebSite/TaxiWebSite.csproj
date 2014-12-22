@@ -121,11 +121,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
+    <Compile Include="Controllers\AGBController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\BookingFromController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImpressumController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PriceController.cs" />
+    <Compile Include="Controllers\WienController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,12 +216,15 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\taxiVienna.edmx.sql" />
     <Content Include="Scripts\Application\AdminPanel.js" />
+    <Content Include="Scripts\Application\AGB.js" />
     <Content Include="Scripts\Application\Booking.js" />
     <Content Include="Scripts\Application\BookingFrom.js" />
     <Content Include="Scripts\Application\Contact.js" />
     <Content Include="Scripts\Application\Home.js" />
     <Content Include="Scripts\Application\About.js" />
+    <Content Include="Scripts\Application\Impressum.js" />
     <Content Include="Scripts\Application\resources-ger.js" />
+    <Content Include="Scripts\Application\Wien.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -292,6 +298,11 @@
     <Content Include="Views\AdminPanel\AdminPanel.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\AdminPanel\Voznje.cshtml" />
+    <Content Include="Views\Wien\Index.cshtml" />
+    <Content Include="Views\AGB\Index.cshtml" />
+    <Content Include="Views\AGB\_ger.cshtml" />
+    <Content Include="Views\AGB\_eng.cshtml" />
+    <Content Include="Views\Impressum\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -71,8 +71,7 @@
     message: "Geben Sie Ihre Massage für uns hier. Wir werden uns umgehend mit Ihnen innerhalb von 2 Tagen.",
     contacttitle: "Kontaktieren Sie uns",
     flightfrom: "Flug ab",
-    flightnumber: "Flugnummer"
-    
+    flightnumber: "Flugnummer"   
 }
 
 resources = {
