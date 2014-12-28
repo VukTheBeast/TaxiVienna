@@ -546,10 +546,18 @@ $(document).ready(function () {
 
 
     $("#payment").change(function () {
-
+        var ukupno;
+        var cena;
+        cena = parseInt($("#lblPrice").text());
+        //alert(cena);        
        // alert($(this).val());
         if ($(this).val() == "card") {
+            ukupno = cena + 5;
             $("#mess_divCard").show(300);
+            $("#lblPrice").text(ukupno + " " + "€");
+        }
+        else {
+            izracunajCenu();
         }
     });
 

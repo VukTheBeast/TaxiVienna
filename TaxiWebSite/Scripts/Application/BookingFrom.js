@@ -525,13 +525,30 @@
         });
 
 
-    $("#payment").change(function () {
+    //$("#payment").change(function () {
 
-        //alert($(this).val());
+    //    //alert($(this).val());
+    //    if ($(this).val() == "card") {
+    //        $("#mess_divCard").show(300);
+    //    }
+    //});
+
+    $("#payment").change(function () {
+        var ukupno;
+        var cena;
+        cena = parseInt($("#lblPrice").text());
+        //alert(cena);        
+        // alert($(this).val());
         if ($(this).val() == "card") {
+            ukupno = cena + 5;
             $("#mess_divCard").show(300);
+            $("#lblPrice").text(ukupno + " " + "€");
+        }
+        else {
+            izracunajCenu();
         }
     });
+
     function izracunajCenu() {
         $.ajax({
             url: '/Booking/Cena',
