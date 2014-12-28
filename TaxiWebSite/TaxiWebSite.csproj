@@ -278,6 +278,7 @@
     <Content Include="Scripts\select2.css" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="sitemap.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
