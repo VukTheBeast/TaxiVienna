@@ -109,6 +109,12 @@ namespace TaxiWebSite.Controllers
                     rez.DatumVreme = dt;
 
                     dbContext.Rezervacije.Add(rez);
+
+
+                    korisnik.Name = fullName;
+                    korisnik.Email = email;
+                    korisnik.UliceId =Convert.ToInt32(ID_Ulice);
+                    
                     dbContext.SaveChanges();
 
                     idRezervacije = rez.ID;
@@ -129,13 +135,13 @@ namespace TaxiWebSite.Controllers
             // String googleMapsLocation=location+","+zipCode+","+street;
             String googleMapsLocation = "https://www.google.at/maps?q=" + location + "," + street;
             String domain = System.Configuration.ConfigurationManager.AppSettings["domain"].ToString();
-            String confirmString = domain + "/Booking/ConfirmBooking?email=" +idRezervacije;
+            String confirmString = domain + "/Booking/ConfirmBooking?email=" + idRezervacije + "&lang=" + Session["lang"].ToString();
             String cancleBooking = domain + "/Booking/CancleBooking?email=" + idRezervacije;
 
 
 
             StringBuilder sb = new StringBuilder("<table border=\"1\"><tbody><tr><td>Pick Up-Date</td><td>");
-            sb.Append(pickUpDate+"   "+pickUpTime + "</td></tr><tr><td>Pick Up-From</td><td>");
+            sb.Append(pickUpDate+ "</td></tr><tr><td>Pick Up-From</td><td>");
             sb.Append(pickUpFrom + "</td></tr><tr><td>Flight From</td><td>");
             sb.Append(flightFromlightFrom + "</td></tr><tr><td>Full Name</td><td>");
             sb.Append(fullName + "</td></tr><tr><td>Location</td><td>");
