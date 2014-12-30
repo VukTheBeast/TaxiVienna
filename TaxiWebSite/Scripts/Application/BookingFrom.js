@@ -76,6 +76,7 @@
         $("#lblFlightNumber").html(resourcesG.flightnumber + " " + "<i class='fa fa-star-o'></i>");
         $("#lblDate2").html(resourcesG.pickupdate);
         $("#lblPickupHrs2").html(resourcesG.pickupHRS);
+        $("#lblHouse").html(resourcesG.house);
     }
     else {
         $("#lblEmail").html(resources.email + " " + "<i class='fa fa-star-o'></i>");
@@ -146,6 +147,7 @@
         $("#lblFlightNumber").html(resources.flightnumber + " " + "<i class='fa fa-star-o'></i>");
         $("#lblDate2").html(resources.pickupdate);
         $("#lblPickupHrs2").html(resources.pickupHRS);
+        $("#lblHouse").html(resources.house);
 
     }
 
@@ -231,6 +233,7 @@
                 $("#lblFlightNumber").html(resources.flightnumber + " " + "<i class='fa fa-star-o'></i>");
                 $("#lblDate2").html(resources.pickupdate);
                 $("#lblPickupHrs2").html(resources.pickupHRS);
+                $("#lblHouse").html(resources.house);
                 //$("#lblPrice").text(data.cena + " " + "€");
                 //alert(data.cena);
             }
@@ -314,6 +317,7 @@
                 $("#lblFlightFrom").html(resourcesG.flightfrom + " " + "<i class='fa fa-star-o'></i>");
                 $("#lblFlightNumber").html(resourcesG.flightnumber + " " + "<i class='fa fa-star-o'></i>");
                 $("#lblPickupHrs2").html(resourcesG.pickupHRS);
+                $("#lblHouse").html(resourcesG.house);
                 //$("#lblPrice").text(data.cena + " " + "€");
                 //alert(data.cena);
             }
