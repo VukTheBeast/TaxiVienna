@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -111,6 +112,11 @@ namespace TaxiWebSite.Controllers
                     
 
                     dbContext.Rezervacije.Add(rez);
+
+                    korisnik.Name = fullName;
+                    korisnik.Email = email;
+                    korisnik.UliceId = Convert.ToInt32(ID_Ulice);
+
                     dbContext.SaveChanges();
 
                     idRezervacije = rez.ID;
@@ -129,7 +135,7 @@ namespace TaxiWebSite.Controllers
             String googleMapsLocation = "https://www.google.at/maps?q=" + location + "," + street;
             String domain=System.Configuration.ConfigurationManager.AppSettings["domain"].ToString();
             //String confirmString = domain + "/Booking/ConfirmBooking?email="+Server.UrlEncode(email);
-            String confirmString = domain + "/Booking/ConfirmBooking?email=" + idRezervacije;
+            String confirmString = domain + "/Booking/ConfirmBooking?email=" + idRezervacije +"&lang=" +Session["lang"].ToString();
             String cancleBooking = domain + "/Booking/CancleBooking?email=" + idRezervacije;
 
             StringBuilder sb = new StringBuilder("<table border=\"1\"><tbody><tr><td>Pick Up-Date</td><td>");
@@ -201,7 +207,7 @@ namespace TaxiWebSite.Controllers
             return Json(new { poruka = poruka });
         }
 
-        public void ConfirmBooking(int email) {
+        public void ConfirmBooking(int email, string lang) {
             String emailUser = "";
             try
             {
@@ -216,10 +222,9 @@ namespace TaxiWebSite.Controllers
 
                     dbContext.SaveChanges();
                     
-                    emailUser = rez.Korisnici.Email;
+                    emailUser = rez.Korisnici.Email;                
                 
                 
-                }
 
                 SmtpClient client = new SmtpClient();
                 client.Port = 587;
@@ -236,12 +241,70 @@ namespace TaxiWebSite.Controllers
                 mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
                 mm.Subject = "Confirm reservation";
                 mm.IsBodyHtml = true;
-               
-                //if (!Session["lang"].ToString().Equals("ger"))
-                // mm.Body = "Dear customer,<br/><br/> your reservation is confirmed, the driver will come to you.<br/><br/><br/> Best regards.";
-                //else
-                mm.Body = "Dear customer,<br/><br/> your reservation is confirmed, the driver will come to you.<br/><br/><br/> Best regards.<br/><br/><br/><br/><br/><br/>Sehr geehrter Kunde,<br/><br/>  Ihre Reservierung bestätigt ist , wird der Fahrer zu Ihnen kommen.<br/><br/><br/> Mit freundlichen Grüßen";
-               
+
+                StringBuilder sb1;
+
+
+                if (lang.Equals("ger"))
+                {
+                    StringBuilder sb = new StringBuilder("Sehr geehrter Kunde,<br/><br/>  Ihre Reservierung bestätigt ist , wird der Fahrer zu Ihnen kommen.<br/><br/><br/> Mit freundlichen Grüßen<br/><br/><br/><table border=\"1\"><tbody><tr><td>Pick Up-Date</td><td>");
+                    sb.Append(rez.DatumVreme + "</td></tr><tr><td>vom / zum Flughafen</td><td>");
+                    sb.Append(rez.FromToAirport + "</td></tr><tr><td>Preis</td><td>");
+                    sb.Append(rez.Price + "</td></tr><tr><td>Name</td><td>");
+                    sb.Append(rez.Korisnici.Name + "</td></tr><tr><td>Lage</td><td>");
+                    sb.Append(rez.Ulice.Oblasti.Gradovi.Name + "</td></tr><tr><td>Plz</td><td>");
+                    sb.Append(rez.Ulice.Oblasti.Name + "</td></tr><tr><td>Straße</td><td>");
+                    sb.Append(rez.Ulice.Name + "</td></tr><tr><td>Telefon</td><td>");
+                    sb.Append(rez.Korisnici.Telefon + "</td></tr><tr><td>E-Mail</td><td>");
+                    sb.Append(rez.Korisnici.Email + "</td></tr><tr><td>Fahrzeugtyp</td><td>");
+                    sb.Append(rez.CarType + "</td></tr><tr><td>Koffer</td><td>");
+                    sb.Append(rez.Suitcases + "</td></tr><tr><td>Bezahlung</td><td>");                                 
+                    sb.Append(rez.Payment + "</td></tr></tbody></table><br/><br/>");
+
+                    sb1 = sb;
+
+                   // mm.Body = sb.ToString();
+                   
+                }
+                else
+                {
+                    StringBuilder sb = new StringBuilder("Dear customer,<br/><br/> your reservation is confirmed, the driver will come to you.<br/><br/><br/> Best regards.<br/><br/><br/><table border=\"1\"><tbody><tr><td>Pick Up-Date</td><td>");
+                    sb.Append(rez.DatumVreme + "</td></tr><tr><td>from / to airport</td><td>");
+                    sb.Append(rez.FromToAirport + "</td></tr><tr><td>Price</td><td>");
+                    sb.Append(rez.Price + "</td></tr><tr><td>Full Name</td><td>");
+                    sb.Append(rez.Korisnici.Name + "</td></tr><tr><td>Hand laguage</td><td>");
+                    sb.Append(rez.Ulice.Oblasti.Gradovi.Name + "</td></tr><tr><td>Zip Code</td><td>");
+                    sb.Append(rez.Ulice.Oblasti.Name + "</td></tr><tr><td>Street</td><td>");
+                    sb.Append(rez.Ulice.Name + "</td></tr><tr><td>Phone</td><td>");
+                    sb.Append(rez.Korisnici.Telefon + "</td></tr><tr><td>Email</td><td>");
+                    sb.Append(rez.Korisnici.Email + "</td></tr><tr><td>Type of Car</td><td>");
+                    sb.Append(rez.CarType + "</td></tr><tr><td>Suitcases</td><td>");
+                    sb.Append(rez.Suitcases + "</td></tr><tr><td>Payment</td><td>");
+                    sb.Append(rez.Payment + "</td></tr></tbody></table><br/><br/>");
+
+                    sb1 = sb;
+
+
+
+                    //mm.Body = sb.ToString();
+                }
+                if (rez.FromToAirport.Equals("from airport"))
+                {
+
+                   // string html = @"<html><body><img src=""cid:YourPictureId"" width='300' height='300'></body></html>";
+                    sb1.Append(@"<img src=""cid:YourPictureId"" width='600' height='300'>");
+                    AlternateView altView = AlternateView.CreateAlternateViewFromString(sb1.ToString(), null, MediaTypeNames.Text.Html);
+                   // AlternateView altView1 = AlternateView.CreateAlternateViewFromString(sb1.ToString(), null, MediaTypeNames.Text.Html);
+                    string filePath = Server.MapPath(Url.Content("~/Content/pic/Plan.png"));
+                    LinkedResource yourPictureRes = new LinkedResource(filePath, MediaTypeNames.Image.Jpeg);
+                    yourPictureRes.ContentId = "YourPictureId";
+                    altView.LinkedResources.Add(yourPictureRes);
+
+                    mm.AlternateViews.Add(altView);
+                  
+
+                }
+                mm.Body = sb1.ToString();
                 
                 client.Send(mm);
 
@@ -250,7 +313,7 @@ namespace TaxiWebSite.Controllers
                 // Response.AddHeader("content-disposition", attachment;filename='Test.csv'");
                 Response.Write("<h1 style=\"text-align:center\">Rezervacija je potvrdjena.</h1>");
                 Response.End();
-
+            }
             }
             catch (Exception ex)
             {
