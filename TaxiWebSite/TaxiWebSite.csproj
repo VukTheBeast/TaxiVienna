@@ -202,7 +202,10 @@
     <Content Include="Content\pic\grb.png" />
     <Content Include="Content\pic\grb1.png" />
     <Content Include="Content\pic\JamesBond007Pix.jpg" />
+    <Content Include="Content\pic\logo-red.png" />
+    <Content Include="Content\pic\obb.jpg" />
     <Content Include="Content\pic\Plan.png" />
+    <Content Include="Content\pic\schonbrunn.jpg" />
     <Content Include="Content\pic\taxi logo.jpg" />
     <Content Include="Content\pic\taxi-maly.jpg" />
     <Content Include="Content\pic\taxiAboutUs.jpg" />
@@ -211,6 +214,7 @@
     <Content Include="Content\pic\vienna-airport-cab-banner.gif" />
     <Content Include="Content\pic\VIENNA-Logo.png" />
     <Content Include="Content\pic\VIE_Logo_220x70.png" />
+    <Content Include="Content\pic\wienerlin.jpg" />
     <Content Include="Content\pic\Wien_schloss_belvedere_panorama.jpg" />
     <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
