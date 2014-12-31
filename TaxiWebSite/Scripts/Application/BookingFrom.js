@@ -396,7 +396,8 @@
                     returnTime: $("#pickup_time_hrRET").val() + ":" + $("#pickup_time_minRET").val(),
                     payment: $("#payment option:selected").text(),
                     ID_Ulice: $("#street").val(),
-                    price: $("#lblPrice").text()
+                    price: $("#lblPrice").text(),
+                    house:$("#house").val()
 
 
                 },

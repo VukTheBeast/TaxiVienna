@@ -55,7 +55,7 @@ namespace TaxiWebSite.Controllers
                                                 String pickUpFrom, String fullName, String location,
                                                 String zipCode, String phone, String email, String typeOfCar, String suitcases,
                                                 String handLaggage, String payment, String street, String isReturn,
-                                                String returnData, String returnTime, String ID_Ulice, String price)
+                                                String returnData, String returnTime, String ID_Ulice, String price, String house)
         {
 
             String poruka = "Your reservation has been sent to the driver. Check your email for confirmation.";
@@ -138,14 +138,15 @@ namespace TaxiWebSite.Controllers
             String confirmString = domain + "/Booking/ConfirmBooking?email=" + idRezervacije + "&lang=" + Session["lang"].ToString();
             String cancleBooking = domain + "/Booking/CancleBooking?email=" + idRezervacije;
 
-
+            //house
 
             StringBuilder sb = new StringBuilder("<table border=\"1\"><tbody><tr><td>Pick Up-Date</td><td>");
             sb.Append(pickUpDate+ "</td></tr><tr><td>Pick Up-From</td><td>");
             sb.Append(pickUpFrom + "</td></tr><tr><td>Flight From</td><td>");
             sb.Append(flightFromlightFrom + "</td></tr><tr><td>Full Name</td><td>");
             sb.Append(fullName + "</td></tr><tr><td>Location</td><td>");
-            sb.Append(location + "</td></tr><tr><td>Zip Code</td><td>");
+            sb.Append(location + "</td></tr><tr><td>House</td><td>");
+            sb.Append(house + "</td></tr><tr><td>Zip Code</td><td>");
             sb.Append(zipCode + "</td></tr><tr><td>Street</td><td>");
             sb.Append(street + "</td></tr><tr><td>Cancle Booking</td><td><a href=\"");
             sb.Append(cancleBooking + "\">Cancle Booking</a></td></tr><tr><td>Flight Number</td><td>");
