@@ -2,12 +2,13 @@
 
 <html>
 <head>
+
     @*<script type="text/javascript">
         $(document).ready(function () {
             $("#lang").val("ger");
         });
     </script>*@
-        <script type="application/ld+json">
+        @*<script type="text/javascript">
     {
       "@context": "http://www.flughafentaxibond.at",
       "@type": "Flughafentaxi",
@@ -17,11 +18,14 @@
         "addressRegion": "AT",
         "streetAddress": "Steinbauergasse 31 "
       },
-      "description": "Flughafen-Taxi Taxi-Service bietet viele Dienstleistungen, die Ihre Transportbedürfnisse in Vienn einfacher und billiger machen wird. Eine zuverlässige 24 h Taxiservice - schnell, sicher und effizient von Tür zu Tür-Taxi-Service, wettbewerbsfähige Preise, erfahren, kompetent, unterhaltsam und Englisch sprechenden Fahrer, klimatisierte Fahrzeuge, die alle Ihre Transport-Bedürfnisse in Vienn ... Flughafenservice - Flughafen Pick ups und Drop-offs, Main-Flughafen wir dienen Flughafentransfers Österreich, sondern kann von jedem Ort in Österreich hergestellt werden, Überweisungen für Ihre Bequemlichkeit und geschäftlichen Verpflichtungen, klimatisierten Transfer Fahrzeuge ...",
+      "description": "Flughafen-Taxi Taxi-Service bietet viele Dienstleistungen, die Ihre Transportbedürfnisse in Vienn einfacher und billiger machen wird. Eine zuverlässige 24 h Taxiservice - schnell, 
+sicher und effizient von Tür zu Tür-Taxi-Service, wettbewerbsfähige Preise, erfahren, kompetent, unterhaltsam und Englisch sprechenden Fahrer, klimatisierte Fahrzeuge, 
+die alle Ihre Transport-Bedürfnisse in Vienn ... Flughafenservice - Flughafen Pick ups und Drop-offs, 
+Main-Flughafen wir dienen Flughafentransfers Österreich, sondern kann von jedem Ort in Österreich hergestellt werden, Überweisungen für Ihre Bequemlichkeit und geschäftlichen Verpflichtungen, klimatisierten Transfer Fahrzeuge ...",
       "name": "flughafentaxi Bond",
       "telephone": "+43 69912588883"
     }
-    </script>
+    </script>*@
     <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -67,6 +71,17 @@
     
 </head>
 <body>
+        <div style="visibility: hidden; height: 0px;" itemscope itemtype="http://www.flughafentaxibond.at">
+      <h1><span itemprop="name">Flughafentaxi</span></h1>
+      <span itemprop="description">Flughafen-Taxi Taxi-Service bietet viele Dienstleistungen, die Ihre Transportbedürfnisse in Vienn einfacher und billiger machen wird. Eine zuverlässige 24 h Taxiservice - schnell, sicher und effizient von Tür zu Tür-Taxi-Service, wettbewerbsfähige Preise, erfahren, kompetent, unterhaltsam und Englisch sprechenden Fahrer, klimatisierte Fahrzeuge, 
+die alle Ihre Transport-Bedürfnisse in Vienn ... Flughafenservice - Flughafen Pick ups und Drop-offs, Main-Flughafen wir dienen Flughafentransfers Österreich, sondern kann von jedem Ort in Österreich hergestellt werden, Überweisungen für Ihre Bequemlichkeit und geschäftlichen Verpflichtungen, klimatisierten Transfer Fahrzeuge ...</span>
+      <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <span itemprop="streetAddress">Steinbauergasse 31</span>
+        <span itemprop="addressLocality">Wien</span>,
+        <span itemprop="addressRegion">AT</span>
+      </div>
+      Phone: <span itemprop="telephone">+43 69912588883</span>
+    </div>
     <div class="row">
         <div onclick="" class="col-md-4" style="text-align:center;">
             <a href="http://flughafentaxibond.at"><img src="~/Content/pic/taxi logo.jpg" style="height:55px;width:250px;" /></a>
